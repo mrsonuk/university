@@ -1,0 +1,33 @@
+/* Content */
+
+h1 {
+  font-size: 110%;
+}
+
+h2 { 
+  font-size:100%;
+}
+
+/*hr { 
+  width:100%;
+  height:1px;
+  color:black;  
+}*/
+
+hr {
+  width: 100%;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #000;
+}
+
+img { 
+  border-width:0;
+  border-style:none;
+}
+
+img.inline { 
+  float:left;
+  margin-right:1ex;
+  margin-bottom:1ex;
+}
