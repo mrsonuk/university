@@ -1,0 +1,3 @@
+Die hoch 10 steht hinter den Mengen steht dafür, dass es diese Transaction/Menge 10 mal in der Liste gibt. Somit gibt es 20 Transactions in D.
+Transaction (a1, a2, ..., a100) ist frequent (weil es die 10 mal gibt und es insgesamt nur 20 gibt, also 10/20 ist der support von der Transaction. T (a1, a2, ..., a50) ist auch frequent (natürlich) und hat support 20/20, weil diese auch in der Transaction mit den 100 Items drin steckt (Teilmenge)), also sind auch alle Teilmengen frequent
+p. 32: 2^100 -> Menge aller Teilmengen
