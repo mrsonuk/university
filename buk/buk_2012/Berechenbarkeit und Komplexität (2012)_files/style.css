@@ -1,0 +1,609 @@
+/*
+	Colors:	
+		RWTH-Blue			#0054a1	
+		Light gray			#ebeff2		#e0e0e0
+		Yellow highlight	#fdff66		#fffbd7
+		Dark gray			#343434
+*/
+
+* {
+	font-family: 'Droid Serif', serif;
+}
+
+ul { padding-left: 2.2em; margin: 0.5em 0; }
+li { margin: 0.2em 0; }
+
+h1, h2, h3, .label {
+    font-family: 'Vollkorn', serif;
+    font-size: 1.2em;
+    margin: 0em 0 0.2em 0;
+	color: #000;
+}
+
+small {
+	font-size:x-small;
+}
+
+.hspace { /* A spacing element */
+	height: 10px;
+	width: 100%;
+	clear: both;
+}
+
+.problem { /* For typesetting problems */
+	font-variant: small-caps;
+}
+
+#header h1 {
+	padding: 0; margin: 0 0 -8px 0;
+}
+
+#header h1 a {
+	font: normal normal normal 31pt/100% 'Yanone Kaffeesatz', sans-serif;
+	font-weight: 300;
+	text-decoration: none;
+    margin: 25pt 0 2px 0;
+    display: inline-block;
+    padding: 0px 10px 0px 0px;
+	color: #779ec8;
+
+/*	background: url('../RWTH-Aachen.png') 0em 1em no-repeat;*/
+} 
+
+#header h1 a em {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 33pt;
+	color: #0067a6;
+}
+
+#header h2 { 
+	/* RWTH Logo */
+	padding: 0;
+	margin: 0 0 10pt 0;
+}
+
+h1 { margin-top: .8em; font-size: 1.6em; }
+h2 { margin-top: .8em; font-size: 1.3em; }
+h3 { margin-top: .8em; font-size: 1.1em; }
+
+#sidebar h2 { margin-top: 0; margin-bottom: 10px; }
+
+.pre-headline {	margin-bottom: -1.6em; font-style: italic; }
+.post-headline { margin-top: -1.1em; }
+
+body { background-color: #fff; }
+
+a { color: #0054a1; }
+a:hover { color: #000; }
+.quiet {
+	background-color: #ebeff2;
+}
+
+.loud {
+	background-color: #fffbd7;
+}
+
+.container {
+	padding-bottom: 1em
+}
+
+/* Drop shadow decorator */
+.dropshadow {
+	background: url('../images/dropShadowSmall.png') bottom right no-repeat;
+}
+
+.dropshadow * {
+	margin-bottom: 4px;
+	margin-right: 3px;
+}
+
+.dropshadowlarge * {
+	margin-bottom: 8px;
+	margin-right: 4px;
+}
+
+.dropshadowlarge {
+	background: url('../images/dropShadowLarge.png') bottom right no-repeat;
+}
+/* 
+    Header style
+*/
+
+#header {
+    padding-top: 10px;
+	margin-bottom: 20px;
+	border-top: 40px solid #000;
+/*	background: url('../Candy.jpg') 0 -20px no-repeat black;  */
+	background-color: #ebeff2;
+}
+
+#header {
+
+}
+
+/*
+    Main menu style
+*/
+#menu, #menu li {
+    list-style-type: none;
+    text-indent: 0;
+    margin: -41px 0 0 0;
+    padding: 0;
+}
+
+#menu {}
+
+#menu li {
+    margin-right: 26px;
+    display: inline-block;
+}
+
+#menu li a {
+	font-family: 'Yanone Kaffeesatz', arial, serif;
+	text-transform: uppercase;
+	font-weight: bold;
+    font-size: 1.3em;
+    line-height: 40px;
+    height: 40px;
+	padding: 0px 7px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+	color: #fff;
+}
+
+#menu li a:hover {
+	color: #000;
+	background-color: #fdff66;
+	border-bottom: 10px solid #fdff66;
+	margin-bottom: -10px;
+}
+
+.warn {
+	background-color: #ffcccc;
+	padding: 6px;
+	font-size: 80%;
+	position: absolute;
+	display: inline;
+	margin-left: 10px;
+	margin-top: -15px;
+}
+
+.transparent {
+	opacity: 0.0;
+}
+
+/*
+    Content style
+*/
+
+#content h1 {
+	/* border-bottom: 2px solid black; */
+	display: inline-block;
+	padding: 3px 10px 3px 0px;
+	margin-top: 0;
+	/* margin-left: -20px; */
+}
+
+.news ul, .news li { list-style-type: none; margin: 0; padding: 0 }
+.news ul { margin-top: -1em; }
+
+.news li {
+	margin: 10px 0px 40px 0px;
+    border-bottom: 1px dotted #D9D5A6;
+}
+
+.news li:last-child {
+	border-bottom: none;
+}
+
+.news .date {
+	font-size: 0.9em;
+	margin-top: -15px;
+	margin-bottom: 15px;
+	color: #888;
+}
+
+.news #fold { /* Marker for JQuery to create fold */ 
+	margin: -62px 0px 50px 0px; border-bottom: 1px dotted #D9D5A6;
+	background-color: #fff;
+	height: 60px; 
+	text-align: center;
+} 
+
+.news #fold a { 
+	color: #888; background-color: #fff; 
+	line-height: 0px; text-decoration: none;
+	padding: 0px 10px;
+	position: relative; top: 48px;
+}
+
+blockquote {
+	font-size: .9em;
+}
+
+blockquote:before {	content: '\201C'; top: .4em; left: -.3em; } /* Curly quote open */
+blockquote:after { content: '\201D'; top: .4em; left: -.2em; } /* Curly quote close */
+
+blockquote:before, blockquote:after {
+	font-size: 3em;
+	margin-bottom: -2em;
+	margin-right: -.25em;
+	position: relative;
+	line-height: 0;
+	height: 10px;
+}
+
+blockquote .source {
+	margin-left: 100px;
+	clear: left;
+	float: right;
+}
+
+blockquote .source:before {
+	content: '\2014'; /* em-dash */
+}
+
+/*
+	People style
+	Colors:	
+		RWTH-Blue			#0054a1	
+		Light gray			#ebeff2		#e0e0e0
+		Yellow highlight	#fdff66		#fffbd7
+		Dark gray			#343434
+*/
+
+.people_info {
+	margin-bottom: 20px;
+	min-height:108px;
+}
+
+.people_info .image {
+	float: left;
+	margin-right: 30px;
+	padding: 0;
+}
+
+.people_info .image img {
+	width: 150px;
+	color: transparent;
+	border: 2px solid #fff;
+	display: block;
+}
+
+.former .people_info .image img {
+	width: 100px;
+}
+
+.people_info img.empty {
+	min-height: 80px;
+	background-color: #e0e0e0;
+}
+
+.gallery { margin-bottom: 20px !important; }
+
+.gallery ul, .gallery ul li {
+	list-style-type: none;
+}
+
+.gallery ul.navigation {
+	margin: 0px;	
+	padding: 0px 0px 0px 40px;
+	background-color: #000;
+}
+
+.gallery ul.navigation li {
+	display: inline-block;
+	padding: 0;
+	margin: 4px 20px 4px 0px;
+}
+
+.gallery ul.navigation li a {
+	text-decoration: none;
+	font-size: 1.2em;
+	font-family: 'Yanone Kaffeesatz', arial, serif;
+	color: #fff;
+	min-width: 20px;
+	position: relative;
+	z-index: 555;
+}
+
+.gallery li.marker {
+	background-color: #343434 ;
+}
+
+
+.gallery .container {
+	padding: 0;
+}
+
+.gallery .label {
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	margin: 0;
+	height: 60px; /* reduce by padding! */
+	margin-top: -80px;
+	display: block; 
+	z-index: 500;
+	text-align: center;
+	opacity: 0.8;
+}
+
+
+/*
+	Teaching style
+*/
+
+h2.thesis-title {
+	line-height: 120%;
+	margin-top: 3em;
+	text-align: left;
+}
+
+h2.thesis-title:before {
+	content: '\201C';
+	float: left;
+	font-size: 4em !important;
+	line-height: 70px;
+	width: 30px;
+	height: 100%;
+}
+
+h2.thesis-title:after {
+	content: '\201D';
+	font-size: 4em !important;
+	width: 1px;
+	height: 1px;
+	margin-left: 5px;
+	line-height: 65px;
+	position: absolute;
+}
+
+#lectures {
+	margin-bottom: 1.4em;
+	padding: 10px 0;
+}
+
+#lectures ul, #lectures li { list-style-type: none; margin: 0; padding: 0; }
+
+#lectures ul {
+	height: 120px;
+}
+
+#lectures li {
+	float: left;
+	width: 168px; 
+	height: 99px;
+	font-size: 1.2em;
+	line-height: 1em;
+	margin-right: 15px;
+	border-bottom: 4px solid transparent;
+	background: url('../images/dropShadowSmall.png') bottom right no-repeat;
+}
+
+/* Fix drop shadows in firefox */
+@-moz-document url-prefix(){
+	#lectures li{	background-position: 29px 7px;}
+}
+
+#lectures li a, #lectures li h2 {
+	display: table-cell;
+	vertical-align: middle; 
+	text-align: center;
+	text-decoration: none;
+	color: #353535;
+	height: 90px; width: 160px;
+	border: 2px solid #fff;
+
+	font-family: 'Yanone Kaffeesatz', arial, serif;
+	font-size: 16pt;
+	font-weight: 300;
+	background-color: #e0e0e0;
+}
+
+#lectures li a:hover { background-color: #fdff66; }
+#lectures li:last-child { margin-right: 40px; }
+
+#lectures li.headline {
+	background: none #fff;
+}
+
+#lectures li h2 {
+	font-family: 'Yanone Kaffeesatz', arial, serif;
+	font-weight: 400;
+	font-size: 18pt;
+	background-color: transparent;
+}
+
+/*
+    Sidebar style 
+	Colors:	
+		RWTH-Blue			#0054a1	
+		Light gray			#ebeff2		#e0e0e0
+		Yellow highlight	#fdff66		#fffbd7
+		Dark gray			#343434
+*/
+
+
+#sidebar { 
+	font-size: 95%; 
+	border: 1px solid #e0e0e0;
+	background-color: #fffbd7;
+	padding: 0px 20px;
+	margin-left: -42px;
+	margin-right: -1px;
+}
+
+#sidebar h2 { 
+	font-size: 1.2em;
+	color: #000;
+	/* background-color: #fff; */
+	border-bottom: 1px solid #e0e0e0;
+	padding: 8px 10px 3px 10px;
+	margin: -10px -10px 0px -10px;
+}
+
+#sidebar ul, #sidebar ol {
+	list-style-type: none;
+    text-indent: 0;
+	padding: 0;
+}
+
+#sidebar li {
+    padding: 4px 0px;
+}  
+
+#sidebar > div {
+	/* background-color: #ebeff2;  */
+	padding: 10px;
+	margin: 0px -10px;
+}
+
+#sidebar li a:first-child {
+	text-decoration: none;
+	background: url('../images/bullet.png') no-repeat 5px center;
+	padding: 1px 10px 1px 25px;
+	margin: 0px -10px;	
+}
+
+#sidebar li a.nobullet, #sidebar li a.nobullet:hover {
+	background: none;
+}
+
+#sidebar li a:hover {
+	color: #000;
+	background: #fdff66 url('../images/bulletMarked.png') no-repeat 5px center;
+}
+
+#sidebar p {
+	margin-top: 5px;
+}
+
+.transparent { background-color: transparent !important; }
+.important { background-color: #f1b2b2 !important; color: #6e1414 !important; }
+.important h2 { color: #991C1C !important; }
+
+/*
+    Footer style
+*/
+
+#footer {
+	padding-top: 2em;
+    clear: both;
+    background-color: #343434;
+	min-height: 100px;
+    min-height:100px;   /* Height of the footer */
+}  
+
+#footer ul, #footer li {
+	list-style-type: square;
+}
+
+#footer * {
+	color: #eee;
+}
+
+/* 
+	Page style: Reseach
+*/
+
+.subheading {
+	font-size: 90%; font-style: italic;
+	margin: -5px 0px 5px 0px;
+	color: #666;
+}
+
+/* 
+    Page stye: Publications
+*/
+
+.publications { padding: 0; }
+
+.publications li {
+    list-style-type:none;   
+    border-bottom: 1px dotted #D9D5A6;
+    padding-bottom: 10px;
+    margin: 20px 0px;    
+}
+
+.publication-title {
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+/*
+ 	Page style: Thesis
+*/
+
+.thesis {
+	font-size: 80%;
+	border: 1px solid #fff;
+	background-color: #edf0e9;
+	border-bottom: 1px solid #dee0da;
+	border-right: 1px solid #dee0da;
+}
+
+.thesis li, .thesis ul {
+	margin-left: 0; padding-left: 0;
+}
+
+.thesis li {
+	margin-left: 15px;
+}
+
+.thesis p, .thesis div, .thesis h2, .thesis h3, .thesis ul {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #343434;
+}
+
+
+.thesis h2 {
+	border-bottom: 1px solid #aaaba7;
+	text-align: center;
+	line-height: 1em;
+	padding-bottom: .4em;
+}
+
+.thesis h3 {
+	font-size: 13pt;
+}
+
+/* If js is available, thesis will be shortened to a common length
+ * and a "read more" button is appened */
+.thesis .readmore {
+	height: 75px;
+	margin-left: 0px; /* Cancel margin of above rule */
+	background: url('../images/gradient-bg-paper.png') top left repeat-x;
+}
+
+.thesis .subheading {
+	display: block;
+	text-align: center;
+	margin-top: -1.5em;
+}
+
+.thesis .subheading span {
+	background-color: #edf0e9;
+	padding: 2px;
+}
+
+
+
+.thesis .readmore a {
+	font-size: 125%;
+	text-align: center;
+	display: block;
+	margin-top: 42px;
+}
+
+.thesis .assigned { /* Stamps "Already assigned" over the thesis" */
+	width: 180px;
+	height: 220px;
+    margin: 0px auto -220px auto;
+	top: 50px;
+	left: 10px;
+	background: url('../images/stamped.png') bottom left no-repeat;
+}
