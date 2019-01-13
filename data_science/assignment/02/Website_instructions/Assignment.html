@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html dir="ltr" xml:lang="en" class="yui3-js-enabled" lang="en"><head>
+    <title>Assignment</title>
+    <link rel="shortcut icon" href="https://www1.elearning.rwth-aachen.de/theme/image.php/boost_campus_rwth/theme_boost_campus_rwth/1547016047/Favicon">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="keywords" content="moodle, Assignment">
+<link rel="stylesheet" type="text/css" href="Assignment_files/yui_combo.css"><script charset="utf-8" id="yui_3_17_2_1_1547400615481_8" src="Assignment_files/yui_combo_004.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_19" src="Assignment_files/module.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_21" src="Assignment_files/yui_combo.js" async=""></script><link charset="utf-8" rel="stylesheet" id="yui_3_17_2_1_1547400615481_22" href="Assignment_files/yui_combo_002.css"><script charset="utf-8" id="yui_3_17_2_1_1547400615481_23" src="Assignment_files/yui_combo_006.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_24" src="Assignment_files/comment.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_25" src="Assignment_files/yui_combo_002.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_41" src="Assignment_files/yui_combo_005.js" async=""></script><script charset="utf-8" id="yui_3_17_2_1_1547400615481_44" src="Assignment_files/MathJax.js" async=""></script><script id="firstthemesheet" type="text/css">/** Required in order to fix style inclusion problems in IE with YUI **/</script><link rel="stylesheet" type="text/css" href="Assignment_files/all.css">
+<script type="text/javascript">
+//<![CDATA[
+var M = {}; M.yui = {};
+M.pageloadstarttime = new Date();
+M.cfg = {"wwwroot":"https:\/\/www1.elearning.rwth-aachen.de","sesskey":"AZ5EH1wOGf","themerev":"1547016047","slasharguments":1,"theme":"boost_campus_rwth","iconsystemmodule":"core\/icon_system_fontawesome","jsrev":"1547016047","admin":"admin","svgicons":true,"usertimezone":"Europe\/Berlin","contextid":202273};var yui1ConfigFn = function(me) {if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin')}};
+var yui2ConfigFn = function(me) {var parts=me.name.replace(/^moodle-/,'').split('-'),component=parts.shift(),module=parts[0],min='-min';if(/-(skin|core)$/.test(me.name)){parts.pop();me.type='css';min=''}
+if(module){var filename=parts.join('-');me.path=component+'/'+module+'/'+filename+min+'.'+me.type}else{me.path=component+'/'+component+'.'+me.type}};
+YUI_config = {"debug":false,"base":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/yuilib\/3.17.2\/","comboBase":"https:\/\/www1.elearning.rwth-aachen.de\/theme\/yui_combo.php?","combine":true,"filter":null,"insertBefore":"firstthemesheet","groups":{"yui2":{"base":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/yuilib\/2in3\/2.9.0\/build\/","comboBase":"https:\/\/www1.elearning.rwth-aachen.de\/theme\/yui_combo.php?","combine":true,"ext":false,"root":"2in3\/2.9.0\/build\/","patterns":{"yui2-":{"group":"yui2","configFn":yui1ConfigFn}}},"moodle":{"name":"moodle","base":"https:\/\/www1.elearning.rwth-aachen.de\/theme\/yui_combo.php?m\/1547016047\/","combine":true,"comboBase":"https:\/\/www1.elearning.rwth-aachen.de\/theme\/yui_combo.php?","ext":false,"root":"m\/1547016047\/","patterns":{"moodle-":{"group":"moodle","configFn":yui2ConfigFn}},"filter":null,"modules":{"moodle-core-actionmenu":{"requires":["base","event","node-event-simulate"]},"moodle-core-blocks":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification"]},"moodle-core-checknet":{"requires":["base-base","moodle-core-notification-alert","io-base"]},"moodle-core-chooserdialogue":{"requires":["base","panel","moodle-core-notification"]},"moodle-core-dock":{"requires":["base","node","event-custom","event-mouseenter","event-resize","escape","moodle-core-dock-loader","moodle-core-event"]},"moodle-core-dock-loader":{"requires":["escape"]},"moodle-core-dragdrop":{"requires":["base","node","io","dom","dd","event-key","event-focus","moodle-core-notification"]},"moodle-core-event":{"requires":["event-custom"]},"moodle-core-formchangechecker":{"requires":["base","event-focus","moodle-core-event"]},"moodle-core-handlebars":{"condition":{"trigger":"handlebars","when":"after"}},"moodle-core-languninstallconfirm":{"requires":["base","node","moodle-core-notification-confirm","moodle-core-notification-alert"]},"moodle-core-lockscroll":{"requires":["plugin","base-build"]},"moodle-core-maintenancemodetimer":{"requires":["base","node"]},"moodle-core-notification":{"requires":["moodle-core-notification-dialogue","moodle-core-notification-alert","moodle-core-notification-confirm","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-core-notification-dialogue":{"requires":["base","node","panel","escape","event-key","dd-plugin","moodle-core-widget-focusafterclose","moodle-core-lockscroll"]},"moodle-core-notification-alert":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-confirm":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-exception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-notification-ajaxexception":{"requires":["moodle-core-notification-dialogue"]},"moodle-core-popuphelp":{"requires":["moodle-core-tooltip"]},"moodle-core-tooltip":{"requires":["base","node","io-base","moodle-core-notification-dialogue","json-parse","widget-position","widget-position-align","event-outside","cache-base"]},"moodle-core_availability-form":{"requires":["base","node","event","event-delegate","panel","moodle-core-notification-dialogue","json"]},"moodle-backup-backupselectall":{"requires":["node","event","node-event-simulate","anim"]},"moodle-backup-confirmcancel":{"requires":["node","node-event-simulate","moodle-core-notification-confirm"]},"moodle-course-categoryexpander":{"requires":["node","event-key"]},"moodle-course-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-course-coursebase","moodle-course-util"]},"moodle-course-formatchooser":{"requires":["base","node","node-event-simulate"]},"moodle-course-management":{"requires":["base","node","io-base","moodle-core-notification-exception","json-parse","dd-constrain","dd-proxy","dd-drop","dd-delegate","node-event-delegate"]},"moodle-course-modchooser":{"requires":["moodle-core-chooserdialogue","moodle-course-coursebase"]},"moodle-course-util":{"requires":["node"],"use":["moodle-course-util-base"],"submodules":{"moodle-course-util-base":{},"moodle-course-util-section":{"requires":["node","moodle-course-util-base"]},"moodle-course-util-cm":{"requires":["node","moodle-course-util-base"]}}},"moodle-form-dateselector":{"requires":["base","node","overlay","calendar"]},"moodle-form-passwordunmask":{"requires":[]},"moodle-form-shortforms":{"requires":["node","base","selector-css3","moodle-core-event"]},"moodle-form-showadvanced":{"requires":["node","base","selector-css3"]},"moodle-question-chooser":{"requires":["moodle-core-chooserdialogue"]},"moodle-question-preview":{"requires":["base","dom","event-delegate","event-key","core_question_engine"]},"moodle-question-qbankmanager":{"requires":["node","selector-css3"]},"moodle-question-searchform":{"requires":["base","node"]},"moodle-availability_completion-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_date-form":{"requires":["base","node","event","io","moodle-core_availability-form"]},"moodle-availability_grade-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_group-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_grouping-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-availability_profile-form":{"requires":["base","node","event","moodle-core_availability-form"]},"moodle-qtype_ddimageortext-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-qtype_ddimageortext-form":{"requires":["moodle-qtype_ddimageortext-dd","form_filepicker"]},"moodle-qtype_ddmarker-dd":{"requires":["node","event-resize","dd","dd-drop","dd-constrain","graphics"]},"moodle-qtype_ddmarker-form":{"requires":["moodle-qtype_ddmarker-dd","form_filepicker","graphics","escape"]},"moodle-qtype_ddwtos-dd":{"requires":["node","dd","dd-drop","dd-constrain"]},"moodle-mod_assign-history":{"requires":["node","transition"]},"moodle-mod_checklist-linkselect":{"requires":["node","event-valuechange"]},"moodle-mod_scheduler-delselected":{"requires":["base","node","event"]},"moodle-mod_scheduler-saveseen":{"requires":["base","node","event"]},"moodle-mod_scheduler-studentlist":{"requires":["base","node","event","io"]},"moodle-mod_forum-subscriptiontoggle":{"requires":["base-base","io-base"]},"moodle-mod_quiz-autosave":{"requires":["base","node","event","event-valuechange","node-event-delegate","io-form"]},"moodle-mod_quiz-dragdrop":{"requires":["base","node","io","dom","dd","dd-scroll","moodle-core-dragdrop","moodle-core-notification","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-base","moodle-mod_quiz-util-page","moodle-mod_quiz-util-slot","moodle-course-util"]},"moodle-mod_quiz-modform":{"requires":["base","node","event"]},"moodle-mod_quiz-questionchooser":{"requires":["moodle-core-chooserdialogue","moodle-mod_quiz-util","querystring-parse"]},"moodle-mod_quiz-quizbase":{"requires":["base","node"]},"moodle-mod_quiz-repaginate":{"requires":["base","event","node","io","moodle-core-notification-dialogue"]},"moodle-mod_quiz-toolboxes":{"requires":["base","node","event","event-key","io","moodle-mod_quiz-quizbase","moodle-mod_quiz-util-slot","moodle-core-notification-ajaxexception"]},"moodle-mod_quiz-util":{"requires":["node","moodle-core-actionmenu"],"use":["moodle-mod_quiz-util-base"],"submodules":{"moodle-mod_quiz-util-base":{},"moodle-mod_quiz-util-slot":{"requires":["node","moodle-mod_quiz-util-base"]},"moodle-mod_quiz-util-page":{"requires":["node","moodle-mod_quiz-util-base"]}}},"moodle-message_airnotifier-toolboxes":{"requires":["base","node","io"]},"moodle-filter_glossary-autolinker":{"requires":["base","node","io-base","json-parse","event-delegate","overlay","moodle-core-event","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-filter_mathjaxloader-loader":{"requires":["moodle-core-event"]},"moodle-editor_atto-editor":{"requires":["node","transition","io","overlay","escape","event","event-simulate","event-custom","node-event-html5","node-event-simulate","yui-throttle","moodle-core-notification-dialogue","moodle-core-notification-confirm","moodle-editor_atto-rangy","handlebars","timers","querystring-stringify"]},"moodle-editor_atto-plugin":{"requires":["node","base","escape","event","event-outside","handlebars","event-custom","timers","moodle-editor_atto-menu"]},"moodle-editor_atto-menu":{"requires":["moodle-core-notification-dialogue","node","event","event-custom"]},"moodle-editor_atto-rangy":{"requires":[]},"moodle-report_eventlist-eventfilter":{"requires":["base","event","node","node-event-delegate","datatable","autocomplete","autocomplete-filters"]},"moodle-report_loglive-fetchlogs":{"requires":["base","event","node","io","node-event-delegate"]},"moodle-gradereport_grader-gradereporttable":{"requires":["base","node","event","handlebars","overlay","event-hover"]},"moodle-gradereport_history-userselector":{"requires":["escape","event-delegate","event-key","handlebars","io-base","json-parse","moodle-core-notification-dialogue"]},"moodle-tool_capability-search":{"requires":["base","node"]},"moodle-tool_lp-dragdrop-reorder":{"requires":["moodle-core-dragdrop"]},"moodle-tool_monitor-dropdown":{"requires":["base","event","node"]},"moodle-assignfeedback_editpdf-editor":{"requires":["base","event","node","io","graphics","json","event-move","event-resize","transition","querystring-stringify-simple","moodle-core-notification-dialog","moodle-core-notification-alert","moodle-core-notification-exception","moodle-core-notification-ajaxexception"]},"moodle-atto_accessibilitychecker-button":{"requires":["color-base","moodle-editor_atto-plugin"]},"moodle-atto_accessibilityhelper-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_align-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_bold-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_charmap-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_chemistry-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_clear-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_collapse-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_count-button":{"requires":["io","json-parse","moodle-editor_atto-plugin"]},"moodle-atto_emoticon-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_equation-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_fullscreen-button":{"requires":["event-resize","moodle-editor_atto-plugin"]},"moodle-atto_html-button":{"requires":["moodle-editor_atto-plugin","event-valuechange"]},"moodle-atto_htmlplus-beautify":{},"moodle-atto_htmlplus-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_htmlplus-beautify","moodle-atto_htmlplus-codemirror","event-valuechange"]},"moodle-atto_htmlplus-codemirror":{"requires":["moodle-atto_htmlplus-codemirror-skin"]},"moodle-atto_image-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_indent-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_italic-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_link-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_managefiles-usedfiles":{"requires":["node","escape"]},"moodle-atto_matrix-button":{"requires":["moodle-editor_atto-plugin","moodle-core-event","io","event-valuechange","tabview","array-extras"]},"moodle-atto_media-button":{"requires":["moodle-editor_atto-plugin","moodle-form-shortforms"]},"moodle-atto_noautolink-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_orderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_preview-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_recordrtc-button":{"requires":["moodle-editor_atto-plugin","moodle-atto_recordrtc-recording"]},"moodle-atto_recordrtc-recording":{"requires":["moodle-atto_recordrtc-button"]},"moodle-atto_rtl-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_strike-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_styles-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_subscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_superscript-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_table-button":{"requires":["moodle-editor_atto-plugin","moodle-editor_atto-menu","event","event-valuechange"]},"moodle-atto_title-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_underline-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_undo-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_unorderedlist-button":{"requires":["moodle-editor_atto-plugin"]},"moodle-atto_wordimport-button":{"requires":["moodle-editor_atto-plugin"]}}},"gallery":{"name":"gallery","base":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/yuilib\/gallery\/","combine":true,"comboBase":"https:\/\/www1.elearning.rwth-aachen.de\/theme\/yui_combo.php?","ext":false,"root":"gallery\/1547016047\/","patterns":{"gallery-":{"group":"gallery"}}}},"modules":{"core_filepicker":{"name":"core_filepicker","fullpath":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/javascript.php\/1547016047\/repository\/filepicker.js","requires":["base","node","node-event-simulate","json","async-queue","io-base","io-upload-iframe","io-form","yui2-treeview","panel","cookie","datatable","datatable-sort","resize-plugin","dd-plugin","escape","moodle-core_filepicker","moodle-core-notification-dialogue"]},"core_comment":{"name":"core_comment","fullpath":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/javascript.php\/1547016047\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]},"mathjax":{"name":"mathjax","fullpath":"https:\/\/cdnjs.cloudflare.com\/ajax\/libs\/mathjax\/2.7.2\/MathJax.js?delayStartupUntil=configured"},"mod_assign":{"name":"mod_assign","fullpath":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/javascript.php\/1547016047\/mod\/assign\/module.js","requires":[]}}};
+M.yui.loader = {modules: {}};
+
+//]]>
+</script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script type="text/x-mathjax-config;executed=true">
+MathJax.Hub.Config({
+    config: ["Accessible.js", "Safe.js"],
+    errorSettings: { message: ["!"] },
+    skipStartupTypeset: true,
+    messageStyle: "none"
+});
+</script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="core/first" src="Assignment_files/first.js"></script><script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="jquery" src="Assignment_files/jquery-3.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1px; bottom: 2px; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+<body id="page-mod-assign-view" class="format-topics  path-mod path-mod-assign gecko dir-ltr lang-en yui-skin-sam yui3-skin-sam www1-elearning-rwth-aachen-de pagelayout-incourse course-210 context-202273 cmid-10725 category-3  jsenabled"><div id="MathJax_Message" style="display: none;"></div>
+
+<div id="page-wrapper">
+
+    <div>
+    <a class="sr-only sr-only-focusable" href="#maincontent">Skip to main content</a>
+</div><script type="text/javascript" src="Assignment_files/yui_combo_003.js"></script><script type="text/javascript" src="Assignment_files/javascript-static.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+document.body.className += ' jsenabled';
+//]]>
+</script>
+
+
+
+    
+    <nav class="fixed-top navbar navbar-light bg-dark  navbar-expand moodle-has-zindex">
+    
+            <div data-region="drawer-toggle" class="d-inline-block mr-3">
+                <button aria-expanded="false" aria-controls="nav-drawer" type="button" class="btn nav-link float-sm-left mr-1 btn-secondary" data-action="toggle-drawer" data-side="left" data-preference="drawer-open-nav"><i class="icon fa fa-bars fa-fw " aria-hidden="true" aria-label=""></i><span class="sr-only">Side panel</span></button>
+            </div>
+    
+            <a href="https://www1.elearning.rwth-aachen.de/" class="navbar-brand has-logo
+                    ">
+                    <span class="logo d-none d-sm-inline">
+                        <img src="Assignment_files/rwthLogo.png" alt="RWTHmoodle">
+                    </span>
+                <span class="site-name d-none d-md-inline">RWTHmoodle</span>
+            </a>
+    
+            <ul class="navbar-nav d-none d-md-flex">
+                <!-- custom_menu -->
+                
+                <!-- page_heading_menu -->
+                
+            </ul>
+            <ul class="nav navbar-nav ml-auto">
+                <div class="d-none d-lg-block">
+                
+            </div>
+                <!-- navbar_plugin_output -->
+                <li class="nav-item">
+                <div class="popover-region collapsed popover-region-notifications" id="nav-notification-popover-container" data-userid="145383" data-region="popover-region">
+    <div class="popover-region-toggle nav-link" data-region="popover-region-toggle" aria-role="button" aria-controls="popover-region-container-5c3b75a67a2295c3b75a6695464" aria-haspopup="true" aria-label="Show notification window with no new notifications" tabindex="0">
+                <i class="icon fa fa-bell fa-fw " aria-hidden="true" title="Toggle notifications menu" aria-label="Toggle notifications menu"></i>
+        <div class="count-container hidden" data-region="count-container">0</div>
+
+    </div>
+    <div id="popover-region-container-5c3b75a67a2295c3b75a6695464" class="popover-region-container" data-region="popover-region-container" aria-expanded="false" aria-hidden="true" aria-label="Notification window" role="region">
+        <div class="popover-region-header-container">
+            <h3 class="popover-region-header-text" data-region="popover-region-header-text">Notifications</h3>
+            <div class="popover-region-header-actions" data-region="popover-region-header-actions">        <a class="mark-all-read-button" href="#" title="Mark all as read" data-action="mark-all-read" role="button">
+            <span class="normal-icon"><i class="icon fa fa-check fa-fw " aria-hidden="true" title="Mark all as read" aria-label="Mark all as read"></i></span>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </a>
+        <a href="https://www1.elearning.rwth-aachen.de/message/notificationpreferences.php?userid=145383" title="Notification preferences">
+            <i class="icon fa fa-cog fa-fw " aria-hidden="true" title="Notification preferences" aria-label="Notification preferences"></i>
+        </a>
+</div>
+        </div>
+        <div class="popover-region-content-container" data-region="popover-region-content-container">
+            <div class="popover-region-content" data-region="popover-region-content">
+                        <div class="all-notifications" data-region="all-notifications" role="log" aria-busy="false" aria-atomic="false" aria-relevant="additions"></div>
+        <div class="empty-message" tabindex="0" data-region="empty-message">You have no notifications</div>
+
+            </div>
+            <span class="loading-icon"><i class="icon fa fa-circle-o-notch fa-spin fa-fw " aria-hidden="true" title="Loading" aria-label="Loading"></i></span>
+        </div>
+                <a class="see-all-link" href="https://www1.elearning.rwth-aachen.de/message/output/popup/notifications.php">
+                    <div class="popover-region-footer-container">
+                        <div class="popover-region-seeall-text">See all</div>
+                    </div>
+                </a>
+    </div>
+</div><div class="localnavbarplus nav-link" id="local_navbarplus_resetusertour"><a alt="Reset user tour on this page" title="Reset user tour on this page (Could take a short time)" data-action="tool_usertours/resetpagetour" href="#"><i class="icon fa fa-map fa-fw"></i></a></div>
+                </li>
+                <!-- user_menu -->
+                <li class="nav-item d-flex align-items-center">
+                    <div class="usermenu"><div class="action-menu moodle-actionmenu nowrap-items d-inline" id="action-menu-1" data-enhance="moodle-core-actionmenu">
+
+        <div class="menubar d-flex " id="action-menu-1-menubar" role="menubar">
+
+            
+
+
+                <div class="action-menu-trigger">
+                    <div class="dropdown">
+                        <a tabindex="0" class=" dropdown-toggle icon-no-margin" id="dropdown-1" aria-label="User menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" aria-controls="action-menu-1-menu">
+                            
+                            <span class="userbutton"><span class="usertext mr-1">Kant, Philipp</span><span class="avatars"><span class="avatar current"><img src="Assignment_files/f2.png" alt="Picture of Kant, Philipp" title="Picture of Kant, Philipp" class="userpicture defaultuserpic" role="presentation" width="35" height="35"></span></span></span>
+                                
+                            <b class="caret"></b>
+                        </a>
+                            <div class="dropdown-menu dropdown-menu-right menu  align-tr-br" id="action-menu-1-menu" data-rel="menu-content" aria-labelledby="action-menu-toggle-1" role="menu" data-align="tr-br">
+                                        <a href="https://www1.elearning.rwth-aachen.de/my/" class="dropdown-item menu-action" role="menuitem" data-title="mymoodle,admin" aria-labelledby="actionmenuaction-1">
+                                                <i class="icon fa fa-tachometer fa-fw " aria-hidden="true" title="Dashboard" aria-label="Dashboard"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-1">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://www1.elearning.rwth-aachen.de/user/profile.php?id=145383" class="dropdown-item menu-action" role="menuitem" data-title="profile,moodle" aria-labelledby="actionmenuaction-2">
+                                                <i class="icon fa fa-user fa-fw " aria-hidden="true" title="Profile" aria-label="Profile"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-2">
+                                                Profile
+                                            </span>
+                                        </a>
+                                        <a href="https://www1.elearning.rwth-aachen.de/grade/report/overview/index.php" class="dropdown-item menu-action" role="menuitem" data-title="grades,grades" aria-labelledby="actionmenuaction-3">
+                                                <i class="icon fa fa-table fa-fw " aria-hidden="true" title="Grades" aria-label="Grades"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-3">
+                                                Grades
+                                            </span>
+                                        </a>
+                                        <a href="https://www1.elearning.rwth-aachen.de/user/preferences.php" class="dropdown-item menu-action" role="menuitem" data-title="preferences,moodle" aria-labelledby="actionmenuaction-4">
+                                                <i class="icon fa fa-wrench fa-fw " aria-hidden="true" title="Preferences" aria-label="Preferences"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-4">
+                                                Preferences
+                                            </span>
+                                        </a>
+                                        <div class="dropdown-divider" role="presentation"><span class="filler">&nbsp;</span></div>
+                                        <a href="https://www1.elearning.rwth-aachen.de/login/logout.php?sesskey=AZ5EH1wOGf" class="dropdown-item menu-action" role="menuitem" data-title="logout,moodle" aria-labelledby="actionmenuaction-5">
+                                                <i class="icon fa fa-sign-out fa-fw " aria-hidden="true" title="Log out" aria-label="Log out"></i>
+                                            <span class="menu-action-text" id="actionmenuaction-5">
+                                                Log out
+                                            </span>
+                                        </a>
+                            </div>
+                    </div>
+                </div>
+
+        </div>
+
+</div></div>
+                </li>
+            </ul>
+            <!-- search_box -->
+    </nav>
+    
+
+    <div id="page" class="container-fluid">
+        <header id="page-header" class="row">
+    <div class="col-12 pt-3 pb-3">
+        <div class="card">
+            <div class="card-body">
+                
+                <div class="d-flex">
+                    <div class="mr-auto">
+                    <div class="page-context-header"><div class="page-header-headings"><h1>Introduction to Data Science - Lecture</h1></div></div>
+                    </div>
+                </div>
+                <div class="d-flex flex-wrap">
+                    <div id="page-navbar">
+                        <nav role="navigation">
+    <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a class="line-clamp" href="https://www1.elearning.rwth-aachen.de/my/">Dashboard</a></li>
+                <li class="breadcrumb-item">My courses</li>
+                <li class="breadcrumb-item"><a class="line-clamp" href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210" title="Introduction to Data Science - Lecture">Introduction to Data Science - Lecture</a></li>
+                <li class="breadcrumb-item"><a class="line-clamp" href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210">Sections</a></li>
+                <li class="breadcrumb-item"><a class="line-clamp" href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-9">Assignments</a></li>
+                <li class="breadcrumb-item"><a class="line-clamp" href="https://www1.elearning.rwth-aachen.de/mod/assign/view.php?id=10725" title="Assignment">Assignment2</a></li>
+    </ol>
+</nav>
+                    </div>
+                    <div class="ml-auto d-flex">
+                        
+                    </div>
+                    <div id="course-header">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+        <div id="page-content" class="row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main">
+                    <div class="card">
+                        <div class="card-body">
+                            <span class="notifications" id="user-notifications"></span>
+                            <div role="main"><span id="maincontent"></span><h2>Assignment2</h2><div id="intro" class="box generalbox boxaligncenter py-3"><div class="no-overflow"><p>This assignment guides you through the analysis of three different data sets using the techniques and tools<br></p><div>provided in the course. <br></div><div><ul><li>Please <span class="" style="color: rgb(204, 7, 30);"><span class="" style="color: rgb(0, 0, 0);">read the </span>pdf file<span class="" style="color: rgb(0, 0, 0);"> carefully</span></span>, use the dataset correctly and complete the provided Jupyter notebook.</li></ul></div><div><ul><li>As an answer, you should only upload the provided <span class="" style="color: rgb(204, 7, 30);">Jupiter notebook template</span> in this section. <br></li></ul><ul><li>Please note after the mentioned deadline the upload option will be closed automatically.</li></ul></div><div><ul><li>The <span class="" style="color: rgb(204, 7, 30);">deadline </span>for the assignment is Sunday <span class="" style="color: rgb(204, 7, 30);">20/01/2019 23:59</span>.</li></ul></div><br><p></p></div><div id="assign_files_tree5c3b75a6695461"><div class="ygtvitem" id="ygtv0"><div class="ygtvchildren" id="ygtvc0"><div class="ygtvitem" id="ygtv1"><table id="ygtvtableel1" class="ygtvtable ygtvdepth0 ygtv-expanded ygtv-highlight0" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td id="ygtvt1" class="ygtvcell ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel1" class="ygtvcell ygtvhtml ygtvcontent"><div><img class="icon icon" alt="Assignment2.ipynb" title="Assignment2.ipynb" src="Assignment_files/text.png"> <a target="_blank" href="https://www1.elearning.rwth-aachen.de/pluginfile.php/202273/mod_assign/introattachment/0/Assignment2.ipynb?forcedownload=1">Assignment2.ipynb</a>  </div></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc1" style="display:none;"></div></div><div class="ygtvitem" id="ygtv2"><table id="ygtvtableel2" class="ygtvtable ygtvdepth0 ygtv-expanded ygtv-highlight0" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td id="ygtvt2" class="ygtvcell ygtvtn"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel2" class="ygtvcell ygtvhtml ygtvcontent"><div><img class="icon icon" alt="Assignment2Datasets.zip" title="Assignment2Datasets.zip" src="Assignment_files/archive.png"> <a target="_blank" href="https://www1.elearning.rwth-aachen.de/pluginfile.php/202273/mod_assign/introattachment/0/Assignment2Datasets.zip?forcedownload=1">Assignment2Datasets.zip</a>  </div></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc2" style="display:none;"></div></div><div class="ygtvitem" id="ygtv3"><table id="ygtvtableel3" class="ygtvtable ygtvdepth0 ygtv-expanded ygtv-highlight0" cellspacing="0" cellpadding="0" border="0"><tbody><tr class="ygtvrow"><td id="ygtvt3" class="ygtvcell ygtvln"><a href="#" class="ygtvspacer">&nbsp;</a></td><td id="ygtvcontentel3" class="ygtvcell ygtvhtml ygtvcontent"><div><img class="icon icon" alt="Second Assignment.pdf" title="Second Assignment.pdf" src="Assignment_files/pdf.png"> <a target="_blank" href="https://www1.elearning.rwth-aachen.de/pluginfile.php/202273/mod_assign/introattachment/0/Second%20Assignment.pdf?forcedownload=1">Second Assignment.pdf</a>  </div></td></tr></tbody></table><div class="ygtvchildren" id="ygtvc3" style="display:none;"></div></div></div></div></div></div><div class="submissionstatustable"><h3>Submission status</h3><div class="box boxaligncenter submissionsummarytable py-3"><table class="generaltable">
+<tbody><tr class="">
+<td class="cell c0" style="">Submission status</td>
+<td class="cell c1 lastcol" style="">No attempt</td>
+</tr>
+<tr class="">
+<td class="cell c0" style="">Grading status</td>
+<td class="submissionnotgraded cell c1 lastcol" style="">Not graded</td>
+</tr>
+<tr class="">
+<td class="cell c0" style="">Due date</td>
+<td class="cell c1 lastcol" style="">Sunday, 20 January 2019, 11:59 PM</td>
+</tr>
+<tr class="">
+<td class="cell c0" style="">Time remaining</td>
+<td class="cell c1 lastcol" style="">7 days 5 hours</td>
+</tr>
+<tr class="">
+<td class="cell c0" style="">Last modified</td>
+<td class="cell c1 lastcol" style="">-</td>
+</tr>
+<tr class="lastrow">
+<td class="cell c0" style="">Submission comments</td>
+<td class="cell c1 lastcol" style=""><div class="box boxaligncenter plugincontentsummary summary_assignsubmission_comments_12080 py-3"><div class="commentscontainer"><div style="display:none" id="cmt-tmpl"><div class="comment-message"><div class="comment-message-meta m-r-3"><span class="picture">___picture___</span><span class="user">___name___</span> - <span class="time">___time___</span></div><div class="text">___content___</div></div></div><div class="mdl-left"><a class="showcommentsnonjs" href="https://www1.elearning.rwth-aachen.de/mod/assign/view.php?id=10725&amp;rownum=0&amp;useridlistid=5c3b75a6650f7491293023&amp;action&amp;nonjscomment=1&amp;comment_itemid=12080&amp;comment_context=202273&amp;comment_component=assignsubmission_comments&amp;comment_area=submission_comments">Show comments</a><a class="comment-link" id="comment-link-5c3b75a6886dd" href="#" role="button" aria-expanded="false"><i class="icon fa fa-plus-square fa-fw " aria-hidden="true" title="Comments" aria-label="Comments"></i><span id="comment-link-text-5c3b75a6886dd">Comments (0)</span></a><div id="comment-ctrl-5c3b75a6886dd" class="comment-ctrl"><ul id="comment-list-5c3b75a6886dd" class="comment-list"><li class="first"></li></ul><div id="comment-pagination-5c3b75a6886dd" class="comment-pagination"></div><div class="comment-area"><div class="db"><textarea name="content" rows="2" id="dlg-content-5c3b75a6886dd" aria-label="Add a comment..." cols="20" style="color: grey;">Add a comment...</textarea></div><div class="fd" id="comment-action-5c3b75a6886dd"><a id="comment-action-post-5c3b75a6886dd" href="#">Save comment</a><span> | </span><a id="comment-action-cancel-5c3b75a6886dd" href="#">Cancel</a></div></div><div class="clearer"></div></div></div></div></div></td>
+</tr>
+</tbody>
+</table>
+</div><div class="box generalbox submissionaction py-3"><div class="singlebutton">
+    <form method="get" action="https://www1.elearning.rwth-aachen.de/mod/assign/view.php">
+            <input type="hidden" name="id" value="10725">
+            <input type="hidden" name="action" value="editsubmission">
+        <button type="submit" class="btn btn-secondary" id="single_button5c3b75a66954614" title="">Add submission</button>
+    </form>
+</div><div class="box boxaligncenter submithelp py-3">You have not made a submission yet</div></div></div></div>
+                            <div class="m-t-2 m-b-1">
+<div class="row">
+    <div class="col-md-4">        <div class="pull-left">
+                <a href="https://www1.elearning.rwth-aachen.de/mod/assign/view.php?id=8395&amp;forceview=1" id="prev-activity-link" class="btn btn-link" title="Assignment 1">◄ Assignment 1</a>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="mdl-align">
+            <div class="urlselect">
+    <form method="post" action="https://www1.elearning.rwth-aachen.de/course/jumpto.php" class="form-inline" id="url_select_f5c3b75a66954612">
+        <input type="hidden" name="sesskey" value="AZ5EH1wOGf">
+            <label for="jump-to-activity" class="sr-only">
+                Jump to...
+            </label>
+        <select id="jump-to-activity" class="custom-select urlselect" name="jump">
+                    <option value="" selected="selected">Jump to...</option>
+                    <option value="/mod/forum/view.php?id=4422&amp;forceview=1">Ankündigungen</option>
+                    <option value="/mod/forum/view.php?id=7691&amp;forceview=1">Question &amp;amp; Answers</option>
+                    <option value="/mod/resource/view.php?id=5791&amp;forceview=1">Study Guide v3</option>
+                    <option value="/mod/resource/view.php?id=6026&amp;forceview=1">Slides lecture 1 - Introduction</option>
+                    <option value="/mod/resource/view.php?id=6027&amp;forceview=1">Slides lecture 1 - Introduction</option>
+                    <option value="/mod/resource/view.php?id=6149&amp;forceview=1">Slides lecture 2 - Python-Crash-Course</option>
+                    <option value="/mod/resource/view.php?id=6150&amp;forceview=1">Slides lecture 2 - Python-Crash-Course</option>
+                    <option value="/mod/resource/view.php?id=6151&amp;forceview=1">Example lecture 2 - Python-Crash-Course-Examples</option>
+                    <option value="/mod/folder/view.php?id=6204&amp;forceview=1">Instruction - Crash Course in Python </option>
+                    <option value="/mod/resource/view.php?id=7017&amp;forceview=1">Slides Lecture 3 - basic data visualization and exploration</option>
+                    <option value="/mod/resource/view.php?id=7018&amp;forceview=1">Slides Lecture 3 - basic data visualization and exploration</option>
+                    <option value="/mod/folder/view.php?id=6207&amp;forceview=1">Instruction - Basic data visualisation/exploration-Decision trees</option>
+                    <option value="/mod/resource/view.php?id=7363&amp;forceview=1">Slides Lecture 4 - Decision trees</option>
+                    <option value="/mod/resource/view.php?id=7364&amp;forceview=1">Slides Lecture 4 - Decision trees</option>
+                    <option value="/mod/resource/view.php?id=7764&amp;forceview=1">Slides Lecture 5 - Regression</option>
+                    <option value="/mod/resource/view.php?id=7765&amp;forceview=1">Slides Lecture 5 - Regression</option>
+                    <option value="/mod/resource/view.php?id=7789&amp;forceview=1">Slides Lecture 6 - Support Vector Machines</option>
+                    <option value="/mod/resource/view.php?id=7790&amp;forceview=1">Slides Lecture 6 - Support Vector Machines</option>
+                    <option value="/mod/folder/view.php?id=7841&amp;forceview=1">Instruction - Regression-Support Vector Machines</option>
+                    <option value="/mod/resource/view.php?id=8035&amp;forceview=1">Slides Lecture 7 - Neural Networks (1/2)</option>
+                    <option value="/mod/resource/view.php?id=8036&amp;forceview=1">Slides Lecture 7 - Neural Networks (1/2)</option>
+                    <option value="/mod/folder/view.php?id=8070&amp;forceview=1">Instruction - Neural Networks (1/2)</option>
+                    <option value="/mod/resource/view.php?id=8225&amp;forceview=1">Slides Lecture 8 - Neural Networks (2/2)</option>
+                    <option value="/mod/resource/view.php?id=8226&amp;forceview=1">Slides Lecture 8 - Neural Networks (2/2)</option>
+                    <option value="/mod/folder/view.php?id=8339&amp;forceview=1">Instruction - Neural Networks (2/2)</option>
+                    <option value="/mod/resource/view.php?id=8279&amp;forceview=1">Slides Lecture 9 - Evaluation of Supervised Learning Problems</option>
+                    <option value="/mod/resource/view.php?id=8280&amp;forceview=1">Slides Lecture 9 - Evaluation of Supervised Learning Problems</option>
+                    <option value="/mod/folder/view.php?id=8340&amp;forceview=1">Instruction - Evaluation</option>
+                    <option value="/mod/assign/view.php?id=8395&amp;forceview=1">Assignment 1</option>
+                    <option value="/mod/resource/view.php?id=8518&amp;forceview=1">Slides Lecture 10 - Clustering</option>
+                    <option value="/mod/resource/view.php?id=8519&amp;forceview=1">Slides Lecture 10 - Clustering</option>
+                    <option value="/mod/resource/view.php?id=8575&amp;forceview=1">Slides Lecture 11 - Frequent Item Sets</option>
+                    <option value="/mod/resource/view.php?id=8576&amp;forceview=1">Slides Lecture 11 - Frequent Item Sets</option>
+                    <option value="/mod/resource/view.php?id=8812&amp;forceview=1">Lecture 12 - Association Rules</option>
+                    <option value="/mod/resource/view.php?id=8813&amp;forceview=1">Lecture 12 - Association Rules</option>
+                    <option value="/mod/folder/view.php?id=9157&amp;forceview=1">instruction - clustering, frequent itemsets and association rules</option>
+                    <option value="/mod/resource/view.php?id=9076&amp;forceview=1">Slides Lecture 13 - Sequence mining</option>
+                    <option value="/mod/resource/view.php?id=9077&amp;forceview=1">Slides Lecture 13 - Sequence mining</option>
+                    <option value="/mod/folder/view.php?id=9603&amp;forceview=1">Instruction - Sequence Mining</option>
+                    <option value="/mod/resource/view.php?id=9384&amp;forceview=1">Slides Lecture 14 - Process Mining (unsupervised)</option>
+                    <option value="/mod/resource/view.php?id=9385&amp;forceview=1">Slides Lecture 14 - Process Mining (unsupervised)</option>
+                    <option value="/mod/resource/view.php?id=9435&amp;forceview=1">Slides Lecture 15 - Process Mining (supervised)</option>
+                    <option value="/mod/resource/view.php?id=9436&amp;forceview=1">Slides Lecture 15 - Process Mining (supervised)</option>
+                    <option value="/mod/folder/view.php?id=9605&amp;forceview=1">Instruction - Process Mining</option>
+                    <option value="/mod/resource/view.php?id=9833&amp;forceview=1">Slides Lecture 16 - Text Mining (1/2)</option>
+                    <option value="/mod/resource/view.php?id=9834&amp;forceview=1">Slides Lecture 16 - Text Mining (1/2)</option>
+                    <option value="/mod/folder/view.php?id=9864&amp;forceview=1">Instruction - Text Mining</option>
+                    <option value="/mod/resource/view.php?id=10084&amp;forceview=1">Slides Lecture 17 - Text Mining (2/2) </option>
+                    <option value="/mod/resource/view.php?id=10085&amp;forceview=1">Slides Lecture 17 - Text Mining (2/2) </option>
+                    <option value="/mod/resource/view.php?id=10477&amp;forceview=1">Slides Lecture 18 - Data Preprocessing and Data Quality</option>
+                    <option value="/mod/resource/view.php?id=10478&amp;forceview=1">Slides Lecture 18 - Data Preprocessing and Data Quality</option>
+                    <option value="/mod/resource/view.php?id=10612&amp;forceview=1">Slides Lecture 19 - Visual Analytics &amp;amp; Information Visualization</option>
+                    <option value="/mod/resource/view.php?id=10613&amp;forceview=1">Slides Lecture 19 - Visual Analytics &amp;amp; Information Visualization</option>
+                    <option value="/mod/folder/view.php?id=10726&amp;forceview=1">Instruction Data preprocessing &amp;amp; visualization</option>
+                    <option value="/mod/resource/view.php?id=11174&amp;forceview=1">Slides Lecture 20 - Responsible Data Science (1/2)</option>
+                    <option value="/mod/resource/view.php?id=11180&amp;forceview=1">Slides Lecture 20 - Responsible Data Science (1/2)</option>
+                    <option value="/mod/resource/view.php?id=11199&amp;forceview=1">Slides Lecture 21 - Responsible Data Science (2/2)</option>
+                    <option value="/mod/resource/view.php?id=11200&amp;forceview=1">Slides Lecture 21 - Responsible Data Science (2/2)</option>
+                    <option value="/mod/folder/view.php?id=11243&amp;forceview=1">Instruction - Responsible Data Science</option>
+        </select>
+            <noscript>
+                <input type="submit" class="btn btn-secondary" value="Go">
+            </noscript>
+    </form>
+</div>
+
+        </div>
+</div>
+    <div class="col-md-4">        <div class="pull-right">
+                <a href="https://www1.elearning.rwth-aachen.de/mod/resource/view.php?id=8518&amp;forceview=1" id="next-activity-link" class="btn btn-link" title="Slides Lecture 10 - Clustering">Slides Lecture 10 - Clustering ►</a>
+
+        </div>
+</div>
+</div>
+</div>
+                            
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div id="nav-drawer" data-region="drawer" class="d-print-none moodle-has-zindex closed" aria-hidden="true" tabindex="-1">
+        <nav class="list-group">
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210" data-key="coursehome" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Introduction to Data Science - Lecture" class="line-clamp-2 media-body ">Introduction to Data Science - Lecture</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/local/rwth_participants_view/participants.php?id=210" data-key="participants" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="90" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="210">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-users fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Participants" class="line-clamp-2 media-body ">Participants</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/grade/report/index.php?id=210" data-key="grades" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="210">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-table fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Grades" class="line-clamp-2 media-body ">Grades</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/local/downloadcenter_rwth/index.php?courseid=210" data-key="downloadcenter" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="1" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="210">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-arrow-circle-o-down fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Download center" class="line-clamp-2 media-body ">Download center</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210" data-key="localboostnavigationcoursesections" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="1" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="210">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-fw fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Sections" class="line-clamp-2 media-body ">Sections</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-0" data-key="1660" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="General" class="line-clamp-2 media-body ">General</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-1" data-key="1661" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Introduction" class="line-clamp-2 media-body ">Introduction</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-2" data-key="1662" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Crash Course in Python" class="line-clamp-2 media-body ">Crash Course in Python</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-3" data-key="1663" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Basic data visualisation/exploration" class="line-clamp-2 media-body ">Basic data visualisation/exploration</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-4" data-key="1664" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Decision trees" class="line-clamp-2 media-body ">Decision trees</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-5" data-key="2624" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Regression" class="line-clamp-2 media-body ">Regression</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-6" data-key="2631" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Support Vector Machines" class="line-clamp-2 media-body ">Support Vector Machines</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-7" data-key="2657" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Neural Networks" class="line-clamp-2 media-body ">Neural Networks</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-8" data-key="2689" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Evaluation of Supervised Learning Problems" class="line-clamp-2 media-body ">Evaluation of Supervised Learning Problems</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action active" href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-9" data-key="2699" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="1" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Assignments" class="line-clamp-2 media-body font-weight-bold">Assignments</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-10" data-key="2715" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Clustering" class="line-clamp-2 media-body ">Clustering</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-11" data-key="2716" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Frequent Item Sets" class="line-clamp-2 media-body ">Frequent Item Sets</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-12" data-key="2763" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Association Rules" class="line-clamp-2 media-body ">Association Rules</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-13" data-key="2764" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Sequence Mining" class="line-clamp-2 media-body ">Sequence Mining</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-14" data-key="2794" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Process Mining" class="line-clamp-2 media-body ">Process Mining</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-15" data-key="2795" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Text Mining" class="line-clamp-2 media-body ">Text Mining</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-16" data-key="2796" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Data preprocessing, data quality" class="line-clamp-2 media-body ">Data preprocessing, data quality</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-17" data-key="2797" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Visual analytics &amp; information visualization" class="line-clamp-2 media-body ">Visual analytics &amp; information visualization</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-18" data-key="2798" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Responsible Data Science" class="line-clamp-2 media-body ">Responsible Data Science</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210#section-19" data-key="2799" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="30" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="localboostnavigationcoursesections">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-folder-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Big Data" class="line-clamp-2 media-body ">Big Data</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210" data-key="localboostnavigationactivities" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="210">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-fw fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Activities" class="line-clamp-2 media-body ">Activities</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/mod/assign/index.php?id=210" data-key="localboostnavigationactivityassign" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="40" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="localboostnavigationactivities">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-share-alt fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Assignments" class="line-clamp-2 media-body ">Assignments</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/mod/forum/index.php?id=210" data-key="localboostnavigationactivityforum" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="40" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="localboostnavigationactivities">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-share-alt fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Forums" class="line-clamp-2 media-body ">Forums</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/resources.php?id=210" data-key="localboostnavigationactivityresources" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="40" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="localboostnavigationactivities">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-archive fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Resources" class="line-clamp-2 media-body ">Resources</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+        <nav class="list-group m-t-1">
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/my/" data-key="myhome" data-isexpandable="0" data-indent="0" data-showdivider="1" data-type="1" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-tachometer fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Dashboard" class="line-clamp-2 media-body ">Dashboard</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/calendar/view.php?view=month&amp;course=210" data-key="calendar" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="60" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-calendar fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Calendar" class="line-clamp-2 media-body ">Calendar</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/user/files.php" data-key="privatefiles" data-isexpandable="0" data-indent="0" data-showdivider="0" data-type="70" data-nodetype="0" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="1">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-file-o fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Private files" class="line-clamp-2 media-body ">Private files</span>
+                    </div>
+                </div>
+            </a>
+            <div class="list-group-item" data-key="mycourses" data-isexpandable="1" data-indent="0" data-showdivider="0" data-type="0" data-nodetype="1" data-collapse="1" data-forceopen="1" data-isactive="0" data-hidden="0" data-preceedwithhr="0" data-parent-key="myhome">
+                <div class="m-l-0">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="My courses" class="line-clamp-2 media-body">My courses</span>
+                    </div>
+                </div>
+            </div>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=211" data-key="211" data-isexpandable="0" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="0" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="mycourses">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Introduction to Data Science- Exercise" class="line-clamp-2 media-body ">Introduction to Data Science- Exercise</span>
+                    </div>
+                </div>
+            </a>
+            <a class="list-group-item list-group-item-action " href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210" data-key="210" data-isexpandable="0" data-indent="1" data-showdivider="0" data-type="20" data-nodetype="1" data-collapse="0" data-forceopen="1" data-isactive="0" data-hidden="1" data-preceedwithhr="0" data-parent-key="mycourses">
+                <div class="m-l-1">
+                    <div class="media">
+                        <span class=" media-left">
+                            <i class="icon fa fa-graduation-cap fa-fw " aria-hidden="true" aria-label=""></i>
+                        </span>
+                        <span title="Introduction to Data Science - Lecture" class="line-clamp-2 media-body ">Introduction to Data Science - Lecture</span>
+                    </div>
+                </div>
+            </a>
+        </nav>
+        <script>
+            /*!
+* Clamp.js 0.5.1
+*
+* Copyright 2011-2013, Joseph Schmitt http://joe.sh
+* Released under the WTFPL license
+* http://sam.zoy.org/wtfpl/
+*/
+(function(){window.$clamp=function(c,d){function s(a,b){n.getComputedStyle||(n.getComputedStyle=function(a,b){this.el=a;this.getPropertyValue=function(b){var c=/(\-([a-z]){1})/g;"float"==b&&(b="styleFloat");c.test(b)&&(b=b.replace(c,function(a,b,c){return c.toUpperCase()}));return a.currentStyle&&a.currentStyle[b]?a.currentStyle[b]:null};return this});return n.getComputedStyle(a,null).getPropertyValue(b)}function t(a){a=a||c.clientHeight;var b=u(c);return Math.max(Math.floor(a/b),0)}function x(a){return Math.ceil(u(c)*
+a)}function u(a){var b=s(a,"line-height");"normal"==b&&(b=1.2*parseFloat(s(a,"font-size")));return parseFloat(b)}function l(a){if(a.lastChild.children&&0<a.lastChild.children.length)return l(Array.prototype.slice.call(a.children).pop());if(a.lastChild&&a.lastChild.nodeValue&&""!=a.lastChild.nodeValue&&a.lastChild.nodeValue!=b.truncationChar)return a.lastChild;a.lastChild.parentNode.removeChild(a.lastChild);return l(c)}function p(a,d){if(d){var e=a.nodeValue.replace(b.truncationChar,"");f||(h=0<k.length?
+k.shift():"",f=e.split(h));1<f.length?(q=f.pop(),r(a,f.join(h))):f=null;m&&(a.nodeValue=a.nodeValue.replace(b.truncationChar,""),c.innerHTML=a.nodeValue+" "+m.innerHTML+b.truncationChar);if(f){if(c.clientHeight<=d)if(0<=k.length&&""!=h)r(a,f.join(h)+h+q),f=null;else return c.innerHTML}else""==h&&(r(a,""),a=l(c),k=b.splitOnChars.slice(0),h=k[0],q=f=null);if(b.animate)setTimeout(function(){p(a,d)},!0===b.animate?10:b.animate);else return p(a,d)}}function r(a,c){a.nodeValue=c+b.truncationChar}d=d||{};
+var n=window,b={clamp:d.clamp||2,useNativeClamp:"undefined"!=typeof d.useNativeClamp?d.useNativeClamp:!0,splitOnChars:d.splitOnChars||[".","-","\u2013","\u2014"," "],animate:d.animate||!1,truncationChar:d.truncationChar||"\u2026",truncationHTML:d.truncationHTML},e=c.style,y=c.innerHTML,z="undefined"!=typeof c.style.webkitLineClamp,g=b.clamp,v=g.indexOf&&(-1<g.indexOf("px")||-1<g.indexOf("em")),m;b.truncationHTML&&(m=document.createElement("span"),m.innerHTML=b.truncationHTML);var k=b.splitOnChars.slice(0),
+h=k[0],f,q;"auto"==g?g=t():v&&(g=t(parseInt(g)));var w;z&&b.useNativeClamp?(e.overflow="hidden",e.textOverflow="ellipsis",e.webkitBoxOrient="vertical",e.display="-webkit-box",e.webkitLineClamp=g,v&&(e.height=b.clamp+"px")):(e=x(g),e<=c.clientHeight&&(w=p(l(c),e)));return{original:y,clamped:w}}})();
+        
+            // forEach method, could be shipped as part of an Object Literal/Module
+            var forEach = function (array, callback, scope) {
+                for (var i = 0; i < array.length; i++) {
+                callback.call(scope, i, array[i]); // passes back stuff we need
+                }
+            };
+        
+            var myNodeList = document.querySelectorAll('.line-clamp-2');
+            forEach(myNodeList, function (index, value) {
+                $clamp(value, {clamp: 2});
+            });
+        </script>
+    </div>
+</div><div id="yui3-css-stamp" style="position: absolute !important; visibility: hidden !important" class=""></div>
+
+
+<footer id="page-footer" class="py-3 bg-dark text-light">
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div id="course-footer" class="col-12">
+                
+            </div>
+
+
+
+                <section data-region="footer-left" class="d-print-none col-12 col-lg-4">
+                    <aside id="block-region-footer-left" class="block-region" data-blockregion="footer-left" data-droptarget="1"><a href="#sb-1" class="sr-only sr-only-focusable">Skip SERVICE</a>
+
+<section id="inst30648" class=" block block_rwth_service  card mb-3" role="complementary" data-block="rwth_service" aria-labelledby="instance-30648-header">
+
+    <div class="card-body">
+
+            <h5 id="instance-30648-header" class="card-title d-inline">SERVICE</h5>
+
+
+        <div class="card-text content mt-3">
+            <a href="http://docs.moodle.org/35/en/mod/assign/view" class="list-group-item list-group-item-action link-list helplink" style="display: block;">
+            <img src="Assignment_files/link_white.png" alt="" role="presentation">
+        Help
+    </a>
+    <a href="https://www1.elearning.rwth-aachen.de/local/staticpage/view.php?page=dataprivacy" class="list-group-item list-group-item-action link-list helplink" style="display: block;">
+            <img src="Assignment_files/link_white.png" alt="" role="presentation">
+        Disclaimer
+    </a>
+    <a href="http://www.itc.rwth-aachen.de/cms/IT-Center/Footer/Service/~epvv/Impressum/" class="list-group-item list-group-item-action link-list helplink" style="display: block;">
+            <img src="Assignment_files/link_white.png" alt="" role="presentation">
+        Site Credits
+    </a>
+            <div class="footer"></div>
+            
+        </div>
+
+    </div>
+
+</section>
+
+  <span id="sb-1"></span></aside>
+                </section>
+
+                <section data-region="footer-middle" class="d-print-none col-12 col-lg-4">
+                    <aside id="block-region-footer-middle" class="block-region" data-blockregion="footer-middle" data-droptarget="1"><a href="#sb-2" class="sr-only sr-only-focusable">Skip CONTACT</a>
+
+<section id="inst30649" class=" block block_html  card mb-3" role="complementary" data-block="html" aria-labelledby="instance-30649-header">
+
+    <div class="card-body">
+
+            <h5 id="instance-30649-header" class="card-title d-inline">CONTACT</h5>
+
+
+        <div class="card-text content mt-3">
+            <div class="no-overflow"><p><img src="Assignment_files/mail_grey.png" alt="" role="presentation">&nbsp; <a href="mailto:servicedesk@itc.rwth-aachen.de">servicedesk@itc.rwth-aachen.de</a></p>
+<p><img src="Assignment_files/phone_grey.png" alt="" role="presentation">&nbsp; +49 241 / 80-24680</p>
+<p><img src="Assignment_files/fax_grey.png" alt="" role="presentation">&nbsp; +49 241 / 80-22981</p></div>
+            <div class="footer"></div>
+            
+        </div>
+
+    </div>
+
+</section>
+
+  <span id="sb-2"></span></aside>
+                </section>
+
+                <section data-region="footer-right" class="d-print-none col-12 col-lg-4">
+                    <aside id="block-region-footer-right" class="block-region" data-blockregion="footer-right" data-droptarget="1"></aside>
+                </section>
+
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="col-12">
+                    <p class="helplink"><a href="http://docs.moodle.org/35/en/mod/assign/view"><i class="icon fa fa-info-circle fa-fw iconhelp icon-pre" aria-hidden="true" aria-label=""></i>Moodle Docs for this page</a></p>
+
+                <div class="logininfo">You are logged in as <a href="https://www1.elearning.rwth-aachen.de/user/profile.php?id=145383" title="View profile">Kant, Philipp</a> (<a href="https://www1.elearning.rwth-aachen.de/login/logout.php?sesskey=AZ5EH1wOGf">Log out</a>)</div>
+                <div class="tool_usertours-resettourcontainer" id="yui_3_17_2_1_1547400615481_46"><div class="usertour">
+    <a href="#" data-action="tool_usertours/resetpagetour">Reset user tour on this page</a>
+</div></div>
+                <div class="homelink"><a href="https://www1.elearning.rwth-aachen.de/course/view.php?id=210">Introduction to Data Science - Lecture</a></div>
+                <nav class="nav navbar-nav d-md-none">
+                        <ul class="list-unstyled pt-3">
+                        </ul>
+                </nav>
+                <div class="tool_dataprivacy"><a href="https://www1.elearning.rwth-aachen.de/admin/tool/dataprivacy/summary.php">Data retention summary</a></div><a href="https://download.moodle.org/mobile?version=2018051703.02&amp;lang=en&amp;iosappid=633359593&amp;androidappid=com.moodle.moodlemobile">Get the mobile app</a>
+                <script type="text/javascript">
+//<![CDATA[
+var require = {
+    baseUrl : 'https://www1.elearning.rwth-aachen.de/lib/requirejs.php/1547016047/',
+    // We only support AMD modules with an explicit define() statement.
+    enforceDefine: true,
+    skipDataMain: true,
+    waitSeconds : 0,
+
+    paths: {
+        jquery: 'https://www1.elearning.rwth-aachen.de/lib/javascript.php/1547016047/lib/jquery/jquery-3.2.1.min',
+        jqueryui: 'https://www1.elearning.rwth-aachen.de/lib/javascript.php/1547016047/lib/jquery/ui-1.12.1/jquery-ui.min',
+        jqueryprivate: 'https://www1.elearning.rwth-aachen.de/lib/javascript.php/1547016047/lib/requirejs/jquery-private'
+    },
+
+    // Custom jquery config map.
+    map: {
+      // '*' means all modules will get 'jqueryprivate'
+      // for their 'jquery' dependency.
+      '*': { jquery: 'jqueryprivate' },
+      // Stub module for 'process'. This is a workaround for a bug in MathJax (see MDL-60458).
+      '*': { process: 'core/first' },
+
+      // 'jquery-private' wants the real jQuery module
+      // though. If this line was not here, there would
+      // be an unresolvable cyclic dependency.
+      jqueryprivate: { jquery: 'jquery' }
+    }
+};
+
+//]]>
+</script>
+<script type="text/javascript" src="Assignment_files/require.js"></script>
+<script type="text/javascript">
+//<![CDATA[
+require(['core/first'], function() {
+;
+require(["media_videojs/loader"], function(loader) {
+    loader.setUp(function(videojs) {
+        videojs.options.flash.swf = "https://www1.elearning.rwth-aachen.de/media/player/videojs/videojs/video-js.swf";
+videojs.addLanguage("en",{
+ "Audio Player": "Audio Player",
+ "Video Player": "Video Player",
+ "Play": "Play",
+ "Pause": "Pause",
+ "Replay": "Replay",
+ "Current Time": "Current Time",
+ "Duration Time": "Duration Time",
+ "Remaining Time": "Remaining Time",
+ "Stream Type": "Stream Type",
+ "LIVE": "LIVE",
+ "Loaded": "Loaded",
+ "Progress": "Progress",
+ "Progress Bar": "Progress Bar",
+ "progress bar timing: currentTime={1} duration={2}": "{1} of {2}",
+ "Fullscreen": "Fullscreen",
+ "Non-Fullscreen": "Non-Fullscreen",
+ "Mute": "Mute",
+ "Unmute": "Unmute",
+ "Playback Rate": "Playback Rate",
+ "Subtitles": "Subtitles",
+ "subtitles off": "subtitles off",
+ "Captions": "Captions",
+ "captions off": "captions off",
+ "Chapters": "Chapters",
+ "Descriptions": "Descriptions",
+ "descriptions off": "descriptions off",
+ "Audio Track": "Audio Track",
+ "Volume Level": "Volume Level",
+ "You aborted the media playback": "You aborted the media playback",
+ "A network error caused the media download to fail part-way.": "A network error caused the media download to fail part-way.",
+ "The media could not be loaded, either because the server or network failed or because the format is not supported.": "The media could not be loaded, either because the server or network failed or because the format is not supported.",
+ "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.": "The media playback was aborted due to a corruption problem or because the media used features your browser did not support.",
+ "No compatible source was found for this media.": "No compatible source was found for this media.",
+ "The media is encrypted and we do not have the keys to decrypt it.": "The media is encrypted and we do not have the keys to decrypt it.",
+ "Play Video": "Play Video",
+ "Close": "Close",
+ "Close Modal Dialog": "Close Modal Dialog",
+ "Modal Window": "Modal Window",
+ "This is a modal window": "This is a modal window",
+ "This modal can be closed by pressing the Escape key or activating the close button.": "This modal can be closed by pressing the Escape key or activating the close button.",
+ ", opens captions settings dialog": ", opens captions settings dialog",
+ ", opens subtitles settings dialog": ", opens subtitles settings dialog",
+ ", opens descriptions settings dialog": ", opens descriptions settings dialog",
+ ", selected": ", selected",
+ "captions settings": "captions settings",
+ "subtitles settings": "subititles settings",
+ "descriptions settings": "descriptions settings",
+ "Text": "Text",
+ "White": "White",
+ "Black": "Black",
+ "Red": "Red",
+ "Green": "Green",
+ "Blue": "Blue",
+ "Yellow": "Yellow",
+ "Magenta": "Magenta",
+ "Cyan": "Cyan",
+ "Background": "Background",
+ "Window": "Window",
+ "Transparent": "Transparent",
+ "Semi-Transparent": "Semi-Transparent",
+ "Opaque": "Opaque",
+ "Font Size": "Font Size",
+ "Text Edge Style": "Text Edge Style",
+ "None": "None",
+ "Raised": "Raised",
+ "Depressed": "Depressed",
+ "Uniform": "Uniform",
+ "Dropshadow": "Dropshadow",
+ "Font Family": "Font Family",
+ "Proportional Sans-Serif": "Proportional Sans-Serif",
+ "Monospace Sans-Serif": "Monospace Sans-Serif",
+ "Proportional Serif": "Proportional Serif",
+ "Monospace Serif": "Monospace Serif",
+ "Casual": "Casual",
+ "Script": "Script",
+ "Small Caps": "Small Caps",
+ "Reset": "Reset",
+ "restore all settings to the default values": "restore all settings to the default values",
+ "Done": "Done",
+ "Caption Settings Dialog": "Caption Settings Dialog",
+ "Beginning of dialog window. Escape will cancel and close the window.": "Beginning of dialog window. Escape will cancel and close the window.",
+ "End of dialog window.": "End of dialog window."
+});
+
+    });
+});;
+require(["local_boostnavigation/collapsenavdrawernodes"], function(amd) { amd.init(["mycourses","localboostnavigationcoursesections","localboostnavigationactivities"]); });;
+require(["tool_usertours/usertours"], function(amd) { amd.init("4", false, 202273); });;
+
+require(['jquery', 'message_popup/notification_popover_controller'], function($, controller) {
+    var container = $('#nav-notification-popover-container');
+    var controller = new controller(container);
+    controller.registerEventListeners();
+    controller.registerListNavigationEventListeners();
+});
+;
+
+        require(['jquery'], function($) {
+            $('#jump-to-activity').change(function() {
+                $('#url_select_f5c3b75a66954612').submit();
+            });
+        });
+    ;
+
+require(['theme_boost/loader']);
+require(['theme_boost/drawer'], function(mod) {
+    mod.init();
+});
+require(['theme_boost_campus/backtotop'], function(mod) {
+    mod.init();
+});
+require(['theme_boost_campus/catchshortcuts'], function(mod) {
+    mod.init([]);
+});
+    require(['theme_boost_campus/incoursesettings'], function(mod) {
+    mod.init();
+    });
+;
+require(["theme_boost_campus_rwth/floatingeditbutton"], function(amd) { amd.init(); });;
+/*!
+* Clamp.js 0.5.1
+*
+* Copyright 2011-2013, Joseph Schmitt http://joe.sh
+* Released under the WTFPL license
+* http://sam.zoy.org/wtfpl/
+*/
+(function(){window.$clamp=function(c,d){function s(a,b){n.getComputedStyle||(n.getComputedStyle=function(a,b){this.el=a;this.getPropertyValue=function(b){var c=/(\-([a-z]){1})/g;"float"==b&&(b="styleFloat");c.test(b)&&(b=b.replace(c,function(a,b,c){return c.toUpperCase()}));return a.currentStyle&&a.currentStyle[b]?a.currentStyle[b]:null};return this});return n.getComputedStyle(a,null).getPropertyValue(b)}function t(a){a=a||c.clientHeight;var b=u(c);return Math.max(Math.floor(a/b),0)}function x(a){return Math.ceil(u(c)*
+a)}function u(a){var b=s(a,"line-height");"normal"==b&&(b=1.2*parseFloat(s(a,"font-size")));return parseFloat(b)}function l(a){if(a.lastChild.children&&0<a.lastChild.children.length)return l(Array.prototype.slice.call(a.children).pop());if(a.lastChild&&a.lastChild.nodeValue&&""!=a.lastChild.nodeValue&&a.lastChild.nodeValue!=b.truncationChar)return a.lastChild;a.lastChild.parentNode.removeChild(a.lastChild);return l(c)}function p(a,d){if(d){var e=a.nodeValue.replace(b.truncationChar,"");f||(h=0<k.length?
+k.shift():"",f=e.split(h));1<f.length?(q=f.pop(),r(a,f.join(h))):f=null;m&&(a.nodeValue=a.nodeValue.replace(b.truncationChar,""),c.innerHTML=a.nodeValue+" "+m.innerHTML+b.truncationChar);if(f){if(c.clientHeight<=d)if(0<=k.length&&""!=h)r(a,f.join(h)+h+q),f=null;else return c.innerHTML}else""==h&&(r(a,""),a=l(c),k=b.splitOnChars.slice(0),h=k[0],q=f=null);if(b.animate)setTimeout(function(){p(a,d)},!0===b.animate?10:b.animate);else return p(a,d)}}function r(a,c){a.nodeValue=c+b.truncationChar}d=d||{};
+var n=window,b={clamp:d.clamp||2,useNativeClamp:"undefined"!=typeof d.useNativeClamp?d.useNativeClamp:!0,splitOnChars:d.splitOnChars||[".","-","\u2013","\u2014"," "],animate:d.animate||!1,truncationChar:d.truncationChar||"\u2026",truncationHTML:d.truncationHTML},e=c.style,y=c.innerHTML,z="undefined"!=typeof c.style.webkitLineClamp,g=b.clamp,v=g.indexOf&&(-1<g.indexOf("px")||-1<g.indexOf("em")),m;b.truncationHTML&&(m=document.createElement("span"),m.innerHTML=b.truncationHTML);var k=b.splitOnChars.slice(0),
+h=k[0],f,q;"auto"==g?g=t():v&&(g=t(parseInt(g)));var w;z&&b.useNativeClamp?(e.overflow="hidden",e.textOverflow="ellipsis",e.webkitBoxOrient="vertical",e.display="-webkit-box",e.webkitLineClamp=g,v&&(e.height=b.clamp+"px")):(e=x(g),e<=c.clientHeight&&(w=p(l(c),e)));return{original:y,clamped:w}}})();    // forEach method, could be shipped as part of an Object Literal/Module
+var forEach = function (array, callback, scope) {
+    for (var i = 0; i < array.length; i++) {
+    callback.call(scope, i, array[i]); // passes back stuff we need
+    }
+};
+
+var myNodeList = document.querySelectorAll('.line-clamp-2');
+forEach(myNodeList, function (index, value) {
+    $clamp(value, {clamp: 2});
+});
+var myNodeList = document.querySelectorAll('.line-clamp-3');
+forEach(myNodeList, function (index, value) {
+    $clamp(value, {clamp: 3});
+});
+var myNodeList = document.querySelectorAll('.line-clamp-4');
+forEach(myNodeList, function (index, value) {
+    $clamp(value, {clamp: 4});
+});
+var myNodeList = document.querySelectorAll('.line-clamp-5');
+forEach(myNodeList, function (index, value) {
+    $clamp(value, {clamp: 5});
+});;
+require(["core/notification"], function(amd) { amd.init(202273, []); });;
+require(["core/log"], function(amd) { amd.setConfig({"level":"warn"}); });
+});
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+M.yui.add_module({"core_comment":{"name":"core_comment","fullpath":"https:\/\/www1.elearning.rwth-aachen.de\/lib\/javascript.php\/1547016047\/comment\/comment.js","requires":["base","io-base","node","json","yui2-animation","overlay","escape"]}});
+
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+M.str = {"moodle":{"lastmodified":"Last modified","name":"Name","error":"Error","info":"Information","yes":"Yes","no":"No","cancel":"Cancel","addcomment":"Add a comment...","comments":"Comments","commentscount":"Comments ({$a})","commentsrequirelogin":"You need to log in to view the comments.","deletecommentbyon":"Delete comment posted by {$a->user} on {$a->time}","confirm":"Confirm","areyousure":"Are you sure?","closebuttontitle":"Close","unknownerror":"Unknown error"},"repository":{"type":"Type","size":"Size","invalidjson":"Invalid JSON string","nofilesattached":"No files attached","filepicker":"File picker","logout":"Logout","nofilesavailable":"No files available","norepositoriesavailable":"Sorry, none of your current repositories can return files in the required format.","fileexistsdialogheader":"File exists","fileexistsdialog_editor":"A file with that name has already been attached to the text you are editing.","fileexistsdialog_filemanager":"A file with that name has already been attached","renameto":"Rename to \"{$a}\"","referencesexist":"There are {$a} alias\/shortcut files that use this file as their source","select":"Select"},"admin":{"confirmdeletecomments":"You are about to delete comments, are you sure?","confirmation":"Confirmation"}};
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+(function() {Y.use("moodle-filter_mathjaxloader-loader",function() {M.filter_mathjaxloader.configure({"mathjaxconfig":"\nMathJax.Hub.Config({\n    config: [\"Accessible.js\", \"Safe.js\"],\n    errorSettings: { message: [\"!\"] },\n    skipStartupTypeset: true,\n    messageStyle: \"none\"\n});\n","lang":"en"});
+});
+ M.util.js_pending('random5c3b75a6695462'); Y.use('mod_assign', function(Y) { M.mod_assign.init_tree(Y, true, "assign_files_tree5c3b75a6695461");  M.util.js_complete('random5c3b75a6695462'); });
+M.util.help_popups.setup(Y);
+ M.util.js_pending('random5c3b75a66954613'); Y.on('domready', function() {  M.util.js_pending('random5c3b75a66954613'); Y.use('core_comment', function(Y) { M.core_comment.init(Y, {"client_id":"5c3b75a6886dd","commentarea":"submission_comments","itemid":"12080","page":0,"courseid":"210","contextid":202273,"component":"assignsubmission_comments","notoggle":false,"autostart":false});  M.util.js_complete('random5c3b75a66954613'); });  M.util.js_complete('random5c3b75a66954613'); });
+ M.util.js_pending('random5c3b75a66954615'); Y.on('domready', function() { M.util.js_complete("init");  M.util.js_complete('random5c3b75a66954615'); });
+})();
+//]]>
+</script>
+
+        </div>
+    </div>
+</div></footer><i class="fa fa-chevron-up fa-2x" id="back-to-top"></i></body></html>
