@@ -1,0 +1,27 @@
+Dear students,
+
+
+
+we just uploaded a sample exam to give you an impression of how the real exam might look like.
+
+The topics in the real exam will differ from the ones in this sample exam. Mainly, the sample exam does not contain any questions on deep learning. Additionally, the sample exam contains questions not covered by this years Machine Learning lecture e.g. VC-dimension, graphical models.
+
+Again, the real exam will contain different questions and topics. Everything that we covered in the lecture and the exercise classes is relevant.
+
+The real exam will have a duration of 120 mins (not 60 like indicated in the sample exam).
+
+You find the sample exam in L2P/Learning Materials/Additional_Material/sample_exam.pdf.
+
+
+
+Some more notes since this repeteadly comes up:
+
+-The exercises are not a requirement for exam admission and there also will be no bonus points for the exam. The exercise submission is just a way for you to get feedback to your solution.
+
+-If you have problems with registering for the exam via RWTH Online and you are not an exchange student, then please contact your student advisor ("Fachstudienberater") to activate the registration via RWTH Online.
+
+-For exchange students, we will create an online form for registration in January and send out more information via another announcement like this.
+
+
+
+We wish you all a merry christmas and a happy new year!

@@ -1,0 +1,9 @@
+For running Apriori algorithm and association rule algorithm, we need to install new python package 'mlxtend'.
+
+The command for installing package 'mlxtend' with pip is:
+
+ pip install mlxtend
+
+The command for installing package 'mlxtend' with Conda is:
+
+ conda install mlxtend --channel conda-forge
