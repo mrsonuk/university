@@ -1,0 +1,28 @@
+.field-wrap {
+	margin-bottom: 10px !important;
+}
+.field-wrap label {
+	width: 35% !important;
+	float: left;
+}
+
+.field-wrap ul li label {
+	width: auto !important;
+}
+
+input.ninja-forms-field:not([type=checkbox]):not([type=radio]) {
+	width: 50% !important;
+}
+
+.ninja-forms-field-description p {
+	margin: 0px !important;
+	margin-top: -10px !important;
+	float: left;
+}
+.ninja-forms-field-error p {
+	color: red;
+	font-weight: bold;
+}
+.entry-title .title-hidden {
+	display: none;
+}

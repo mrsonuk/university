@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<!-- saved from url=(0049)https://moves.rwth-aachen.de/teaching/ss-18/dsal/ -->
+<html lang="en-US"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width">
+<title>Datenstrukturen und Algorithmen | Informatik 2</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://moves.rwth-aachen.de/xmlrpc.php">
+
+<link rel="dns-prefetch" href="https://fonts.googleapis.com/">
+<link rel="dns-prefetch" href="https://s.w.org/">
+<link rel="alternate" type="application/rss+xml" title="Informatik 2 » Feed" href="https://moves.rwth-aachen.de/feed/">
+		<script type="text/javascript" async="" defer="" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/piwik.js"></script><script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/moves.rwth-aachen.de\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.9"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script><script src="./Datenstrukturen und Algorithmen _ Informatik 2_files/wp-emoji-release.min.js" type="text/javascript" defer=""></script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel="stylesheet" id="wp-quicklatex-format-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/quicklatex-format.css" type="text/css" media="all">
+<link rel="stylesheet" id="infinity-nuntius-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="i2utils-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/i2utils.css" type="text/css" media="all">
+<link rel="stylesheet" id="publications-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/publications.css" type="text/css" media="all">
+<link rel="stylesheet" id="nuntius-style-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="lobster-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/css" type="text/css" media="all">
+<link rel="stylesheet" id="oswald-css" href="./Datenstrukturen und Algorithmen _ Informatik 2_files/css(1)" type="text/css" media="all">
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/jquery.js"></script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/jquery-migrate.min.js"></script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/jquery.cycle.all.js"></script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/functions.js"></script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/wp-quicklatex-frontend.js"></script>
+<link rel="https://api.w.org/" href="https://moves.rwth-aachen.de/wp-json/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://moves.rwth-aachen.de/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://moves.rwth-aachen.de/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 4.9.9">
+<link rel="canonical" href="https://moves.rwth-aachen.de/teaching/ss-18/dsal/">
+<link rel="shortlink" href="https://moves.rwth-aachen.de/?p=9392">
+<link rel="alternate" type="application/json+oembed" href="https://moves.rwth-aachen.de/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmoves.rwth-aachen.de%2Fteaching%2Fss-18%2Fdsal%2F">
+<link rel="alternate" type="text/xml+oembed" href="https://moves.rwth-aachen.de/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fmoves.rwth-aachen.de%2Fteaching%2Fss-18%2Fdsal%2F&amp;format=xml">
+<!-- <meta name="NextGEN" version="3.1.6" /> -->
+	<style type="text/css">
+	/* <![CDATA[ */
+		a,
+		.breadcrumbs a,
+		.post-meta a,
+		#sidebar-primary a,
+		#respond input[type="text"],
+		#respond input[type="email"],
+		#respond input[type="url"],
+		.category-section .entry-title a,
+		#more-articles .entry-title a,
+		.archive .entry-title a,
+		.search .entry-title a,
+		.slideshow-controls .slideshow-pager a.activeSlide,
+		#infinite-footer .blog-credits a,
+		#infinite-footer .blog-credits a:hover {
+			color: #dd7a05;
+		}
+		#header,
+		#menu-primary {
+			background-color: #890000;
+		}
+	/* ]]> */
+	</style>
+</head>
+
+<body class="page-template-default page page-id-9392 page-child parent-pageid-9221">
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  _paq.push(["setDomains", ["*.www.moves.rwth-aachen.de","*.moves.rwth-aachen.de","*.www.ths.rwth-aachen.de"]]);
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="//piwik.itc.rwth-aachen.de/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', 3]);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<noscript><p><img src="//piwik.itc.rwth-aachen.de/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+	<div id="body-container">
+		
+		<div id="header" class="moves">
+			<div class="wrap">
+				<a href="https://moves.rwth-aachen.de/" title="Informatik 2" rel="home" class="header-link"></a>
+			</div><!-- .wrap -->
+		</div><!-- .header -->
+		<div id="menu-primary" class="menu-container moves">
+			<div class="menu"><ul id="menu-primary-items" class=""><li id="menu-item-50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home menu-item-50"><a href="https://moves.rwth-aachen.de/">Home</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-61"><a href="https://moves.rwth-aachen.de/category/news/">News</a></li>
+<li id="menu-item-19" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-19"><a href="https://moves.rwth-aachen.de/people/">People</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor menu-item-has-children menu-item-14"><a href="https://moves.rwth-aachen.de/teaching/">Teaching</a></li>
+<li id="menu-item-1243" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1243"><a href="https://moves.rwth-aachen.de/research/">Research</a></li>
+<li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="https://moves.rwth-aachen.de/contact/">Contact</a></li>
+<li id="menu-item-1926" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1926"><a href="http://ths.rwth-aachen.de/">Theory of Hybrid Systems</a></li>
+<li id="menu-item-401" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-401"><a title="LuFG i2 – Programmiersprachen und Verifikation" href="http://verify.rwth-aachen.de/">LuFG i2</a></li>
+</ul></div>		</div><!-- #menu-primary .menu-container -->
+
+		<div id="container">
+
+		<div class="breadcrumb breadcrumbs">
+	<div class="breadcrumb-trail">
+			<ul>
+		<li>Browsing: <span class="sep">»</span> </li>
+				<li><a href="https://moves.rwth-aachen.de/">  Home </a></li>
+
+		
+							<li>
+								<span class="sep">»</span><a href="https://moves.rwth-aachen.de/teaching/">Teaching</a>
+							</li>
+
+						
+							<li>
+								<span class="sep">»</span><a href="https://moves.rwth-aachen.de/teaching/ss-18/">SS 18</a>
+							</li>
+
+						
+							<li>
+								<span class="sep">»</span>Datenstrukturen und Algorithmen							</li>
+
+								</ul>
+	</div><!-- .breadcrumb breadcrumbs -->
+</div><!-- .breadcrumb-trail -->
+
+<div id="content">
+	<div class="hfeed">
+
+		
+		<div id="post-9392" class="post-9392 page type-page status-publish hentry">
+			<div class="entry-utility">
+											</div><!-- .entry-utility -->
+
+			<h2 class="entry-title">Datenstrukturen und Algorithmen</h2><!-- .entry-title -->
+			<div class="entry-content">
+				<h1>News</h1>
+<ul>
+<li><strong>12.9.2018:</strong> Die Ergebnisse der 2. Klausur sind ab sofort im Übungssystem einsehbar. Die Einsicht zur 2. Klausur findet am Montag 17.9.2018 im AH 1 (Informatikzentrum) statt. Bringen Sie ihre BlueCard zur Einsichtnahme mit. Die Uhrzeit hängt von Ihrer Matrikelnummer ab:<br>
+<blockquote><p>000000-377999: 13:00 Uhr bis 14:00 Uhr<br>
+378000-999999: 14:00 Uhr bis 15:00 Uhr</p></blockquote>
+<p>Falls Sie die Klausur im dritten Versuch nicht bestanden haben und eine Ergänzungsprüfung wünschen, muss diese spätestens während der Einsicht schriftlich beantragt werden.</p></li>
+<li><strong>6.9.2018: </strong>Die zweite Klausur findet am 10.9. im für alle angemeldeten Studierenden im <strong>Großen Hörsaal (Audimax)</strong> statt. Einlass ist ab <strong>10:15 Uhr</strong>, die Klausur beginnt pünktlich um 10:30 Uhr. Bitte bringen Sie ihren Studierendenausweis und dokumentenechte Stifte mit. Als Hilfsmittel ist ein handbeschriebenes A4 Blatt (Vorder- und Rückseite) zugelassen.</li>
+<li><strong>21.8.2018:</strong> Die Einsicht zur 1. Klausur bzw. 2. Präsenzübung findet am 23.8.2018 im AH 1 (Informatikzentrum) statt. Bringen Sie ihre BlueCard zur Einsichtnahme mit. Die Uhrzeit hängt von Ihrer Matrikelnummer ab:<br>
+<blockquote><p>000000-369999: 14:30 Uhr bis 15:15 Uhr<br>
+370000-377999: 15:15 Uhr bis 16:00 Uhr<br>
+378000-999999: 16:00 Uhr bis 16:45 Uhr</p></blockquote>
+<p><strong>Beachten Sie, dass Sie nicht automatisch zum zweiten Klausurtermin angemeldet werden.</strong> Wenn Sie an der zweiten Klausur teilnehmen möchten, müssen Sie sich selbst über das VZPA anmelden. Falls Sie die Klausur im dritten Versuch nicht bestanden haben und eine Ergänzungsprüfung wünschen, muss diese spätestens während der Einsicht schriftlich beantragt werden.</p></li>
+<li><strong>15.8.2018:</strong> Die Ergebnisse der Klausur und der 2. Präsenzübung können Sie nun im Übungssystem einsehen. Genaue Informationen zur Einsicht am 23.8.2018 folgen.<br>
+<em>Hinweis:</em> Der Notenbonus aus den Übungen wird im Übungssystem noch nicht angezeigt.</li>
+<li><strong>8.8.2018:</strong> Die Hörsaalverteilung für die erste Klausur ist wie folgt:<br>
+<blockquote><p>000000-376699: Großer Hörsaal (Audimax)<br>
+376700-379999: H01 (C.A.R.L.)<br>
+380000-999999: Aula 1 (Hauptgebäude)</p>
+<p>Nachholpräsenzübung: Hörsaal H02 (C.A.R.L.)&nbsp;</p></blockquote>
+<p>Einlass ist ab <strong>11:15 Uhr</strong>, die Klausur beginnt pünktlich um 11:30 Uhr. Bitte bringen Sie ihren Studierendenausweis und dokumentenechte Stifte mit. Als Hilfsmittel ist ein handbeschriebenes A4 Blatt (Vorder- und Rückseite) zugelassen.<br>
+Zeitgleich findet die Wiederholungspräsenzübung im Hörsaal H02 (C.A.R.L.) statt. Hierfür gelten die gleichen Hinweise.</p></li>
+<li><strong>20.7.2018</strong>: Wir haben einige alte Klausuren zu Übungszwecken bereitgestellt. Diese sind im Abschnitt ‘Klausur’ zu finden.</li>
+<li><strong>19.7.2018</strong>: Hier ist der Übungsgenerator aus 2014:&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/DSALExercisesStudent.zip">DSALExercisesStudent.&nbsp;</a> Im Zweifelsfalle gelten die Verfahren aus der Vorlesung von diesem Jahr. Beispielaufrufe zum Anzeigen eines Hilfetexts bzw. um LaTeX Code für eine Mergesort Aufgabe zu generieren:<br>
+java -jar DSALExercisesStudent.jar -h<br>
+java -jar DSALExercisesStudent.jar -a mergesort -l 8 -e exercise.tex -t solution.tex</li>
+<li><strong>10.7.2018:&nbsp;</strong>Wir haben eine alte <a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/Klausur2.pdf">Klausur</a> hochgeladen, die wir in der kommenden Globalübung vorrechnen werden.</li>
+<li><strong>10.7.2018: </strong>Die Definition in Aufgabe 2 hatte einen Fehler..</li>
+<li><strong>7.7.2018: </strong>In der Aufgabe 6 vom Übungsblatt 11 wurde die Definition der Pfadmengen Pi^k_v angepasst, da sie für den Fall v=t nicht ganz eindeutig war.</li>
+<li><strong>3.7.2018:</strong> In der Aufgabe 3 vom aktuellen Übungsblatt war leider ein kleiner Fehler. Wir haben das Blatt nochmal aktualisiert.</li>
+<li><strong>25.6.2018:</strong> Die Nachkorrektur der Präsenzübung ist abgeschlossen. Die aktualisierten Punktzahlen wurden in das Übungssystem eingetragen. Sie können Ihre Präsenzübung im Tutorium abholen.</li>
+<li><strong>19.6.2018:</strong> Es gab einen kleinen Fehler in den Hinweisen zur Aufgabe 2 des aktuellen Übungsblattes. Dieser ist nun behoben und das Blatt aktualisiert.</li>
+<li><strong>13.06.2018: </strong>Die Ergebnisse der Präsenzübung sind nun im Übungssystem verfügbar. Sie können Ihre Präsenzübung in Ihrem Tutorium einsehen.</li>
+<li><strong>11.06.2018:&nbsp;</strong>In den Folien der 12. und 13. Vorlesung ist n der Anzahl belegte Slots in der Hashtabelle T und nicht (wie versehentlich angegeben wurde) die Kardinalität der Menge U. Die wurde in den Notizen der 13. Vorlesung korrigiert.</li>
+<li><strong>08.06.2018:&nbsp;</strong>Informatik-Studierende können sich bis 2. Juli bewerben für ein “Porsche IT Campus RWTH Stipendium” in der Höhe von 356 pro Monat für mindestens ein Jahr. Weitere Informationen finden Sie hier:&nbsp;<a href="http://www.rwth-aachen.de/go/id/qpdd">http://www.rwth-aachen.de/go/id/qpdd</a></li>
+<li><strong>17.5.2018:</strong> Die Anmeldung zur Präsenzübung ist nun im Übungssystem freigeschaltet. Sie können sich bis zum <strong>29.5.</strong> anmelden. Weitere Informationen zur Präsenzübung finden Sie weiter unten auf dieser Seite. Die Hörsaalverteilung wird noch bekannt gegeben.<strong><br>
+</strong></li>
+<li><strong>7.5.2018:</strong> Aufgrund einiger Rückfragen und kleiner Fehler wurde das aktuelle Übungsblatt (Übung 4) aktualisiert.&nbsp;<strong>Bitte aktualisieren Sie auch Ihren Cache, damit sichergestellt ist, dass Sie wirklich die aktuelle Version herunterladen.</strong></li>
+<li><strong>2.5.2018:&nbsp;</strong>Die zentrale Hochschulverwaltung hat uns heute mitgeteilt, dass der H01 am Freitag nicht verfügbar ist. <em>Die Globalübung findet ausnahmsweise am Freitag 13:15 in dem Roten und dem Grünen Hörsaal statt.</em></li>
+<li><strong>26.4.2018: </strong>Am Dienstag den 1.5.2018 fallen aufgrund des Feiertages die Tutorien aus. Sie können in dieser Woche ein anderes Tutorium besuchen. Am Freitag, den 4.5.2018 um 13:15 Uhr findet im H01 ausnahmsweise eine Globalübung und keine Vorlesung statt.</li>
+<li><strong>19.4.2018: </strong>Die Frist für die Anmeldung zu den Übungsgruppen ist vorbei. Falls Sie noch nicht angemeldet und noch keinem Tutorium zugewiesen sind, kontaktieren Sie bitte die Assistenten (s. unten).&nbsp;</li>
+<li><strong>12.4.2018: </strong>Die Anmeldung für das Übungssystem ist nun freigeschaltet. Sie können sich <a title="hier" href="https://lufgi2.informatik.rwth-aachen.de/dsal18/">hier</a> mit Ihrer @rwth-aachen.de Adresse registrieren.</li>
+<li><strong>5.4.2018: </strong>Die Termine für die Globalübung (ursprünglich Montags 08:30) und die Vorlesung (ursprünglich Dienstags 14:14) haben sich im Vergleich zu den Angaben im CAMPUS-System getauscht (s. unten).</li>
+<li><strong>5.4.2018:&nbsp;</strong>In der ersten Vorlesung (13.4), sowie in der ersten Globalübung (24.4), werden wir einige organisatorische Fragen klären. Bis dahin brauchen Sie sich um nichts zu kümmern!</li>
+<li><strong>4.4.2018:</strong> Die erste Vorlesung findet am Freitag den 13.4.2018 statt. Die erste Globalübung ist am 24.4.2018. Die weiteren Termine sind unten aufgeführt. Bitte beachten Sie, dass am 16.4.2018 und am 17.4.2018 keine Vorlesung und keine Globalübung stattfinden.</li>
+<li><strong>4.4.2018:</strong> Wir sind online!</li>
+</ul>
+<p>&nbsp;</p>
+<h1>Wichtige Termine</h1>
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+<th><strong>Wochentag</strong></th>
+<th><strong>Uhrzeit</strong></th>
+<th><strong>Raum</strong></th>
+</tr>
+</thead>
+<caption>Regelmäßige Termine</caption>
+<tbody>
+<tr>
+<td><strong>Vorlesung</strong></td>
+<td>Montag</td>
+<td>8:30 – 10:00</td>
+<td><a title="H01" href="https://www.campus.rwth-aachen.de/rwth/all/room.asp?room=1385%7C101" target="_blank" rel="noopener">H01</a></td>
+</tr>
+<tr>
+<td><strong>Vorlesung</strong></td>
+<td>Freitag</td>
+<td>13:15 – 14:45</td>
+<td><a title="H01" href="https://www.campus.rwth-aachen.de/rwth/all/room.asp?room=1385%7C101" target="_blank" rel="noopener">H01</a></td>
+</tr>
+<tr>
+<td><strong>Globalübung</strong></td>
+<td>Dienstag</td>
+<td>14:15 – 15:45</td>
+<td><a title="Aula I" href="https://www.campus.rwth-aachen.de/rwth/all/room.asp?room=1010|131" target="_blank" rel="noopener">Aula (Hauptgebäude)</a></td>
+</tr>
+</tbody>
+</table>
+<p>Bitte beachten Sie, dass im CampusOffice die Vorlesung und Globalübung anders eingetragen sind.</p>
+<p>&nbsp;</p>
+<table border="0">
+<caption>Einmalige Termine</caption>
+<tbody>
+<tr>
+<th>&nbsp;</th>
+<th>Datum</th>
+<th>Uhrzeit</th>
+<th>Raum</th>
+</tr>
+<tr>
+<td>Klausur</td>
+<td>13.8.</td>
+<td>11:00 – 14:00</td>
+<td>Hörsaalverteilung wird im Übungssystem bekanntgegeben</td>
+</tr>
+<tr>
+<td>Wiederholungsklausur</td>
+<td>10.9.</td>
+<td>10:00 – 13:00</td>
+<td>Hörsaalverteilung wird im Übungssystem bekanntgegeben</td>
+</tr>
+<tr>
+<td>Präsenzübung</td>
+<td>7.6.</td>
+<td>18:30 – 20:00</td>
+<td>Hörsaalverteilung wird im Übungssystem bekanntgegeben</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1>Vorlesungen</h1>
+<table border="0">
+<tbody>
+<tr>
+<th>Nr.</th>
+<th>Thema</th>
+<th>Datum</th>
+<th>Handout</th>
+<th>Folien</th>
+<th>Notizen</th>
+</tr>
+<tr>
+<td>1</td>
+<td>Algorithmische<br>
+Komplexität</td>
+<td>13.4.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec01_handout.pdf">l1_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec01.pdf">l1_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen01.pdf">notizen01</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Asymptotische Effizienz</td>
+<td>20.4.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec02_handout.pdf">l2_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec02.pdf">l2_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec02_notizen.pdf">notizen02</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>Elementare Datenstrukturen</td>
+<td>23.4.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec03_handout.pdf">l3_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec03.pdf">l3_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec03_notizen.pdf">notizen03</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Suchen</td>
+<td>27.4.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec04_handout.pdf">l4_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec04.pdf">l4_folien</a>&nbsp;</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec04_notizen.pdf">notizen04</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>Rekursions­gleichungen</td>
+<td>30.4.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec05_handout.pdf">l5_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec05.pdf">l5_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen05.pdf">notizen05</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>Mastertheorem</td>
+<td>7.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec06_handout.pdf">l6_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec06.pdf">l6_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen06.pdf">notizen06</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>Sortieren</td>
+<td>11.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec07_handout.pdf">l7_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec07.pdf">l7_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen07.pdf">notizen07</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Heapsort</td>
+<td>14.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec08_handout.pdf">l8_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec08-1.pdf">l8_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen08.pdf">notizen08</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Quicksort</td>
+<td>18.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec09_handout.pdf">l9_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec09.pdf">l9_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen09.pdf">notizen09</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>Binäre Suchbäume</td>
+<td>28.5.2018</td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec10_handout.pdf">l10_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec10.pdf">l10_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen10.pdf">notizen10</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>Rot-Schwarz Bäume</td>
+<td>1.6.2018</td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec11_handout.pdf">&nbsp;l11_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec11-1.pdf">l11_folien</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen11.pdf">&nbsp;notizen11</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Hashing I</td>
+<td>4.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec12_handout.pdf">l12_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec12-2.pdf">12_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen12.pdf">notizen12</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Hashing II</td>
+<td>11.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec13_handout.pdf">l13_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec13-1.pdf">l13_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen13.pdf">notizen13</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Elementare Graphen­algorithmen</td>
+<td>15.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec14_handout.pdf">l14+15_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/lec14.pdf">l14+15_folien</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen1415.pdf">notizen14+15</a></td>
+</tr>
+<tr>
+<td>15</td>
+<td>Elementare Graphen­algorithmen</td>
+<td>18.6.2018</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Minimale Spannbäume</td>
+<td>22.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec16_handout.pdf">l16_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec16_slides.pdf">l16_slides</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen16.pdf">notizen16</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>Kürzeste Pfade</td>
+<td>25.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec17_handout.pdf">l17_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec17-2.pdf">l17_slides</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen17.pdf">notizen17</a></td>
+</tr>
+<tr>
+<td>18</td>
+<td>Kürzeste Pfade + Maximale Flüsse</td>
+<td>29.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec18_handout.pdf">l18_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec18-3.pdf">l18_slides</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen18.pdf">notizen18</a></td>
+</tr>
+<tr>
+<td>19</td>
+<td>Maximale Flüsse</td>
+<td>2.7.2018</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Dynamische Programmierung</td>
+<td>6.7.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec19_handout-1.pdf">l19_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec19-1.pdf">l19_slides</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen20.pdf">notizen20</a></td>
+</tr>
+<tr>
+<td>21</td>
+<td>Algorithmische Geometrie</td>
+<td>9.7.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec20_handout.pdf">l20_handout</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/lec20-1.pdf">l20_slides</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/notizen21.pdf">notizen21</a></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>Für die Vorlesungen brauchen Sie sich nicht anzumelden.&nbsp;Es gibt kein l2p Lernraum für diese Veranstaltung.</p>
+<h1>Globalübungen</h1>
+<table style="height: 360px" border="0">
+<tbody>
+<tr style="height: 24px">
+<th style="height: 24px">Nr.</th>
+<th style="height: 24px">Thema</th>
+<th style="height: 24px">Datum</th>
+<th style="height: 24px">Notizen</th>
+</tr>
+<tr style="height: 48px">
+<td style="height: 48px">1</td>
+<td style="height: 48px">Relationen, Pseudocode, Laufzeitanalyse, Baum Traversierung</td>
+<td style="height: 48px">24.4.2018</td>
+<td style="height: 48px">&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides1-notes.pdf">notizen01</a></td>
+</tr>
+<tr style="height: 48px">
+<td style="height: 48px">2</td>
+<td style="height: 48px">O-Notation, Average-Case Analyse, Rekursionsgleichungen</td>
+<td style="height: 48px"><strong>4.5.2018 im Roten und Grünen Hörsaal</strong></td>
+<td style="height: 48px">&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides2-notes.pdf">notizen02</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">3</td>
+<td style="height: 24px">Rekursionsbäume, Mastertheorem</td>
+<td style="height: 24px">8.5.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/Notes3.pdf">notizen03</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">4</td>
+<td style="height: 24px">Fixpunktinduktion, Mergesort, Heapsort</td>
+<td style="height: 24px">15.5.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides4-notes.pdf">notizen04</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">5</td>
+<td style="height: 24px">Mastertheorem, Binäre Suchbäume</td>
+<td style="height: 24px">29.5.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides05-notes.pdf">notizen05</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">6</td>
+<td style="height: 24px">Präsenzübung 2015</td>
+<td style="height: 24px">5.6.2018</td>
+<td style="height: 24px">–</td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">7</td>
+<td style="height: 24px">Hashing, Laufzeiten</td>
+<td style="height: 24px">12.6.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides07-notes.pdf">notizen07</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">8</td>
+<td style="height: 24px">Graphenalgorithmen</td>
+<td style="height: 24px">19.6.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides08-notes.pdf">notizen08</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">9</td>
+<td style="height: 24px">Dijkstra</td>
+<td style="height: 24px">26.6.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/global09.pdf">notizen09</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">10</td>
+<td style="height: 24px">Flüsse</td>
+<td style="height: 24px">3.7.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/global10.pdf">notizen10</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">11</td>
+<td style="height: 24px">Dynamisches Programmieren</td>
+<td style="height: 24px">10.7.2018</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/slides11_notes.pdf">notizen11</a></td>
+</tr>
+<tr style="height: 24px">
+<td style="height: 24px">12</td>
+<td style="height: 24px"><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/Klausur2.pdf">Klausur</a> vorrechnen</td>
+<td style="height: 24px">17.7.2018</td>
+<td style="height: 24px">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<p>Für die Globalübungen brauchen Sie sich nicht anzumelden.&nbsp;Es gibt kein l2p Lernraum für diese Veranstaltung.</p>
+<h1>Übungen</h1>
+<p>Begleitend zur Vorlesung gibt es Übungsblätter, die <strong>zu dritt</strong> zu bearbeiten sind. Die Übungszettel werden jeweils donnerstagabends auf dieser Seite online gestellt und sind in der Regel 7 Tage später (donnerstags) bis 16:00 Uhr abzugeben. Die Abgabe erfolgt durch Einwurf der Lösungen in die Übungskästen. Die Kästen befinden sich am Eingang Halifaxstraße des Informatikzentrums (Ahornstr. 55). Alternativ können die Lösungen auch vor der Abgabefrist direkt im Tutorium oder bei der Globalübung abgegeben werden.</p>
+<p>Die Lösungen zu den Übungsaufgaben werden in den wöchentlichen Kleingruppenübungen besprochen. Es gibt kein l2p Lernraum für diese Veranstaltung.</p>
+<p>Sie könnnen ihre Punkte im <a href="https://lufgi2.informatik.rwth-aachen.de/dsal18/">Übungsystem</a> einsehen. Ein Tausch der Übungsgruppe mit einem anderen Studierenden ist ebenfalls über das&nbsp;Übungssystem möglich.</p>
+<p>Bitte beachten Sie, dass eine erfolgreiche Teilnahme am Übungsbetrieb für die Zulassung zur Klausur nötig ist. Näheres dazu entnehmen Sie bitte dem Abschnitt “Klausurzulassung”.</p>
+<p>&nbsp;</p>
+<table border="0">
+<tbody>
+<tr>
+<th>Nr.</th>
+<th>Abgabedatum</th>
+<th>Übungsblatt</th>
+<th>Lösung</th>
+</tr>
+<tr>
+<td>1</td>
+<td>19.04.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u01.pdf">Übungsblatt 01</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol01.pdf">Musterlösung 01</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>26.04.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u02.pdf">Übungsblatt 02</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol2.pdf">Musterlösung 02</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>3.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/exercise03.pdf">Übungsblatt 03</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol03.pdf">Musterlösung 03</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>9.5.2018</strong></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u04.pdf">Übungsblatt 04</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol04.pdf">Musterlösung 04</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>17.5.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/exercise05.pdf">Übungsblatt 05</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol05.pdf">Musterlösung 05</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>30.5.2018</strong></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u06.pdf">Übungsblatt 06</a></td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol06.pdf">Musterlösung 06</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>&nbsp;14.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u07.pdf">Übungsblatt 07</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol07.pdf">Musterlösung 07</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>&nbsp;21.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/Blatt8.pdf">Übungsblatt 08</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol08.pdf">Musterlösung 08</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>&nbsp;28.6.2018</td>
+<td>&nbsp;<a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u09.pdf">Übungsblatt 09</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol09.pdf">Musterlösung 09</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>&nbsp;5.7.2018</td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/ue10.pdf">&nbsp;Übungsblatt 10</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol10.pdf">Musterlösung 10</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>&nbsp;12.7.2018</td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/u11.pdf">&nbsp;Übungsblatt 11</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/sol11.pdf">Musterlösung 11</a></td>
+</tr>
+</tbody>
+</table>
+<h1>Klausurzulassung und Bonusregelung</h1>
+<p>Folgende Kriterien müssen für die Zulassung zur Klausur erfüllt werden:</p>
+<ol>
+<li>Mindestens 50% aller in den Übungen erreichbaren Punkte bis zur Präsenzübung (d.h. Blatt 1 bis einschließlich Blatt 6)</li>
+<li>Mindestens 50% aller in den Übungen erreichbaren Punkte ab der Präsenzübung (d.h. ab Blatt 7)</li>
+<li>Mindestens 50% der in der Präsenzübung erreichbaren Punkte.</li>
+</ol>
+<div class="page" title="Page 1">
+<div class="layoutArea">
+<div class="column">
+<p>Es gibt kein Zulassungskriterium für&nbsp;CES-Studierende.</p>
+<p>Es gilt außerdem folgende Bonusregelung für alle Studiengänge: Bei mindestens 70% in allen drei oben genannten Punkten wird die Klausurnote um eine Notenstufe (0.3) verbessert. Das heißt aus einer 2.3 wird beispielsweise eine 2.0 (gilt nicht bei 1.0 und 5.0).</p>
+</div>
+<p>Wenn Sie die Kriterien nicht erfüllen, melden wir Sie beim ZPA als nicht zugelassen (NZ).</p>
+</div>
+</div>
+<h1>Präsenzübung</h1>
+<p>Am 7.6. um 18:30 Uhr findet eine Präsenzübung statt. In der Präsenzübung muss unter Klausurbedingungen und in Einzelarbeit ein zusätzliches Übungsblatt gelöst werden. Die Bearbeitungsdauer der Präsenzübung beträgt 90 Minuten. Die Hörsaalverteilung wird noch bekannt gegeben. Zur Erwerbung der Klausurzulassung müssen mindestens 50% der Punkte erlangt werden.</p>
+<p>Der Inhalt der Präsenzübung umfasst den gesamten Vorlesungsstoff bis einschließlich Vorlesung 10 (Binäre Suchbäume) sowie die Inhalte der Globalübungen und Übungsblätter 1 bis (einschließlich) 6.</p>
+<p>Bringen Sie Ihren Studierendenausweis (mit Bild, sonst noch einen weiteren Lichtbildausweis) und einen dokumentenechten Stift (nicht grün oder rot und insbesondere keinen Bleistift) zur Präsenzübung mit. Sie dürfen außerdem ein DIN A4 Blatt mit handschriftlichen (nicht gedruckten) Notizen auf beiden Seiten zur Präsenzübung mitnehmen. Weitere Hilfsmittel sind nicht zugelassen. Papier wird von uns gestellt.</p>
+<p>Um sich besser auf die Präsenzübung vorzubereiten, machen wir zwei alte Präsenzübungen verfügbar. Beachten Sie bitte, dass die&nbsp;Verfahren in den Lösungen geringfügig von den Verfahren aus der diesjährigen Vorlesung abweichen können. <strong>Für die Präsenzübung am 07.06.2018 sind die Verfahren der laufenden Vorlesung maßgeblich</strong>.</p>
+<p>Die Ergebnisse der Präsenzübung sind nun im Übungssystem verfügbar. Sie können Ihre Präsenzübung in Ihrem Tutorium einsehen. Die Präsenzübung von diesem Jahr mit zugehöriger Musterlösung ist ebenfalls unten verfügbar.</p>
+<table style="height: 62px" width="363">
+<tbody>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p12.pdf">PÜ12</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p12_sol.pdf">Lösung12</a></td>
+</tr>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p15.pdf">PÜ15</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p15_sol.pdf">Lösung15</a></td>
+</tr>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p18.pdf">PÜ18</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/p18_sol.pdf">Lösung18</a></td>
+</tr>
+</tbody>
+</table>
+<h3>Wiederholungstermin</h3>
+<p>Für Studierende, die nicht an der ersten Präsenzübung teilnehmen konnten oder nicht genügend Punkte erziehlt haben, gibt es eine zweite Präsenzübung am ersten Klausurtermin (13.8.2018). Bei bestandener zweiter Präsenzübung und genügend Punkte in den Übungen können Sie dann am zweiten Klausurtermin (10.9.2018) die Klausur regulär mitschreiben.</p>
+<p>Beachten Sie, dass die zweite Präsenzübung die gesamten Inhalte <strong>aller</strong> Vorlesungen, Globalübungen und Übungsblätter umfasst. Ansonsten gelten die gleichen Bedingungen wie bei der ersten Präsenzübung. Es ist auch möglich den Klausurbonus über die zweite Präsenzübung zu erhalten. Studierende, die bereits die Klausurzulassung über die erste Prasenzübung erworben haben, können jedoch nicht an der zweiten Präsenzübung teilnehmen.</p>
+<h1>Klausur</h1>
+<p>Die Klausur wird über eine Dauer von 2 Stunden in Einzelarbeit geschrieben.</p>
+<p>Außer einem dokumentenechten Stift (blau oder schwarz, nicht rot oder grün)&nbsp;ist&nbsp;ein DIN A4 Blatt mit handschriftlichen (nicht gedruckten) Notizen auf beiden Seiten zugelassen. Andere Hilftsmittel sind nicht erlaubt. Insbesondere sind keine elektronischen Geräte wie Taschenrechner, Telefone oder gar Laptops erlaubt. Bringen Sie zur Klausur Ihren Studierendenausweis (mit Lichtbild) mit. Sollten Sie keinen Studierendenausweis mit Lichtbild besitzen, bringen Sie einen amtlichen Lichtbildausweis und einen Nachweis über Ihre Immatrikulation mit. Papier zur Lösung der Aufgaben sowie für Nebenrechnungen wird von uns gestellt. Sie dürfen kein eigenes Papier verwenden.</p>
+<p>Zu Übungszwecken stellen wir einige alte Klausuren zur Verfügung. Beachten Sie bitte, dass die&nbsp;Verfahren in den Lösungen von den Verfahren aus der diesjährigen Vorlesung abweichen können. <strong>Für die Klausur sind die Verfahren der laufenden Vorlesung maßgeblich</strong>.</p>
+<table width="363">
+<tbody>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k12_1.pdf">Klausur12.1</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k12_1_sol.pdf">Lösung12.1</a></td>
+</tr>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k12_2.pdf">Klausur12.2</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k12_2_sol.pdf">Lösung12.2</a></td>
+</tr>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k15_1.pdf">Klausur15.1</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k15_1_sol.pdf">Lösung15.1</a></td>
+</tr>
+<tr>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k15_2.pdf">Klausur15.2</a></td>
+<td><a href="https://moves.rwth-aachen.de/wp-content/uploads/SS18/DSAL18/k15_2_sol.pdf">Lösung15.2</a></td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+<h1>Literatur</h1>
+<p>Die Vorlesung orientiert sich im Wesentlichen an:</p>
+<blockquote><p>Thomas H. Cormen, Charles E. Leiserson, Ronald Rivest, Clifford Stein: <strong>Algorithmen – Eine Einführung</strong>, R. Oldenbourg Verlag , 1. Auflage 2004.</p></blockquote>
+<p>&nbsp;</p>
+<h1>Kontakt</h1>
+<p>Sprechstunden sind nach Vereinbarung (per Mail) möglich.</p>
+<p>Wenn Sie Fragen oder Anregungen haben, können Sie uns gerne kontaktieren:<br>
+Assistenten</p>
+<dl>
+<dd><a title="Sebastian Junges" href="https://moves.rwth-aachen.de/people/sebastian-junges/">Sebastian Junges</a>, <a title="Benjamin Kaminski" href="http://moves.rwth-aachen.de/people/kaminski/">Benjamin Kaminski</a>, <a title="David Korzeniewski" href="https://verify.rwth-aachen.de/korzeniewski/">David Korzeniewski</a>, <a title="Tim Quatmann" href="https://moves.rwth-aachen.de/people/quatmann/">Tim Quatmann</a>,</dd>
+<dt>E-Mail</dt>
+<dd><a href="mailto:dsal18@i2.informatik.rwth-aachen.de">dsal18@i2.informatik.rwth-aachen.de</a></dd>
+</dl>
+							</div><!-- .entry-content -->
+		</div><!-- #post-## -->
+
+		
+		
+	</div><!-- .hfeed -->
+</div><!-- #content -->
+
+
+<div id="sidebar-primary" class="sidebar aside" role="complementary">
+		<aside id="advanced_menu-2" class="widget widget_advanced_menu"><div class="menu-main-container"><ul id="menu-main" class="menu">	<li id="menu-item--10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item--10"><a href="https://moves.rwth-aachen.de/teaching/thesis-projects/">Thesis Projects</a></li>
+	<li id="menu-item--11" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--11"><a href="https://moves.rwth-aachen.de/teaching/ss-19/">SS 19</a></li>
+	<li id="menu-item--17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--17"><a href="https://moves.rwth-aachen.de/teaching/ws-1819/">WS 18/19</a></li>
+	<li id="menu-item--25" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-menu-parent current-page-parent current_page_parent menu-item-has-children menu-item--25"><a href="https://moves.rwth-aachen.de/teaching/ss-18/">SS 18</a>
+	<ul class="sub-menu">
+		<li id="menu-item--26" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9392 current_page_item menu-item--26"><a href="https://moves.rwth-aachen.de/teaching/ss-18/dsal/">Datenstrukturen und Algorithmen</a></li>
+		<li id="menu-item--27" class="menu-item menu-item-type-post_type menu-item-object-page menu-item--27"><a href="https://moves.rwth-aachen.de/teaching/ss-18/swp18/">Implementation of Heuristic Algorithms for Board Games</a></li>
+		<li id="menu-item--28" class="menu-item menu-item-type-post_type menu-item-object-page menu-item--28"><a href="https://moves.rwth-aachen.de/teaching/ss-18/introduction-to-model-checking/">Introduction to Model Checking</a></li>
+		<li id="menu-item--29" class="menu-item menu-item-type-post_type menu-item-object-page menu-item--29"><a href="https://moves.rwth-aachen.de/teaching/ss-18/fvmml/">Formal Verification Meets Machine Learning</a></li>
+		<li id="menu-item--30" class="menu-item menu-item-type-post_type menu-item-object-page menu-item--30"><a href="https://moves.rwth-aachen.de/teaching/ss-18/spa/">Static Program Analysis</a></li>
+	</ul>
+</li>
+	<li id="menu-item--31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--31"><a href="https://moves.rwth-aachen.de/teaching/ws-1718/">WS 17/18</a></li>
+	<li id="menu-item--38" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--38"><a href="https://moves.rwth-aachen.de/teaching/ss-17/">SS 17</a></li>
+	<li id="menu-item--42" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--42"><a href="https://moves.rwth-aachen.de/teaching/ws-1617/">WS 16/17</a></li>
+	<li id="menu-item--50" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--50"><a href="https://moves.rwth-aachen.de/teaching/ss-16/">SS 16</a></li>
+	<li id="menu-item--57" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--57"><a href="https://moves.rwth-aachen.de/teaching/ws-1516/">WS 15/16</a></li>
+	<li id="menu-item--63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--63"><a href="https://moves.rwth-aachen.de/teaching/ss-15/">SS 15</a></li>
+	<li id="menu-item--70" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--70"><a href="https://moves.rwth-aachen.de/teaching/ws-1415/">WS 14/15</a></li>
+	<li id="menu-item--78" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item--78"><a href="https://moves.rwth-aachen.de/teaching/ss-14/">SS 14</a></li>
+</ul></div></aside><aside id="rpwe_widget-2" class="widget rpwe_widget recent-posts-extended"><h3 class="widget-title"><span>Latest News</span></h3><div class="rpwe-block "><ul class="rpwe-ul"><li class="rpwe-li rpwe-clearfix"><h3 class="rpwe-title"><a href="https://moves.rwth-aachen.de/news/paper-in-ress/" title="Permalink to Paper in RESS" rel="bookmark">Paper in RESS</a></h3><time class="rpwe-time published" datetime="2019-02-01T17:12:34+00:00">February 1, 2019</time><div class="rpwe-summary">The paper “Safety Analysis for Vehicle Guidance Systems with Dynamic Fault Trees” by Sebastian Junges, Joost-Pieter Katoen, Majdi Ghadhab (BMW), Matthias Volk, Matthias Kuntz (BMW) has been accepted to the …</div></li><li class="rpwe-li rpwe-clearfix"><h3 class="rpwe-title"><a href="https://moves.rwth-aachen.de/news/four-papers-at-tacas-2019/" title="Permalink to Four papers at TACAS 2019" rel="bookmark">Four papers at TACAS 2019</a></h3><time class="rpwe-time published" datetime="2019-01-27T23:13:26+00:00">January 27, 2019</time><div class="rpwe-summary">We are excited to announce that our group has four papers at TACAS 2019 in Prague. This includes (a) a tool paper on COMPASS 3.0 by Marco Bozzano (FBK), Harold …</div></li><li class="rpwe-li rpwe-clearfix"><h3 class="rpwe-title"><a href="https://moves.rwth-aachen.de/news/mfcs-2019-in-aachen/" title="Permalink to MFCS 2019 in Aachen" rel="bookmark">MFCS 2019 in Aachen</a></h3><time class="rpwe-time published" datetime="2018-11-07T14:15:12+00:00">November 7, 2018</time><div class="rpwe-summary">Together with Peter Rossmanith’s group, we host MFCS 2019 in Aachen, August 26-29, 2019. More information can be found here: https://tcs.rwth-aachen.de/mfcs2019/</div></li></ul></div><!-- Generated by http://wordpress.org/plugins/recent-posts-widget-extended/ --></aside><aside id="search-2" class="widget widget_search"><div id="search" class="search">
+	<form method="get" class="search-form" id="search-form" action="https://moves.rwth-aachen.de/">
+	<div>
+		<input class="search-text" type="text" name="s" id="search-text" value="" placeholder="Search this site...">
+		<input class="search-submit button" name="submit" type="submit" id="search-submit" value="Search">
+	</div>
+	</form><!-- .search-form -->
+</div><!-- .search --></aside><aside id="simple-links-2" class="widget sl-links-main"><h3 class="widget-title"><span>Links</span></h3><ul class="simple-links-list simple-links-2-list" id="simple-links-2-list"><li class="simple-links-item simple-links-widget-item" id="link-76"><a href="http://www.rwth-aachen.de/" target="" title="">RWTH Aachen</a></li><li class="simple-links-item simple-links-widget-item" id="link-471"><a href="http://www.informatik.rwth-aachen.de/" target="" title="">Fachgruppe Informatik</a></li></ul><!-- End .simple-links-list --></aside></div><!-- #sidebar-primary .sidebar .aside -->		</div><!-- #container -->
+	</div><!-- #body-container -->
+
+	<!-- ngg_resource_manager_marker --><script type="text/javascript">
+/* <![CDATA[ */
+var qpprFrontData = {"linkData":{"https:\/\/moves.rwth-aachen.de\/prophesy\/":[0,0,"research\/tools\/prophesy"],"https:\/\/moves.rwth-aachen.de\/research\/projects\/unravel\/":[0,0,"http:\/\/www.unravel.rwth-aachen.de"],"https:\/\/moves.rwth-aachen.de\/teaching\/":[0,0,""],"https:\/\/moves.rwth-aachen.de\/research\/":[0,0,""]},"siteURL":"https:\/\/moves.rwth-aachen.de","siteURLq":"https:\/\/moves.rwth-aachen.de"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/qppr_frontend_script.min.js"></script>
+<script type="text/javascript" src="./Datenstrukturen und Algorithmen _ Informatik 2_files/wp-embed.min.js"></script>
+
+<!-- 184 queries in 0.766 seconds. -->
+
+</body><auto-scroll></auto-scroll></html>

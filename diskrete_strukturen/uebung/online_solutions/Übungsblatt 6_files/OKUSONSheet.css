@@ -1,0 +1,156 @@
+  /* OKUSONSheet.css - style sheet for OKUSON project's sheets. */
+ /* Copyright 2003 by Frank Lübeck and Max Neunhöffer          */
+/* Lehrstuhl D für Mathematik, RWTH Aachen                    */
+
+BODY {
+  background-color:#ffffff;
+  color: #000000;
+  font-family: sans-serif, Helvetica, Arial, Geneva;
+  margin: 2em;
+} 
+
+H1, H2, H3 {
+  font-family: sans-serif, Helvetica, Arial, Geneva;
+  font-weight: bold;
+}
+
+H1 {
+  text-align: left;
+  color: #191970;
+  font-size: 144%;
+}
+
+H2 {
+  text-align: left;
+  font-size: 120%;
+}
+
+H3 {
+  text-align: left;
+  font-size: 100%;
+}
+
+p.hidden {
+  display: none;
+}
+
+table {
+  border: 2pt solid #444444;
+  padding: 3pt;
+}
+
+table.mathjaxtable {
+  border: 2pt solid #444444;
+  padding: 1pt;
+  border-collapse: collapse;
+  font-family: Times, serif;
+  font-size: 120%;
+}
+
+table.mathjaxtable td {
+  padding-left: 0.5ex;
+  padding-right: 0.5ex;
+  padding-top: 0pt;
+  padding-bottom: 0pt;
+}
+
+table.mathjaxtable td dt {
+  float: left;
+  clear: left;
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+table.mathjaxtable td p {
+  margin-top: 0.7ex;
+  margin-bottom: 0.7ex;
+}
+
+table.mathjaxtable td dd {
+  margin-left: 1ex;
+}
+
+table td {
+  vertical-align: top;
+}
+
+table td.exnr {
+  text-align: center;
+}
+
+td.right {
+  text-align: right;
+}
+
+td.answers label {
+  white-space: nowrap;
+}
+
+form.sheet input.string {
+  width: 80%;
+}
+
+p.foot {
+  font-size: 0.8em
+}
+
+p.pcenter {
+  text-align: center;
+}
+
+a:visited {
+  color: #FF0000;
+}
+
+a:hover {
+  background-color: #AAAAAA;
+}
+
+hr {
+  width: 75%;
+}
+
+span.erg {
+  color: green;
+  text-align: right;
+  font-weight: bold;
+}
+
+span.ergplus {
+  color: green;
+  text-align: right;
+  font-weight: bold;
+}
+
+span.ergminus {
+  color: red;
+  text-align: right;
+  font-weight: bold;
+}
+
+span.ergnull {
+  color: #FFA500;
+  text-align: right;
+  font-weight: bold;
+}
+
+img {
+  border: 0pt;
+}
+
+input short {
+  max-width: 30;
+  width: 80%;
+}
+
+input long {
+  max-width: 30;
+  width: 80%;
+}
+
+input digits {
+  max-width: 3;
+  width: 80%;
+}
+
+
