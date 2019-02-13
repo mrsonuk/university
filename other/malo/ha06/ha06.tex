@@ -1,0 +1,334 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 06- Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+$\forall x \forall y (\exists z (Rxy \to \neg (\exists x Sx) \land \exists z (\forall w \exists v (Rzw \lor Rwv))))$\newline
+$\equiv \forall x \forall y ( \exists z (Rxy \to \forall x \neg Sx \land \exists z (\forall w \exists v (Rzw \lor Rwv))))$ (NNF)\newline
+$\equiv \forall x \forall y ( \exists z (Rxy \to \forall a \neg Sa \land \exists b (\forall w \exists v (Rbw \lor Rwv))))$\newline
+$\equiv \forall x \forall y \exists z \forall a \exists b \forall w \exists v(Rxy \to \neg Sa \land (Rbw \lor Rwv))$ (PNF)\newline
+Da kein $z$ in der Formel mehr vorkommt, können wir $\exists z$ wegfallen lassen. Durch das Ersetzen von $b$ durch die dreistellige Funktion $f$ und das Ersetzen von $v$ durch die vierstellige Funktion $g$ erhalten wir nun:\newline
+$\forall x \forall y \forall a \forall w (Rxy \to \neg Sa \land (Rf(xya)w \lor Rwg(xyaw))$\newline
+Diese Formel befindet sich in der Skolem-Normalform
+
+\section*{Aufgabe 2}
+\subsection*{a)}
+Sei $f$ ein einstelliges Funktionssymbol und $<$ ein zweistelliges Relationssymbol.
+$\varphi:= \forall x (fx \neq x \land \forall y (fx = y \to (x < y \land \neg(y<x)))) \land \forall x \forall y (x \neq y \to (x < y \lor y < x) \land \forall z ((y < z \land x < y) \to x < z))$ beschreibt einen Satz, dessen Modelle unendlich groß sein müssen. Dies liegt daran, dass die Funktion ein Element nicht auf sich selbst oder einen Vorgänger abbildet. Da das Universum mit der Funktion abgeschlossen sein muss und die Funktion jedes Element auf etwas abbildet, muss das modell ein unendliches Universum enthalten.
+
+\subsection*{b)}
+\[\begin{aligned}
+    &\Phi = \{ \\
+%        &\qquad \exists x \exists y (\neg E_{xy} \n \neg \exists z_1, \cdots, z_n \bigwedge_{1 \leq i < n} (E_{z_i z_{i+1}}) \n E_{x z_1} \n E_{z_n y})), &&\quad \text{nicht zusammenhängend} \\
+%        &\qquad \exists more &&\quad \text{??} \\
+%    &\} \cup \{ \\
+        &\qquad \exists x \exists y (\neg E_{xy} \n \neg \exists z_1, \cdots, z_n \bigwedge_{1 \leq i < n} (E_{z_i z_{i+1}}) \n E_{x z_1} \n E_{z_n y})): n \in \mathbb{N}_+ &&\quad \text{nicht zusammenhängend} \\
+%        &\qquad \exists x \exists y (\neg E_{xy} \n \neg \exists z_1, \cdots, z_n \bigwedge_{1 \leq i < n} (E_{z_i z_{i+1}}) \n E_{x z_1} \n E_{z_n y})): n \in \{1, 2, \cdots, \infty\} &&\quad \text{nicht zusammenhängend ??} \\
+%        &\qquad \exists x \exists y (\neg E_{xy} \n \neg \exists z_1, \cdots, z_n \bigwedge_{1 \leq i < n} (E_{z_i z_{i+1}}) \n E_{x z_1} \n E_{z_n y})): n \in \mathbb{N}_+ \cup \{\infty\} &&\quad \text{nicht zusammenhängend ??} \\
+    &\}
+\end{aligned}\]
+
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+\[\begin{aligned}
+    &\Phi_a = \{ \\
+        &\qquad \forall x \forall y (E_{xy} = E_{yx}) &&\quad \text{ungerichteter Graph} \\
+        &\qquad \exists x_1, \cdots, x_n (\bigwedge_{1 \leq i < j \leq n} (x_i \neq x_j \n E_{x_i x_j})) &&\quad \text{Cliquen} \\
+    &\} \cup \{ \\
+        &\qquad \exists x_1, \cdots, x_n (\bigwedge_{1 \leq i < j \leq n} (x_i \neq x_j \n E_{x_i x_j})): n \in \mathbb{N}_+ &&\quad \text{Cliquen} \\
+    &\}
+\end{aligned}\]
+
+\subsection*{b)}
+% TODO siehe Tutorium: Bedingung für Diskret verneinen
+% TODO Bedingung für dich verneinen!
+%\[\begin{aligned}
+%    \varphi_{v}(x,y) &:= x \neq y \n x < y \n \neg\exists z (z \neq y \n y \neq x \n x < z \n z < y)
+%    \varphi_{n}(x,y) &:= x \neq y \n y < x \n \forall z ((z \neq y \n y \neq x) \rightarrow \neg (y < z \n z < y))
+%\end{aligned}\]
+\[\begin{aligned}
+    &\Phi_b = \{ \\
+        &\qquad \forall x \neg (x < x), &&\quad \text{\small{irreflexiv}} \\
+        &\qquad \forall x \forall y (x \neq y \rightarrow (x < y \v y < x)), &&\quad \text{\small{total}} \\
+        &\qquad \forall x \forall y \forall z ((x < y \n y < z) \rightarrow x < z), &&\quad \text{\small{transitiv}} \\
+        &\qquad \neg \forall x \exists y \forall z (x<y \n (z<y \rightarrow (z = x \v z < x))), &&\quad \text{\small{nicht diskret (1)}} \\
+        &\qquad \neg \forall x \exists y \forall z (y<x \n (y<z \rightarrow (x = z \v x < z))), &&\quad \text{\small{nicht diskret (2)}} \\
+        &\qquad \exists x \exists y \neg \exists z (x \neq y \n x < y \n (x < z \n z < y)) &&\quad \text{\small{nicht dicht}} \\
+    &\}
+\end{aligned}\]
+
+\subsection*{c)}
+%\[\begin{aligned}
+%    \varphi_\subseteq (A,B) &:= \forall x (A(x) \rightarrow B(x))
+%\end{aligned}\]
+\[\begin{aligned}
+    &\Phi_d = \{ \\
+        &\qquad \forall x (A(x) \rightarrow (f^n(A))(x)) : n \in \mathbb{N} &&\quad \text{\small{}} \\
+    &\}
+\end{aligned}\]
+
+
+\subsection*{d)}
+\[\begin{aligned}
+    &\Phi_d = \{ \\
+        &\qquad \forall x (A(x) \rightarrow \exists y (B(y) \n E_{xy} \n \neg\exists z (B(z) \n z \neq y \n E_{xz}))), &&\quad \text{\small{Graph einer Funktion}} \\
+        &\qquad \forall x \exists y (B(x) \rightarrow (A(y) \n E_{yx})) &&\quad \text{\small{surjektiv}} \\
+    &\}
+\end{aligned}\]
+
+
+\subsection*{e)}
+
+
+\section*{Aufgabe 4}
+\subsection*{a)}
+Gegenbeispiel: $\varphi = (x=1) \land (y=2)$, $\psi = (x=1) \lor (y=2)$, $\Phi = {\varphi}$\newline\newline
+$\varphi \not\equiv \psi$ gilt, da eine Interpretation mit $x\mapsto1$ und $y\mapsto0$ $\psi$ erfüllt, $\varphi$ aber nicht. $\Phi \vDash \psi$ gilt, da jedes Modell von $\Phi$ auch ein Modell von $\psi$ ist. Außerdem gilt $\Phi \vDash \varphi \mapsto \psi$, da jedes Modell von $\varphi$ auch ein Modell von $\psi$ ist.
+
+\subsection*{b)}
+Gegenbeispiel: $\Phi = {\varphi}$ $\varphi := (x=1 \land y=2)$, $\psi = (x=3)$\newline
+$\Phi \vDash \varphi$ gilt, da $\varphi \in \Phi$ ist. $\forall x \varphi \vDash \forall x \psi$ gilt ebenfalls, da $\forall x \varphi$ kein Modell hat, sodass kein Modell von $\forall x \varphi$, $\forall x \psi$ nicht erfüllt. $\Phi \vDash \psi$ gilt allerdings nicht, da es beispielsweise eine Interpretation mit $x \mapsto 1, y \mapsto 2$ gibt, welche $\Phi$ erfüllt, $\psi$ allerdings nicht.
+
+\subsection*{c)}
+
+
+\subsection*{d)}
+
+\begin{landscape}
+\thispagestyle{empty}
+\section*{Aufgabe 5}
+\forestset{
+    Fnode/.style={for current={ellipse,inner sep=-0}}
+}
+\let\mapstoOrig\mapsto
+\renewcommand\mapsto{\!\mapstoOrig\!}
+\vspace*{-1em}\hspace*{-3em}
+\begin{forest}
+    for tree={draw,align=center,base=top,anchor=south,edge=-{Stealth[length=.7em]},inner sep=.1em,outer ysep=.4em, outer xsep=0,fit=tight,scale=.7,s sep=.25em,l=.35em}
+    [,phantom,for descendants={if={n_children==0}{no edge,draw=none,inner sep=0}{}}
+    [,phantom,for descendants={if={n_children==1}{l sep=0}{}}
+%   
+    [ $\forall x (Rx \v \exists y \psi)$ \\ $\varnothing$ ,s sep=4.5em
+        [ $Rx \v \exists y \psi$ \\ $x \mapsto 0$ ,Fnode
+            [ $Rx$ \\ $x \mapsto 0$ [V]]
+            [ $\exists y \psi$ \\ $x \mapsto 0$ ,Fnode
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 00$
+                    [ $Rx + y$ \\ $xy \mapsto 00$ [V]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 00$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 000$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 001$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 002$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 01$
+                    [ $Rx + y$ \\ $xy \mapsto 01$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 01$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 010$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 011$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 012$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 02$
+                    [ $Rx + y$ \\ $xy \mapsto 02$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 02$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 020$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 021$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 022$ ,Fnode [F]]
+                    ]
+                ]
+            ]
+        ]
+        [ $Rx \v \exists y \psi$ \\ $x \mapsto 1$ ,Fnode,l=22em,for tree={xshift=44em}
+            [ $Rx$ \\ $x \mapsto 1$ ,Fnode [F]]
+            [ $\exists y \psi$ \\ $x \mapsto 1$ ,Fnode
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 10$
+                    [ $Rx + y$ \\ $xy \mapsto 10$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 10$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 100$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 101$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 102$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 11$
+                    [ $Rx + y$ \\ $xy \mapsto 11$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 11$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 110$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 111$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 112$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 12$
+                    [ $Rx + y$ \\ $xy \mapsto 12$ [V]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 12$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 120$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 121$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 122$ ,Fnode [F]]
+                    ]
+                ]
+            ]
+        ]
+        [ $Rx \v \exists y \psi$ \\ $x \mapsto 2$ ,Fnode
+            [ $Rx$ \\ $x \mapsto 2$ ,Fnode [F]]
+            [ $\exists y \psi$ \\ $x \mapsto 2$ ,Fnode
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 20$
+                    [ $Rx + y$ \\ $xy \mapsto 20$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 20$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 200$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 201$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 202$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 21$
+                    [ $Rx + y$ \\ $xy \mapsto 11$ [V]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 21$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 210$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 211$ ,Fnode [F]]
+                        [ $z \neq y$ \\ $xyz \mapsto 212$ [V]]
+                    ]
+                ]
+                [ $Rx + y \n \exists z z \neq y$ \\ $xy \mapsto 22$
+                    [ $Rx + y$ \\ $xy \mapsto 22$ ,Fnode [F]]
+                    [ $\exists z z \neq y$\\$xy \mapsto 22$ ,Fnode
+                        [ $z \neq y$ \\ $xyz \mapsto 220$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 221$ [V]]
+                        [ $z \neq y$ \\ $xyz \mapsto 222$ ,Fnode [F]]
+                    ]
+                ]
+            ]
+        ]
+    ]]]
+\end{forest}
+\vspace*{-5em}
+
+\vspace*{-10em}
+\fbox{\begin{minipage}[t]{20em}
+\begin{flalign*}
+    \psi :=& (Rx+y \n \exists z z \neq y) \\
+    \\
+    \varphi :=& \forall x (\neg Rx \rightarrow \exists y (Rx + y \n \neg \forall x \; x = y)) \\
+    \equiv& \forall x (Rx \v \exists y (Rx + y \n \exists x \; x \neq y)) \\
+    \equiv& \forall x (Rx \v \exists y (Rx + y \n \exists z \; z \neq y)) \\
+    \equiv& \forall x (Rx \v \exists y \psi) \\
+\end{flalign*}
+\end{minipage}}
+
+\renewcommand\mapsto{\mapstoOrig}
+
+\end{landscape}
+
+\section*{Aufgabe 5 (Fortsetzung)}
+Die Formel ist erfüllbar, da die Verifizierein eine Gewinnstrategie besitzt: Im ersten Schritt kann der Verifizierer zunächst ein $x$ wählen.
+Dabei ist es egal, wie sich der Falsifizierer entscheidet, im nächsten Schritt darf die Verifiziererin entscheiden.
+Dadurch kann diese jene Knoten vermeiden, in welchen sie verliert und dort stattdessen in die $\exists y \psi$-Knoten zu gehen, in welchen sie erneut zieht.
+Im dritten Schritt kann die Verifiziererin jene Unterknoten wählen, in denen $x+y $ mod $3 = 0$ ist.
+Dadurch hat der Falsifizierer schließlich die Wahl in den $Rx+y$-Knoten zu ziehen, in welchem er verliert, aber in dem $\exists z \; z\neq y$-Knoten, in welchem die Verifiziererin wieder zieht.
+In dem letzten Schritt kann sich die Verifiziererin nun für einen Knoten entscheiden, in welchem sie gewinnt.
+Denn egal wie sich das Spiel bisher entwickelt hat, jeder $\exists z \; z \neq y$-Knoten hat zwei Knoten, in denen die Verifiziererin gewinnt.
+Daher ist es egal, wie der Falsifizierer sich verhält, die Gewinnstrategie führt dazu, dass die Verifiziererin gewinnt.
+
+\section*{Aufgabe 6}
+\subsection*{a)}
+
+$\varphi := \exists x ((V_0 x \n  xE = \emptyset) \v (V_1 x \n xE \neq \emptyset \n \forall y( V_1y \n \neg E(Exy))))$
+
+\subsection*{b)}
+$\varphi(v) := \forall x_0, \ldots, x_n \exists i \in \mathbb{N}, 0 \leq i \leq n (V_1 x_i \rightarrow \forall z \neg Ex_iz)$
+
+\subsection*{c)}
+$\varphi := \exists (V_{1-\sigma} v \forall y (V_{1-\sigma} y \v T y \v \forall z (\neg T z \v \neg Eyz)))$
+
+
+\end{document}

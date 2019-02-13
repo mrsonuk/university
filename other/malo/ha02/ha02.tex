@@ -1,0 +1,261 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 02 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+
+\section*{Aufgabe 2}
+\subsection*{(a)}
+$(A \n B \n C \implies 0) \n (1 \implies A) \n (F \implies K) \n (B \n D \implies E) \n (D \implies F) \n (A \n D \implies B) \n (A \implies D)$
+
+$M_0 = \{A\}   (1 \implies A)$
+
+$M_1 = M_0 \cup \{D\}   (A \implies D)$
+
+$M_2 = M_1 \cup \{F,B\}   (D \implies F),  (A \n D \implies B)$
+
+$M_3 = M_2 \cup \{K,E\}   (F \implies K),  (B \n D \implies E)$
+
+Damit ist das minimale Modell $M = \{A,B,D,E,F,K\}$
+
+\subsection*{(b)}
+Es gilt, dass $\phi \models \psi$ genau dann wenn, $\phi \cup \{ \neg \psi \}$ unerfüllbar ist.
+
+Sei $\psi := \neg X \v \neg U$ und $\phi := \{X \n Y \implies Z, V \implies Y, X \n W \implies V, Z \implies 0, X \n U \implies W \}$
+
+$\neg \psi \equiv \neg (\neg X \v \neg U) \equiv X \n U$
+
+Nun wird der Markierungsalgorithmus für die Klauselmenge $\phi \cup \{ \neg \psi \}$ durchgeführt
+
+$\{1 \implies X, 1 \implies U, X \n Y \implies Z, V \implies Y, X \n W \implies V, Z \implies 0, X \n U \implies W \}$
+
+$M_0 = \{X, U\} \quad (1 \implies X), (1 \implies U)$
+
+$M_1 = M_0 \cup \{W\} \quad (X \n U \implies W)$
+
+$M_2 = M_1 \cup \{V\} \quad (X \n W \implies V)$
+
+$M_3 = M_2 \cup \{Y\} \quad (V \implies Y)$
+
+$M_4 = M_3 \cup \{Z\} \quad (X \n Y \implies Z)$
+
+Da $\mathfrak{I}(Z) = 1$ Teil des Modells ist, wird der Ausdruck $Z \implies 0$ dann nicht wahr, wesshalb kein minimales Modell für $\phi \cup \{ \neg \psi \}$ existiert, was wiederum bedeutet, dass $\phi \cup \{ \neg \psi \}$ unerfüllbar ist.
+
+Damit gilt $\phi \models \psi$
+\section*{Aufgabe 3}
+\subsection*{(a)}
+
+\subsubsection*{(i)}
+Modelle von Horn-Formeln sind unter dem Schnitt abgeschlossen. Als Beweis nehmen wir an, dass die Modelle von Horn-Formeln unter Schnitt nicht abgeschlossen sind. Damit existiert eine Horn-Formel $\varphi$, welche zwei Modelle $\mathfrak{I}_1$ und $\mathfrak{I}_2$ hat, deren Schnitt $\mathfrak{S} = \mathfrak{I}_1\cap \mathfrak{I}_2(X)$ kein Modell von $\varphi$ ist. Da $\varphi$ eine Horn-Formel ist, muss der Schnitt $\mathfrak{S}$ eine Variablenbelegung haben, welche mindestens eine Implikation $X_1\wedge ... \wedge X_n\implies X$ derart setzt, dass die linke Seite wahr und die rechte Seite falsch ist. Dies steht aber im Widerspruch zur Annahme, dass $\mathfrak{I}_1$ und $\mathfrak{I}_2$ Modelle von $\varphi$ sind:\newline
+Um zu erreichen, dass im Schnitt eine Implikation mit einer wahren linken Seite und einer falschen rechten Seite auftritt, müssen alle Variablen, welche auf der linken Seite vorkommen, ebenfalls wahr sein. Für den Schnitt $\mathfrak{S}$ bedeutet dies, dass in beiden Modellen alle Variablen der linken Seite ebenfalls wahr sein müssen. Damit die rechte Seite falsch ist, muss eines der Modelle die Variable der rechten Seite $X$ auf den Wert $0$ abgebildet haben. Somit müsste eines der beiden Modelle für die Implikation ebenfalls alle Variablen der linken Seite wahr gesetzt haben und die Variable auf der rechten Seite falsch gesetzt haben. Dies würde allerdings dazu führen, dass die Implikation für das Modell ebenfalls nicht erfüllt ist, was im Widerspruch zu der Tatsache steht, dass es sich um ein Modell von $\varphi$ handelt.\newline
+Somit müssen Modelle von Horn-Formeln unter Schnitt abgeschlossen sein.\newline\newline
+
+\subsubsection*{(ii)}
+Gegenbeispiel:
+Sei $\varphi := (a \n b) \implies 0$, wobei $\varphi$ eine Horn-Formel ist.
+
+Dann sind $\mathfrak{I}_1(a) = 0, \mathfrak{I}_1(b) = 1$ und $\mathfrak{I}_2(a) = 1, \mathfrak{I}_2(b) = 0$ beides Modelle von $\varphi$.
+
+Die Vereinigung $\mathfrak{I}_1 \cup \mathfrak{I}_2(a) = max(\mathfrak{I}_1(a), \mathfrak{I}_2(a)) = 1$ und $\mathfrak{I}_1 \cup \mathfrak{I}_2(b) = max(\mathfrak{I}_1(b), \mathfrak{I}_2(b)) = 1$ ist allerdings kein Modell von $\phi$.
+
+Aus diesem Grund gilt, dass Modelle von Horn-Formel unter Vereinigung nicht abgeschlossen sind.
+
+\subsubsection*{(iii)}
+Modelle von Horn-Formeln sind unter dem Komplement nicht abgeschlossen:\newline
+$\varphi$: $X$\newline
+$\mathfrak{I}$: $\mathfrak{I}(X)=1$\newline
+$\mathfrak{I}$ ist ein Modell von $\varphi$. Das Komplement ist allerdings kein Modell, da $X$ auf $0$ abgebildet wird.
+
+\subsection*{(b)}
+Gegenbeispiel:
+$\varphi = x \v y \v \neg z$
+
+$\varphi$ besitzt das kleinstes Modell $\mathfrak{I}(x) = \mathfrak{I}(y) = \mathfrak{I}(z) = 0$, ist aber nicht äquivalent zu einer Horn-Formel, da mit $x$ und $y$ zwei nicht negierte Literale enthalten sind.
+
+\subsection*{(c)}
+\subsubsection*{i)}
+$(C \n D) \implies (R \v Q) \equiv \neg ((C \n D) \n \neg (R \v Q)) \equiv \neg ((C \n D) \n (\neg R \n \neg Q)) \equiv \neg C \v \neg D \v R \v Q$
+
+Es existieren zwei positive Literale, sodass es sich hierbei nicht um eine Horn-Formel handelt.
+
+\subsubsection*{ii)}
+$X \n \neg (\neg Y \implies (\neg Y \n X)) \n ((X \n Y) \implies (Y \v \neg Z)) \equiv X \n \neg (\neg (\neg Y \n \neg (\neg Y \n X))) \n \neg ((X \n Y) \n \neg (Y \v \neg Z))$
+
+$\equiv X \n \neg (\neg (\neg Y \n (Y \v \neg X))) \n ( \neg (X \n Y) \v (Y \v \neg Z)) \equiv X \n (\neg Y \n (Y \v \neg X)) \n ((\neg X \v \neg Y) \v (Y \v \neg Z))$
+
+$\equiv X \n \neg Y \n (Y \v \neg X) \n 1 \equiv X \n \neg Y \n (Y \v \neg X) \equiv 0$
+
+$\Rightarrow 0$ ist eine Horn-Formel
+
+\subsubsection*{iii)}
+$X \leftrightarrow \neg Y \equiv (\neg X \n Y) \v (X \n \neg Y) \equiv (\neg X \v X) \n (\neg X \v \neg Y) \n (Y \v X) \n (Y \v \neg Y)$
+
+$\equiv (\neg X \v \neg Y) \n (Y \v X)$
+
+Dies ist keine Horn-Formel, da in der 2. Klausel 2 positive Literale vorhanden sind.
+
+\subsection*{(d)}
+
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+\subsubsection*{(i)}
+Gegenbeispiel:
+Sei $\Phi = \{ x, y \}$ und $\varphi = x$, dann gilt $\Phi \models \varphi$.
+Für $\Psi = \{ y \} \subseteq \Phi$ gilt aber nicht $\Psi \models \varphi$.
+
+Somit ist die Aussage falsch.
+
+\subsubsection*{(ii)}
+Gegeben sei $\Phi \models \varphi$.
+Wenn $\Psi \subseteq \Phi$, sind somit
+$\forall \upsilon \in \Phi: \upsilon \in \Psi$.
+Da also alle AL Formeln aus $\Phi$ in $\Psi$ enthalten sind, gilt dies auch für die Menge jener Formeln aus $\Phi$, die nötig sind um $\varphi$ zu erfüllen.
+Dadurch gilt auch $\Psi \models \varphi$.
+
+\subsection*{(b)}
+Korrekt. Denn wenn $\varphi \models \psi$ gilt, ist die Menge alle Modelle $I_\varphi$ von $\varphi$ eine Teilmenge der Menge alle Modelle $I_\psi$ von $\psi$.
+$I_\psi$ ist zudem eine Teilmenge der Menge $I_\vartheta$ von $\vartheta$, sodass auch $I_\varphi \leq I_\vartheta$ gilt, und somit $\varphi \models \vartheta$.
+
+\subsection*{(c)}
+Korrekt, da $\varphi \rightarrow \psi$ nur dann ncht erfüllt ist, wenn $\llbracket \varphi \rrbracket^{\mathfrak{I}}=1$ und $\llbracket \psi \rrbracket^{\mathfrak{I}}=0$.\\
+Da aber $\varphi \models \psi$, ist $\llbracket \psi \rrbracket^{\mathfrak{I}}=1$ für jede Interpretation, für die $\llbracket \varphi \rrbracket^{\mathfrak{I}}=1$ ist.
+
+\subsection*{(d)}
+Gegenbeispiel:
+$\Phi = \{ x \n z, y \n z \},\, \varphi = x,\, \Psi = \{ x \n y \},\, \psi = x \n y,\, \Theta = \{ x \}$
+
+Offensichtlich gilt $\Phi \models \varphi$ und $\Psi \models \psi$, also auch $(\Phi \models \varphi) \iff (\Psi \models \psi)$.\\
+Außerdem gilt $\Phi \cup \Theta \models \varphi$, da $\Phi \cup \Theta \equiv \{ x \}$.\\
+Allerdings gilt nicht, dass $\Psi \cup \Theta \models \psi$, da $\Psi \cup \Theta \equiv \{ x \}$ und $\mathfrak{I}(x)=1 \models \Psi \cup \Theta$, aber $\mathfrak{I}(x)=1 \nmodels \psi$.
+
+
+\subsection*{(e)}
+Die Aussage "Aus $\Phi\cup\{\varphi \}\models \psi$ und $\Phi\cup\{\neg\varphi \}\models\psi$ folgt bereits $\Phi\models\psi$" ist korrekt.\newline
+Nehmen wir zunächst an, dass die Aussage falsch sei. Dies würde bedeuten, dass es eine Menge an aussagenlogischen Formeln $\Phi$ gibt, für die  $\Phi\cup\{\varphi \}\models \psi$ und $\Phi\cup\{\neg \varphi \}\models\psi$ gilt, $\Phi\models\psi$ aber nicht. Somit hat $\Phi$ mindestens ein Modell, welches kein Modell von $\psi$ ist. Damit $\Phi\cup\{\varphi \}\models \psi$ gilt, müsste dementsprechend der Schnitt der Mengen aller Modelle von $\Phi$ und $\varphi$ nur die Modelle von $\Phi$ und $\psi$ enthalten, welche $\psi$ erfüllen. Dies würde allerdings dazu führen, dass die Modelle von $\Phi$, welche $\psi$ nicht erfüllen auch $\varphi$ nicht erfüllen und somit $\neg \varphi$ erfüllen. Das würde allerdings dazu führen, dass $\Phi \cup\{\neg\varphi\}$ diese Modelle enthält, wodurch $\Phi\cup\{\neg\varphi \}\models\psi$ nicht mehr gelten würde. Analog kann auch für $\Phi\cup\{\neg\varphi \}\models\psi$ gezeigt werden, dass ein Widerspruch auftritt. Somit muss die Aussage stimmen.
+
+\subsection*{(f)}
+Korrekt:
+Da $\Phi_0 \supseteq \Phi_1 \supseteq \cdots$ gilt, ist $\bigcap_{n \in \mathbb{N}} \Phi_n = \Phi_{max}$,  wobei $\Phi_{max}$ die Menge ist, für die gilt $|\Phi_{max}| = min(\Phi_0, \Phi_1, \cdots)$.
+(Dank des Lemmas von Zorn wissen wr, dass dieses Element existiert.)\\
+Für $\Phi_{max}$ gilt ebenfalls $\Phi_{max} \models \varphi$.
+Dadurch gilt auch $\bigcap_{n \in \mathbb{N}} \Phi_n \models \varphi$.
+
+\section*{Aufgabe 5}
+\subsection*{(a)}
+Gegeben:
+Für zwei Graphen $G=(V_G,E_G)$ und $H=(V_H,E_H)$ beudeutet "$G$ ist homomorph zu $H$", wenn es eine Funktion $\rho: V_G \rightarrow V_H$ gibt, so dass $(v,w) \in G \implies (\rho(v),\rho(w)) \in E_H$.
+
+Zu zeigen:
+$G \text{ homomorph zu } H \iff \forall \text{ endlicher Teilgraph } G' \text{ von } G: G' \text{ homomorph zu } H$.
+
+\underline{Richtung "$\Rightarrow$":}\\
+$$G \text{ homomorph zu } H \Rightarrow \exists \rho: V_G \rightarrow V_H \text{, so dass } \forall (v,w) \in E_G: (\rho(v),\rho(w)) \in V_H$$
+$$G' \text{ endlicher Teilgraph von } G \Rightarrow V_{G'} \subseteq V_{G}, E_{G'} \subseteq E_G$$
+$$\Rightarrow \forall v' \in V_{G'}: \rho(v') \in V_H \qquad\text{und}\qquad \forall (v',w') \in E_{G'}: (\rho(v'), \rho(w')) \in E_H$$
+$$\Rightarrow G' \text{ ist homomorph zu } H$$
+
+
+\underline{Richtung "$\Leftarrow$":}\\
+$$\text{Es gilt } \forall\, G' \text{ endlicher Teilgraph von } G: \, \exists \rho': V_{G'} \rightarrow V_H \text{ mit } \forall (v',w') \in E_{G'}: (\rho'(v'), \rho'(w')) \in E_H$$
+Annahme: $G$ ist \textbf{nicht} homomorph zu $H$.
+\begin{align*}
+    & \Rightarrow \exists (v^*,w^*) \in G, \text{ so dass } \nexists \rho: V_G \rightarrow V_H \text{ mit } (\rho(v^*),\rho(w^*)) \in E_H \\
+    & \Rightarrow \exists \text{ endlicher Teilgraph } G^*=(V_{G^*}, E_{G^*}) \text{ von } G, \text{ mit } V_{G^*} = \{u^*,v^*\}, E_{G^*} = \{(u^*,v^*)\} \\
+    & \Rightarrow G^* \text{ ist nicht homomorph zu } H \\
+    & \Rightarrow \text{nicht jeder endliche Teilgraph von } G \text{ ist homomorph zu } H \quad_\text{\LARGE\Lightning}
+\end{align*}
+
+Da aus der Annahme ein Widerspruch folgt, muss die Annahme falsch sein und das Gegenteil gelten.
+Also ist $G$ homomorph zu $H$, wenn alle endlichen Teilgraphen von $G$ homomorph zu $H$ sind.
+
+\subsection*{(b)}
+
+
+\end{document}

@@ -1,0 +1,181 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 09 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+		381852, & Richard Zameitat \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{a)}
+
+Sei $Rxy := x \in y$, dann ist die Aussage "\textit{es gibt keine Menge, die genau die Mengen enthält, die sich nicht selbst enthalten}" formalisierbar als
+\[ \neg \exists x \forall y (Ryx \rightarrow \neg Ryy \n \neg Ryy \rightarrow Ryx) \]
+
+Dies lässt sich im Sequenzenkalkül der Prädukatenlogik folgendermaßen ableiten:
+
+\renewcommand{\arraystretch}{.5}
+\[\begin{array}{r c c c c}
+    & & & Rdd \Rightarrow Rdd & Rdc \Rightarrow Rdd \\
+    (\neg \Rightarrow) & & & \text{---------------------} & \text{-----------------------} \\
+    & Rdd \Rightarrow Rdc & & \neg Rdd, Rdd \Rightarrow \O & \neg Rdd, Rdc \Rightarrow \O \\
+    (\Rightarrow \neg) & \text{---------------------} & & \text{---------------------} & \\
+    & \O \Rightarrow Rdc, \neg Rdd & Rdc \Rightarrow Rdc & \neg Rdd \Rightarrow \neg Rdd & \\
+    (\rightarrow \Rightarrow) & \multicolumn{2}{c}{ \text{---------------------------------------}} & \multicolumn{2}{c}{ \text{---------------------------------------------}} \\
+    & \multicolumn{2}{c}{ \neg Rdd \rightarrow Rdc \Rightarrow Rdc } & \multicolumn{2}{c}{ \neg Rdd \rightarrow Rdc, \neg Rdd \Rightarrow \O }\\
+    (\rightarrow \Rightarrow) & \multicolumn{4}{c}{ \text{------------------------------------------------------------------------------}} \\
+    & \multicolumn{4}{c}{ Rdc \rightarrow \neg Rdd, \neg Rdd \rightarrow Rdc \Rightarrow \O } \\
+    (\n \Rightarrow) & \multicolumn{4}{c}{ \text{------------------------------------------------}} \\
+    & \multicolumn{4}{c}{ (Rdc \rightarrow \neg Rdd \n \neg Rdd \rightarrow Rdc) \Rightarrow \O } \\
+    (\forall \Rightarrow) & \multicolumn{4}{c}{ \text{------------------------------------------------------}} \\
+    & \multicolumn{4}{c}{ \forall y (Ryc \rightarrow \neg Ryy \n \neg Ryy \rightarrow Ryc) \Rightarrow \O } \\
+    (\exists \Rightarrow) & \multicolumn{4}{c}{ \text{--------------------------------------------------------}} \\
+    & \multicolumn{4}{c}{ \exists x \forall y (Ryx \rightarrow \neg Ryy \n \neg Ryy \rightarrow Ryx) \Rightarrow \O } \\
+    (\Rightarrow \neg) & \multicolumn{4}{c}{ \text{-----------------------------------------------------------}} \\
+    & \multicolumn{4}{c}{ \O \Rightarrow \neg \exists x \forall y (Ryx \rightarrow \neg Ryy \n \neg Ryy \rightarrow Ryx) } \\
+\end{array}\]
+
+Die Atome $Rdd \Rightarrow Rdc, Rdc \Rightarrow Rdc, Rdd \Rightarrow Rdd, Rdc \Rightarrow Rdd$ sind korekt, da, durch Anwendung der Regeln zu $\forall$ und $\exists$, $c$ und $d$ frei gewählt werden dürfen und somit $c=d=z$ gewählt werden kann und somit alle Atome $Rzz \Rightarrow Rzz$ sind und offensichtlich korrekt.
+
+Also ist die Gültigkeit der obigen Aussage gezeigt.
+
+\subsection*{b)}
+
+
+\subsection*{c)}
+\subsubsection*{i)}
+Die Schlussregel $\frac{\Gamma, \forall x \varphi(x) \Rightarrow \Delta}{\Gamma, \exists x \varphi(x) \Rightarrow \Delta}$ ist nicht korrekt.
+Sei $R$ eine einstellige Relation:\\
+Gegenbeispiel: $\Gamma = \{x = x \}\; \varphi(X) = Rx \; \Delta = \{\forall x Rx \}$\\
+Wie dem Gegenbeispiel entnommen werden kann, gilt die obere Sequenz, die untere allerdings nicht, da jedes Modell von $\forall x Rx$ auch ein Modell von $\exists x Rx$ ist, allerdings nicht jedes Modell von $\forall x Rx$ ein Modell von $\exists x Rx$ ist.
+
+\subsubsection*{ii)}
+
+
+\section*{Aufgabe 2}
+
+\subsection*{a)}
+$\mathcal{G}_1$: $\sim := \{(v,w) : |N(v)| = |N(w)|\}$ ist keine Kongruenzrelation auf der entsprechenden Struktur, da $v_1\sim v_6$, $v_4\sim v_5$ und $Ev_6v_4$ gilt, $Ev_1v_5$ allerdings nicht (wobei $v_i$ den Knoten mit der Nummer $i$ bezeichnet). Somit ist die zweite Bedingung einer Kongruenzrelation verletzt, dass für alle Relationssymbole $R\in \tau$ für entsprechende $a_1\sim b_1,...,a_k\sim b_k$ gilt:\newline
+$(a_1,...,a_k) \in R$ genau dann, wenn $(b_1,...,b_k) \in R$.\newline\newline
+$\mathcal{G}_2$: In dieser Struktur ist $\sim$ eine Kongruenzrelation.\newline
+Zunächst müssen wir dafür zeigen, dass $\sim$ eine Äquivalenzrelation ist:\newline
+1. $a \sim a$: Die Reflexivität ist erfüllt, da $|N(a)| = |N(a)|$ ist.\newline
+2. $a \sim b \iff b \sim a$: Die Symmetrie ist ebenfalls erfüllt, da $=$ auf den natürlichen Zahlen symmetrisch ist und $|N(a)|$ stets eine natürliche Zahl ist.\newline
+3. Wenn $a \sim b$ und $b \sim c$, dann auch $a \sim c$: Die Transitivität ist erfüllt, da $=$ auf den natürlichen Zahlen transitiv ist.\newline
+Somit ist $\sim$ eine Äquivalenzrelation.\newline
+Damit $\sim$ auch eine Kongruenzrelation ist, müssen die entsprechenden Bedingungen für alle Elemente von $\tau$ gelten. In diesem Fall ist die zweistellige Kantenrelation $Exy$ das einzige Element von $\tau$. Für dieses gilt für entsprechende $a_1\sim b_1,...,a_k\sim b_k$:\newline
+$(a_1,...,a_k) \in R$ genau dann, wenn $(b_1,...,b_k) \in R$.\newline
+Dabei existieren in der Struktur zwei Kongruenzklassen:\newline
+$[v_1]$ mit $|N(v_1)| = 2$ und $[v_2]$ mit $|N(v_2)| = 3$. Für jedes Element $e_1$ aus $[v_1]$ und jedes Element $e_2$ aus $[v_2]$ gilt paarweise $Ev_1v_2$ (und da wir keine gerichteten Graphen betrachten auch $Ev_2v_1$). Des Weiteren gilt für alle Elemente $w_1$ und $w_2$ aus $[v_1]$ paarweise, dass $Ev_1x$ genau dann gilt, wenn $Ev_2x$ gilt. Analog gilt dies auch für $[v_2]$.\newline
+Somit sind für alle Elemente der Signatur die Bedingungen einer Kongruenzrelation erfüllt, weswegen $\sim$ eine Kongruenzrelation ist.\newline
+
+\subsection*{b)}
+$\sim := \{(v,w) : |v|_0 = |w|_0\}$ ist eine Kongruenzrelation auf der Menge $\{0,1\}^+$.\newline
+Zunächst muss gezeigt werden, dass $\sim$ eine Äquivalenzrelation ist:\newline
+1. $a \sim a$: Die Reflexivität gilt, da diese auch mit $=$ auf den natürlichen Zahlen gilt und $|a|_0 \in \mathbb{N}$ mit $a \in \{0,1\}^+$ gilt.\newline
+2. $a \sim b \iff b \sim a$: Die Symmetrie gilt ebenfalls, da $=$ auch symmetrisch auf den natürlichen Zahlen ist.\newline
+3. Wenn $a \sim b$ und $b \sim c$ gilt, gilt auch $a \sim c$: Die Transitivität gilt auch, da $=$ transitiv auf den natürlichen Zahlen ist.\newline
+Somit ist $\sim$ eine Äquivalenzrelation auf $\{0,1\}^+$.\newline
+Für $\sim$ gelten auf $\mathfrak{A}:=(\{0,1\}^+, \cdot)$ zudem die Kongruenzbedingungen:\newline
+Dabei enthält $\tau$ nur die Konkatenation als Element, so dass nur gezeigt werden muss, dass $v\cdot w \sim x \cdot y$ gilt, wenn $v\sim x$ und $w\sim y$ gilt.\newline
+Für $\sim$ können die Kongruenzklassen durch $|a|_0$, also die Anzahl an 0en, die ein Wort $a\in \{0,1\}^+$ enthält, bestimmt werden. Dass nun für $v \cdot w \sim x \cdot y$ gilt, wenn $v \sim x$ und $w \sim y$ gilt, ist ersichtlich, da das aus der Konkatenation ergebene Wort sowohl die 0en des ersten Wortes $v$ enthält, wie auch die 0en des zweiten Wortes $w$, sodass $|v \cdot w|_0 = |v|_0 + |w|_0$ gilt. Da die Kongruenzklassen durch $|a|_0$ festgelegt sind, gilt somit für alle Elemente $e_1$, $e_2$, wenn $e_q \sim v$ und $e_2 \sim w$, dann gilt $e_1 \cdot v \sim e_2 \cdot w$.\newline
+Somit gilt die Kongruenzbedingung für alle Elemente der Signatur, so dass $\sim$ eine Kongruenzrelation ist.\newline
+Schließlich muss noch gezeigt werden, dass $\mathfrak{A}/_\sim$ isomorph zu $(\mathbb{N}, +)$ ist. Dazu verwenden wir den Isomorphismus $\pi: \mathbb{N} \rightarrow \mathbb{N}$ mit $[a]\in \mathfrak{A}$ und $\pi([a]) = |a|_0$. Damit gilt für jedes $a,b\in \mathfrak{A}$: $\pi(a \cdot b) = \pi(a) + \pi(b) = |a|_0 + |b|_0$.\newline
+Somit gilt die Isomorphiebedingung für jedes Element von $\tau$, so dass $\pi$ ein gültiger Isomorphismus ist.
+
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+$\Sigma = \{f^3a, f^7a, f^9a, f^{13}a, f^3 a = f^3 a, f^7 a = f^7 a, f^9 a = f^9 a, f^{13} a = f^{13} a, f^3 a = f^7 a, f^9 a = f^{13} a\}$
+\subsection*{b)}
+
+
+\end{document}

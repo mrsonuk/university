@@ -1,0 +1,280 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 08 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+		381852, & Richard Zameitat \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{a)}
+\subsubsection*{i)} % TODO kann man das so machen?
+\[ \text{Sei die Relation der Multiplikation } \cdot(x,y,z) :=  \begin{cases} 1 & \quad x \times y = z \\ 0 & \quad \text{sonst} \end{cases} \]
+
+\[
+    \varphi := \forall x \exists y (\cdot yyx)
+    \qquad \text{mit } qr(\varphi) = 2 = m
+\]
+
+Gewinnstrategie für den Herausforderer: \\
+\vspace*{-.5em}
+
+$\quad\begin{aligned}
+    \text H: &\quad \text{wählt } a_1 \in \mathbb{Q}_{\geq 0} \text{ mit } \sqrt{a_1} \notin \mathbb{Q} \quad \text{(z.B. } b_1 = 2 \text{)} \\
+    \text D: &\quad \text{wählt } b_1 \text{ aus } \mathbb{R}_{\geq 0} \\
+    \text H: &\quad \text{wählt } b_2 = \sqrt{b_1} \in \mathbb{R}_{\geq 0} \\
+    \text D: &\quad \text{kann beliebiges } a_2 \in \mathbb{Q}_{\geq 0} \text{ wählen}
+\end{aligned} \\
+\null\qquad \Rightarrow \cdot b_2 b_2 b_1, \text{ aber nicht } \cdot a_2 a_2 a_1 \; \Rightarrow \text{ H hat gewonnen}$
+
+\subsubsection*{ii)}
+%%\[
+%%    \varphi := \exists w \exists x \exists y \neg\exists z
+%%        ( w \neq x \n w \neq y \n w \neq z \n x \neq y \n x \neq z \n y \neq z \n % paarweise verschieden
+%%        Exw \n Eyw \n Ewz) % es gibt einen Knoten mit (min) 2 eingehenden, aber keiner ausgehenden Kante
+%%    \qquad \text{mit } qr(\varphi) = 4 = m
+%%\]
+%\[
+%    \varphi := \exists x (\exists y ( y \neq x \n Exy \n \neg Eyx % x mit Verbindung von x nach y (nicht andersrum)
+%            \n \forall z ((z \neq x \n z \neq y) \rightarrow (\neg Eyz \n \neg Ezy % y hat keine weiteren Kanten (diese + die letzte regel spezifizieren [y=1]<-[x=4])
+%            \n \neg Exy ))) % und x keine weiteren ausgehenden (wir verbieten [x=4]->[z != 1], was aber nur auf B zutrifft)
+%    \qquad \text{mit } qr(\varphi) = 3 = m
+%\]
+%
+%
+%Strategie für den Herausforderer: \\
+%\vspace*{-.5em}
+%
+%$\quad\begin{aligned} % TODO das muss doch irgendwie gehen! ... ganz bestimmt. ... vielleicht?
+%    \text H: &\quad \text{wählt } a_1 = 1 \in V_\frak{A} \\
+%    \text D: &\quad \text{wählt beliebiges } b_1 \in V_\frak{B} \quad (\text{entweder } b_1=1 \text{ oder } b_1 \neq 1 ) \\
+%    \text H: &\quad \text{wählt } b_2 = 4 \in V_\frak{A} \\
+%    \text D: &\quad \text{falls } b_1 = 1 \text{ muss } b_2 = 4 \text{ gewählt werden\footnote{Da $4$ der einzige Knoten mit einer Verbindung zu $1$ ist}};
+%        \text{ sonst bzw. falls } b_1 \neq 1 \text{ wählt }
+%\end{aligned} \\
+%\null\qquad \Rightarrow >>\text{ INSERT REASONING HERE }<< \; \Rightarrow \text{ H hat gewonnen}$
+
+\begin{align*}
+    \varphi_{25}(x) &:= \forall y (\neg Eyx ) \\
+    \varphi_3(x) &:= \forall y ( \varphi_{25}(y) \rightarrow Eyx) \\
+    \varphi &:= \exists y ( \varphi_3(y) \n Eyx)
+\end{align*}
+
+Gewinnstrategie für den Herausforderer: \\
+\vspace*{-.5em}
+
+$\quad\begin{aligned}
+    \text H: &\quad \text{wähle Knoten } b_1 = 3  \in \frak{B} \\
+    \text D: &\quad \text{wählt beliebiges } a_1 \in \frak{A} \qquad \text{(optimale Strategie: } a_1=4; \text{ siehe unten)} \\
+    \text H: &\quad \text{wähle } \begin{cases}
+        b_2 = 5 \in \frak{B} &\; a_1 \in \{5,2\} \qquad \text{(da so $E b_2 b_1$ gilt, aber $E a_2 a_1$ unmöglich wird)} \\
+        b_2 = 4 \in \frak{B} &\; a_1 \in \{1,3\} \qquad \text{(da so $E b_1 b_2$ gilt, aber $E a_1 a_2$ unmöglich wird)} \\
+        a_2 = 3 \in \frak{A} &\; a_1 = 4 \qquad \text{(sonst würde D verlieren; es gilt $E a_1 a_2$)}
+    \end{cases} \\
+    \text D: &\quad \text{wählt } b_2 = 4 \in \frak{B} \qquad \text{(die einzige Möglichkeit } Eb_1b_2 \text{ sicherzustellen)}\\
+    \text H: &\quad \text{wähle } b_3 = 2  \in \frak{B} \qquad \text{(es gilt $E b_3 b_1$)} \\
+    \text D: &\quad \text{wähle } a_3  \in \frak{A} \\
+\end{aligned} \\
+\null\qquad \Rightarrow E a_3 a_1 \text{ nur möglich, wenn auch } E a_3 a_2, \text{ wiederspricht aber } \neg E a_3 a_2 \\
+\null\qquad \Rightarrow \text{somit wird } \varphi \text{ von } b_1,b_2,b_3 \in \frak{B} \text{ efüllt, von } a_1,a_2,a_3 \in \frak{A} \text{ aber nicht} \, \Rightarrow \text{H hat gewonnen}$
+
+
+\subsection*{b)}
+\begin{align*}
+    \varphi_{Lin} &:= \forall x \forall y ( (x < y \v x = y \v x > y) \n  (x < y \rightarrow \neg (y < x)) \n \forall z ( (x < y \n y < z) \rightarrow x < z) ) \\
+    \varphi_{Dicht} &:= \forall x \forall y (x < y \rightarrow \exists z ( x < z \n z < y) ) \\
+    \varphi_{Offen} &:= \forall x \exists y \exists z (y < x \n x < z) \\
+    \varphi &:= \varphi_{Lin} \n \varphi_{Dicht} \n \varphi_{Offen}
+\end{align*}
+
+Theorie ist vollständig $\iff$ Alle Modelle der Theorie sind elementar äquivalent
+
+% TODO beweisen :(
+
+
+\section*{Aufgabe 2}
+Die Klasse aller Wohlordnungen ist nicht FO$\{<\}$-axiomatisierbar. Um dies zu zeigen betrachten wir die Ordnung $\mathfrak{C} := (A, <) + (B, \prec) := (A x \{0\} \cup B x \{1\}, \triangleleft)$ mit $(x,y) \triangleleft (v, w)$ genau dann, wenn $y < w$ oder $y = w$ und $x < v$, beziehungsweise $x \prec v$. Dabei handelt es sich bei $(A, <)$ um eine Wohlordnung und bei $(B, \prec)$ um eine Ordnung, welche keine Wohlordnung ist. Bei der dadurch definierten Ordnung handelt es sich wiederum ebenfalls um keine Wohlordnung, da es in $(B, \prec)$ eine unendlich absteigende Kette gibt.\newline
+Mithilfe von $\mathfrak{C}$ können wir nun jedoch zeigen, dass die Duplikatorin für jedes $m \in \mathbb{N}$ eine Gewinnstrategie für das Spiel $G_m(\mathfrak{C}, \mathfrak{D})$ hat, wobei $\mathfrak{D}$ eine Wohlordnung ist. Dazu beschreiben wir die Gewinnstrategie der Duplikatorin für ein beliebiges $m \in \mathbb{N}$: \newline
+Damit der Herausforderer schnellstmöglich gewinnt, muss dieser mithilfe von $(B, \prec)$ zeigen, dass $\mathfrak{C}$ keine Wohlordnung ist. Sollte er jedoch ein Element aus $\mathfrak{D}$ wählen, kann die Duplikatorin dies verhindern, indem sie für das gewählte Element ein entsprechendes Element aus der $(A, <)$-Ordnung wählt, bei der es sich um eine Wohlordnung handelt. Wenn der Herausforderer nun ein Element aus $(B, \prec)$ wählt, wählt die Duplikatorin das Element $d_{2^{m+1}}$ aus der Kette $d_0<d_1<...$ aus $\mathfrak{D}$. Dadurch kann die Duplikatorin verhindern, dass der Herausforderer in $m-1$ Zügen sie dazu zwingt, dass entweder das Element $d_0$ als Repräsentant gewählt wird, sodass die Duplikatorin im darauffolgenden Zug verliert, indem der Herausforderer ein kleineres Element aus $\mathfrak{C}$ wählt als der Repräsentant von $d_0$, oder das zwei Elemente $d_n$ und $d_{n+1}$ von der Duplikatorin gewählt werden, welche direkte Nachfolger sind, sodass der Herausforderer einen Repräsentanten aus $\mathfrak{C}$ wählt, welches zwischen den Repräsentanten der beiden Elemente liegt. Durch das Element $d_{2^{m+1}}$ existiert nämlich genügend Platz für $m$ Züge, dass die Duplikatorin einen entsprechenden Repräsentanten für die vom Herausforderer Elemente wählen kann.\newline 
+Schließlich kann der Herausforderer noch $a_0$ aus $(A, <)$ wählen, woraufhin die Duplikatorin gezwungen ist, $d_0$ zu wählen, da der Herausforderer ansonsten ein kleineres Element aus $\mathfrak{D}$ wählen kann, als das zuvor von der Duplikatorin gewählte Element. Da $a_0$ das "kleinste" Element von $\mathfrak{C}$ ist, muss auch das "kleinste Element von $\mathfrak{D}$ gewählt werden. Wie oben erwähnt, existiert mit dem gewählten Element $d_{2^{m+1}}$ dennoch genügend Platz, damit die Duplikatorin $G_m(\mathfrak{C}, \mathfrak{D})$ gewinnt.\newline
+Somit wurde gezeigt, dass die Duplikatorin für jedes $m \in \mathbb{N}$ eine Gewinnstrategie besitzt und somit in FO$\{<\}$ $\mathfrak{C}$ nicht von $\mathfrak{D}$ unterschieden werden kann. Daher ist die Klasse aller Wohlordnungen auch nicht axiomatisierbar in FO$\{<\}$.
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+Wenn $\frak{B} \equiv_m \frak{A}_m$ für alle $m \in \mathbb{N}$ gilt, und $\tau$ endlich und relational so gewinnt laut Satz von Ehrenfeucht und Fra\"issé die Duplikatorin $G_m(\frak{B}, \frak{A}_m)$.
+Sei nun $\phi \in \Phi$ und $n = qr(\phi)$. Aus $\frak{A}_n \in \mathcal{K}$ folgt ausserdem, dass $\frak{A}_n \models \phi$, weil $\mathcal{K} = Mod(\Phi)$.
+Falls $\frak{A}_n \models \phi$ und $\frak{B} \models neg \phi$, dann h\"atte nach Satz 3.22 der Herausforderer eine Gewinnstrategie f\"ur $G_n(\frak{A}_n, \frak{B})$.
+Da der erste Teil bereits bewiesen wurde und die Duplikatorin eine Gewinnstrategie hat, stimmt der zweite Teil der Bedingung nicht ($\frak{B} \models neg \phi$), wesshalb gelten muss, dass $\frak{B} \in \mathcal{K}$.
+
+\subsection*{b)}
+Angenommen $\mathcal{K}$ sei $FO(\{E\})$ axiomatisierbar, $\frak{B} := \{\text{Graph mit unendlich vielen erreichbaren Knoten}\}$ und $\frak{B} \notin \mathcal{K}$, aufgrund der Eigenschaften von $\mathcal{K}$.
+Sei weiterhin $\frak{A}_m$ f\"ur jedes $m \in \mathbb{N}$ ein Graph mit endlich vielen ($m$) von jedem Knoten erreichbaren anderen Knoten.
+Dann gilt, dass $\frak{A}_m \equiv_m \frak{B}$, da maximal $m$ Z\"uge durchgef\"uhrt werden k\"onnen und da die Graphen immer mindestens noch einen Nachfolger haben kann aus beiden Graphen ein Element ausgew\"ahlt werden.
+Somit die Duplikatorin eine Gewinnstrategie, wesshalb mit der Aussage aus $(a)$ folgt, dass $\mathcal{K}$ nicht $FO(\{E\})$ axiomatisierbar.
+
+\section*{Aufgabe 4}
+Vorbemerkung zur Verständlichkeit: $a,b,c,d,e$ bezeichnen im Folgenden, falls anwendbar, die Knoten "oben link, oben rechts, unten links, unten recht, mittig", so wie sie auf dem Übungsblatt dargestellt sind.\\
+
+\textbf{Idee:} "Verlängerung" der "langen" Kanten von $G$ nd $H$.\\
+Wenn man jeweils eine der beiden doppelten Kanten aus $G$ bzw. die beiden, sich überschneidenden Kanten zwischen genüberliegenden Knoten in $H$ "verlängert", indem man in jede Kante jeweils n neue Knoten "einfügt"
+(die Knoten untereinander zu einer Kette verbindet, deren Enden jeweils mit den Enden der originalen Katen verbindet und die originale Kante entfernt),
+ist es möglich zwei Familien von Graphen zu erzeugen, so dass es in einem Ehrenfeuch-Fra\"iss\'e-Spiel bekannter Länge eine Gewinnstrategie für die Dupliziererin gibt, wenn basierend auf der Rundenzahl 2 passende Graphen gewählt werden.\\
+
+\textbf{Konstruktion der Familien:}
+
+Seien $G_0 = G, H_0 = H$ die Basis für die erzeugung der Graphenfamilien und an die Beispielgraphen aus der Aufgabenstellung angelehnt..
+Mit $V^G_0 = \{a^G,b^G,c^G,d^G,e^G\}$, $V^H_0 = \{a^H,b^H,c^H,d^H,e^H\}$ und
+$$E^G_0 = \{ (a^G,b^G), (a^G, c^G), (a^G,e^G), (b^G,d^G), (b^G,e^G), (c^G,d^G), (c^G,e^G), (d^G,e^G) \} \text{ so wie}$$
+$$E^H_0 = \{ (a^H,b^H), (a^H, c^H), (a^H,e^H), (b^H,d^H), (b^H,e^H), (c^H,d^H), (c^H,e^H), (d^H,e^H) \} \text{.}$$
+
+Sei $(G_n)_{n \in \mathbb{N}}$ die Familie von planaren Graphen, die auf $G$ bzw. $G_0$ basieren.
+Dann ist $G_n = (V^G_n, E^G_n)$, mit
+$$V^G_n = V^H_0 \cup \{f^G_i, g^G_i | i \in \{1, \cdots, n\} \}$$
+$$E^G_n = E^G_0 \cup \{ (f^G_i, f^G_{i+1}), (g^G_i, g^G_{i+1}) | i \in \{1, \cdots, n-1\} \} \cup \{ (a^G, f^G_1), (c^G, f^G_n), (b^G, g^G_1), (d^G, g^G_n) \}$$
+
+Sei $(H_n)_{n \in \mathbb{N}}$ die Familie von nicht-planaren Graphen, die auf $H$ bzw. $H_0$ basieren.
+Dann ist $H_n = (V^H_n, E^H_n)$, mit
+$$V^H_n = V^H_0 \cup \{f^H_i, g^H_i | i \in \{1, \cdots, n\} \}$$
+$$E^H_n = E^H_0 \cup \{ (f^H_i, f^H_{i+1}), (g^H_i, g^H_{i+1}) | i \in \{1, \cdots, n-1\} \} \cup \{ (a^H, f^H_1), (c^H, f^H_n), (d^H, g^H_1), cd^H, g^H_n) \}$$
+\\
+
+\textbf{Beweis:}
+
+Angenommen es existiert ein Satz $\varphi \in FO(\{E\})$.
+Sei $m = rq(\varphi) \in \mathbb{N};$ da $\varphi$ endlich ist, ist auch $qr(\varphi)$ endlich. \\
+Dann hat im Spiel $\mathcal{G}_m(G_{2^m}, H_{2^m})$ die Dupliziererin folgende Gewinnstrategie:\\
+
+In Runde $r \in {1, \cdots, n}$:\\
+$\null\quad\begin{aligned}
+    \text Herausforderer: &\quad \text{wählt } u_r \in V^G_n \text{ oder } v_r \in V^H_n \\
+    \text Dupliziererin: &\quad \text{wähle den nächsten Knoten ($v_r$ bzw. $u_r$) nach folgenden Regeln:}
+\end{aligned}$
+\begin{align*}
+    a^G &\mapsto a^H & b^G &\mapsto b^H & c^G &\mapsto c^H & d^G &\mapsto d^H & e^G &\mapsto e^H \\ 
+    a^H &\mapsto a^G & b^H &\mapsto b^G & c^H &\mapsto c^G & d^H &\mapsto d^G & e^H &\mapsto e^G
+\end{align*}
+Wenn Knoten auf den "langen Kanten" (also $f^G_i$, $f^H_i$, $g^G_i$, oder $g^H_i$) gewählt werden, muss ja nach aktuell bereits ausgewählten Knoten entschieden werden.
+Generell werden entweder
+\begin{align*}
+    \text{[1]} && f_i^G &\mapsto f_i^H  &  f^H_i &\mapsto f^G_i  &  g_i^G &\mapsto g_i^H  &  g^H_i &\mapsto g^G_i && \text{ oder} \\
+    \text{[2]} && f_i^G &\mapsto g_i^H  &  f^H_i &\mapsto g^G_i  &  g_i^G &\mapsto f_i^H  &  g^H_i &\mapsto f^G_i && \text{ angewandt.} \\
+\end{align*}
+Ob [1] oder [2] ausgewählt werden, hängt davon ab, ob es bereits angrenzende, ausgewählte Knoten gibt, welche dies sind und wo sie liegen:
+Suche den nächsten (Bezogen auf den Abstand der Kette der Kanten) gewählten Knoten (die Suche wird auf beiden Ketten gleichzeitig für die selben Indizes durchgeführt) und übernehme den Koten mit dem selben Index wie der des vom Herausforderers ausgewählten Knotens auf der Kette des angrenzenden Knotens.
+Sollten zwei gewählte Knoten gleich weit entfert sein und auf unterschiedlichen Ketten liegen, wähle die Kette, welche der des vom Herausforderer gewählten Knotens entspricht.
+Die 4 "Eckpunkte" $\{a,b,c,d\}$ sollen hierbei immer als gewählt und zu der Verbundenen Kette zugehörig gelten.
+% TODO maybe be more specific
+Durch die Länge $2^m$ für jede der Knoten-Ketten und die Selektion des Kette des nächsten gewählten Knotens, ist es dem Herausforderer nicht möglich, die Fehlende Äquivalenz, welche durch das "Kreuzen" der Ketten hervorgerufen wird, durch einen Wiederspruch zu zeigen.
+So würde das verbinden zweier Knoten, welche unterschiedlichen Ketten zugeordnet sind mindestens $m+1$ Runden in Anspruch nehmen, da sich durch die Auswahl der Kette des nächsten Knotens der Abstand minimale Abstand von 2 Ketten-Knoten mit unterschiedlichen Ketten-Zuordnungen pro Runde maximal halbieren kann.
+% TODO maybe eplain more ... or do more math-stuff
+\\
+
+Somit ist es dem Herausforderer nicht möglich, eine Nicht-Äquivalenz nachzuweisen, woduch die Dupliziererin gewinnt.
+Dies steht im Wiederspruch zu der Annahme, da in dem Fall $\varphi$ von den ausgewählten Knotenmengen beider Graphen entweder erfüllt oder nicht erfüllt wird.
+Somit existiert kein $\varphi$, so dass gilt $G \models \varphi \iff G$ ist ein planarer (ungerichteter) Graph.
+
+
+% TODO hier weitermachen
+
+
+\section*{Aufgabe 5}
+\subsection*{a)}
+
+\subsection*{b)}
+
+\subsection*{c)}
+
+\subsection*{d)}
+
+\subsection*{e)}
+
+
+\end{document}

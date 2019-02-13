@@ -1,0 +1,242 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 03 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+Sei $u\subseteq \mathbb{N}$. Dann definieren wir die Aussagenvariable $X_u$ derart, dass $X_u\mapsto 1$ bedeutet, dass die Menge $u$ als klein kategorisiert wird, und $X_u\mapsto 0$, dass $u$ als groß kategorisiert wird.\newline
+Wir können mithilfe von $X_u$ eine Formelmenge $\Phi$ erstellen, welche die Kategorisierung der Teilmengen der natürlichen Zahlen beschreibt. Dazu erstellen wir für die Bedingungen Teilmengen von $\Phi$:\newline
+a) Diese Bedingung wird durch die Definition von $X_u$ erfüllt, da $X_u$ nicht sowohl auf $1$ als auch auf $0$ abgebildet werden kann.\newline
+b) $\Phi_b = \{X_u: u\subseteq \mathbb{N}$ und u ist endlich$\}$\newline
+c) $\Phi_c = \{X_u\wedge X_v\to X_{u\cup v}: u,v\subseteq \mathbb{N} \}$\newline
+d) $\Phi_d = \{X_u\wedge X_v: u\subseteq \mathbb{N}, v\subseteq u \}$\newline
+e) $\Phi_e = \{X_u \leftrightarrow \neg X_v: u\subseteq \mathbb{N}, v=\mathbb{N}\setminus u \}$\newline
+Somit ergibt sich $\Phi=\Phi_b \cup \Phi_c \cup \Phi_d \cup \Phi_e$.\newline
+Wenn $\Phi$ erfüllbar ist, können die Teilmengen der natürlichen Zahlen mit den entsprechenden Bedingungen a) bis e) in "groß" und "klein" kategorisiert werden.\newline
+Dank des Kompaktheitssatzes wissen wir, dass $\Phi$ erfüllbar ist, wenn alle endlichen Teilmengen von $\Phi$ erfüllbar sind.\newline
+Um dies zu zeigen, betrachten wir eine beliebige Teilmenge $\Phi_0$. Da $\Phi_0$ eine endliche Teilmenge ist, bedeutet dies, dass $\Phi_0$ nur endlich viele Formeln und somit nur endlich viele verschiedene Aussagenvariablen $X_u$ enthält. Somit betrachten wir auch nur endlich viele Mengen $u$ und auch nur endlich viele $u$, die eine endliche Teilmenge sind.\newline
+Somit können wir für jedes $\Phi_0$ ein $n\in \mathbb{N}$ finden, welches nicht in den endlichen Teilmengen von $\Phi_0$ liegt. Mithilfe von $n$ können wir schließlich eine Interpretation $\mathfrak{I}_n$ bilden, die $X\mapsto 1$ genau dann, wenn $n$ nicht in $u$ enthalten ist, und $X\mapsto 0$ genau dann, wenn $n$ in $u$ enthalten ist.\newline
+Da $n$ in keiner endlichen Teilmenge $u$ von $\Phi_0$ enthalten ist, ist jede endliche Teilmenge somit klein (b)). Da $n$ auch in keiner kleinen Menge enthalten ist, ist $n$ auch nicht in deren Vereinigung (c)) oder einer Teilmenge von $u$ (d)) enthalten. Schließlich muss noch das Komplement einer Menge, die $n$ nicht enthält, $n$ enthalten (e)). Somit ist $\mathfrak{I}_n$ ein Modell von $\Phi_0$.\newline
+Da sich ein derartiges $n$ für jedes $\Phi_0$ finden lässt, können wir auch eine entsprechende Interpretation $\mathfrak{I}_n$ für jedes $\Phi_0$ bilden. Somit ist jedes $\Phi_0$ erfüllbar und mit dem Kompaktheitssatz ist somit auch $\Phi$ erfüllbar.\newline
+Dadurch haben wir gezeigt, dass sich jede Teilmenge der natürlichen Zahlen als "groß" oder "klein" kategorisieren lässt.
+
+
+\section*{Aufgabe 2}
+\subsection*{(a)}
+siehe beschriebene Blätter
+
+\subsection*{(b)}
+siehe beschriebene Blätter
+
+\section*{Aufgabe 3}
+\subsection*{(a)}
+Das Doppelresolutionskalkül ist vollständig, da es sich bei dem Resolutionskalkül um einen Spezialfall des Doppelresolutionskalküls, in welchem immer $Y=Z$ gilt. Somit lassen sich alle Aussagen durch das Doppelresolutionskalkül ableiten, die sich auch durch das Resolutionskalkül ableiten lassen. Da das Resolutionskalkül vollständig ist, ist damit auch das Doppelresolutionskalkül vollständig.
+
+\subsection*{(b)}
+Das Doppelresolutionskalkül ist nicht korrekt:\newline
+Gegenbeispiel: $C_1=\{X,Y\},C_2=\{\neg X,\neg Y\}$\newline
+Laut Doppelresolutionskalkül existiert dann eine Resolvente $C=\{ \square \}$, welche Unerfüllbarkeit andeutet. Allerdings besitzt die repräsentierte Formel $\phi: X\lor Y\land \neg X \lor \neg Y$ ein Modell $\mathfrak{I}: X\mapsto 1, Y\mapsto 0$ und ist somit erfüllbar. Da sich mit dem Doppelresolutionskalkül eine falsche Aussage ableiten lässt, ist es nicht korrekt.
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+Behauptung: Jede Klauselmenge, in der jede Klausel mindestens ein positives Literal enthält, lässt sich durch die Interpretation $\mathfrak{I}$ erfüllen, die alle Literale auf 1 abbildet.\newline
+Beweis: Nehmen wir an, dass die Behauptung falsch sei. Somit existiert eine Klauselmenge $K$, in der jede Klausel mindestens ein positives Literal enthält, die durch $\mathfrak{I}$ aber nicht erfüllt ist. Damit existiert eine Klausel, $C\in K$, die durch $\mathfrak{I}$ nicht erfüllt wird. Da $\mathfrak{I}$ alle Literale von $C$ auf 1 abbildet, kann es somit kein positives Literal in $C$ geben. Dies ist ein Widerspruch zur Voraussetzung, dass jede Klausel mindestens ein positives Literal enthält. Somit ist die Behauptung wahr.
+
+\subsection*{(b)}
+Zu zeigen: Das nagative Resolutionsklakül ist korrekt, also $\square \in NegRes^*(K) \implies \text{ Klauselmenge } K \text{ ist unerfüllbar}$.
+
+%% Ansatz 1
+%Das negative Resolutionskalkül erlaubt die Resolventenbildung für zwei Klauseln $C_1$ und $C_2$ nur, wenn mindestens eine der beiden Klauseln nur negative Literale enthält.
+%Ohne Beschränkung der Allgemeinheit wird angenommen, dass die Klausel, welche nur negative Literale enthält $C_1$ ist, also $C_1 = X_1 \vee \cdots \vee X_n$, mit allen $X_i ist negatives Literal$.
+%
+%---
+%
+%% Ansatz 2
+%Wir nehmen an, dass das negative Resolutionskalkül nicht korrekt ist.
+%Dann muss gelten, dass es mindestens Formelmenge $K$ gibt, für die $\square \in NegRes^*(K)$, aber $K$ ist erfüllbar.
+%
+%---
+
+% Ansatz 3 ... jetzt aber!
+Wir wissen, dass das Resolutionskalkül korrekt ist.
+Das negative Resolutionskalkül enhtält lediglich eine zusätzliche Anforderung zur Resolventenbildung.
+Daher kann im negativen Resolutionskalkül eine Resolvente für zwei Klauseln nur gebildet werden, wenn dies auch im Resolutionskalkül möglich ist.
+Somit lassen sich mit dem negativen Resolutionskalkül auch nur Klauselmengen auf $\square$ reduzieren, für die das auch im Resolutionskalkül möglich ist, also gilt eine Klauselmenge im negativen Resolutionskalkül nur dann als unerfüllbar, wenn dies auch im Resolutionskalkül gilt.
+Da das Resolutionskalkül korrekt ist, ist also auch das negative Resolutionskalkül korrekt.
+
+\subsection*{(c)}
+% Skript Seite 27 bzw. 31 und folgende
+Sei $K$ unerfüllbar.
+Es gibt also eine endliche Teilmenge $K_0 \subseteq K$ die unerfüllbar ist (Kompaktheitssatz).
+Dann existiert ein $n \in \mathbb{N}$, so dass in $K_0$ nicht mehr als die Variablen $X_0, \cdots, X_{n-1}$ enthalten sind.
+Es wird gezeigt: $\square \in NegRes^*(K_0) \subseteq NegRes^*(K)$.
+\\
+
+Induktionsanfang:
+Sei $n=0$. Es existieren genau zwei Klauselmengen, $\emptyset$ und $\{\square\}$ ohne Variablen.
+$\emptyset$ ist erfüllbar, also muss gelten $K_0 = \{\square\}$.
+
+Induktionsschritt:
+Annahme: Alle Variablen von $K_0$ sind in $\{X_0, \cdots, X_n\}$ enthalten.
+Seien $K_0^+$ und $K_0^-$ Klauselmengen:
+\begin{align*}
+    K_0^+ :=& \{ C \setminus \{ \neg X_n \}: X_n \notin C, C \in K_0 \},\\
+    K_0^- :=& \{ C \setminus \{ X_n \}: \neg X_n \notin C, C \in K_0 \}
+\end{align*}
+
+$K_0^+$ und $K_0^-$ sind unerfüllbar, da es sonst $\mathfrak{I}:\{X_0,\cdots,X_{n-1}\} \rightarrow \{0,1\}$ mit $\llbracket K_0^+ \rrbracket^\mathfrak{I} = 1$ gäbe.
+Sei $\mathfrak{I}(X_n) = 1$. Dann gilt $\llbracket K_0 \rrbracket^\mathfrak{I} = 1$:\\
+Für eine beliebige Klausel $C \in K_0$ gilt, dass diese nun $X_n$ enthalten kann und wegen $\mathfrak{I}(X_n)$ gilt $\llbracket C \rrbracket^\mathfrak{I} = 1$.
+Ist $X_n$ nicht in $C$ enthalten, dann ist $C \setminus \{ \neg X_n \} \in K_0^+$ und durch $\llbracket K_0^+ \rrbracket^\mathfrak{I}$ gilt zwangsweise $\llbracket C \setminus \{ \neg X_n \} \rrbracket^\mathfrak{I}$.
+Hieraus folgt $\llbracket C \rrbracket^\mathfrak{I} = 1$ und somit auch $\llbracket K_0 \rrbracket^\mathfrak{I} = 1$. $\;_\text{\LARGE\Lightning}$\\
+Dies ist wiedersprüchlich zur Unerfüllbarkeit von $K_0$.
+Analog zu obigem, durch setzen von $\mathfrak{I}(X_n) = 0$, ist auch die Unerfüllbarkeit von $K_0^-$ zeigbar.
+
+Somit folgt durch die Induktion, dass $\square \in NegRes^*(K_0^+)$ und $\square \in NegRes^*(K_0^-)$.
+Es existieren also Klauseln $C_1,\cdots,C_m$ so dass $C_m = \square$ und, für $i=1,\cdots,m$, gilt $C_i$ ist Resolvente von $C_j,C_k$ für $j,k < i$ oder $C_i \in K_0^+$.\\
+Sollten Klauseln $C_i$ durch Streichen von $\neg X_n$ entstanden sein, so entsteht durch Weidereinfügen von $\neg X_n$ eine Klauselfolge $C_1',\cdots,C_m'$, die $\{ \neg X_n \} \in NegRes^*(K_0)$ zeigt.
+Sollte das nicht der Fall gewesen sein, dann sind $C_1,\cdots,C_m$ in $NegRes^*(K_0)$ und damit $\square \in NegRes^*(K_0)$.\\
+Für $K_0^-$ kann wieder analog verfahren werden und es folgt aus $\square \in NegRes^*(K_0^-)$, dass entweder $\{X_n\} \in NegRes^*(K_0)$ oder $\square \in NegRes^*(K_0)$.
+
+Es folgt, dass $\square \in NegRes^*(K_0)$.
+
+
+\section*{Aufgabe 5}
+\subsection*{a)}
+$\Gamma, \phi, \phi \rightarrow \psi \Rightarrow \Delta, \psi$\\
+------------------------------------------------------------------------$(\rightarrow \Rightarrow)$\\
+$(+)\quad\Gamma, \psi \Rightarrow \Delta, \psi, \phi \quad \Gamma, \phi, \psi \Rightarrow \Delta, \psi, \phi(+)$
+
+Diese Ausdrücke sind Axiome
+
+\subsection*{b)}
+$\Gamma, \phi \v \psi \Rightarrow \Delta, \phi \n \psi$\\
+------------------------------------------------------------------------$(\v \Rightarrow)$\\
+$\quad\Gamma, \phi \Rightarrow \Delta, \phi \n \psi \quad \Gamma, \psi \Rightarrow \Delta, \phi \n \psi$\\
+------------------------------------------------------------------------$(\Rightarrow \n)$\\
+$\quad\Gamma, \phi \Rightarrow \Delta, \phi \quad \Gamma, \phi \Rightarrow \Delta, \psi \quad \Gamma, \psi \Rightarrow \Delta, \phi \quad \Gamma, \phi \Rightarrow \Delta, \psi$
+
+Alle Blätter sind Axiome
+
+
+\subsection*{c)}
+$\Gamma, \phi, \neg \phi \Rightarrow \emptyset$\\
+------------------------------------$(\neg \Rightarrow)$\\
+$\Gamma, \phi \Rightarrow \phi$\\
+$\quad (+)$
+
+\subsection*{d)}
+$\Gamma \Rightarrow \Delta, \phi, \neg \phi$\\
+------------------------------------$(\Rightarrow \neg)$\\
+$\quad\Gamma, \phi \Rightarrow \Delta, \phi$
+
+Dies ist ein Axiom
+
+\subsection*{e)}
+$\Gamma, \phi \n \psi \Rightarrow \Delta, \phi, \psi$\\
+------------------------------------$(\n \Rightarrow)$\\
+$\Gamma, \phi, \psi \Rightarrow \Delta, \phi, \psi$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

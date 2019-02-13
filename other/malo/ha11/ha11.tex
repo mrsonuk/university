@@ -1,0 +1,180 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 11 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+		381852, & Richard Zameitat \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\textbf{Unendliche Sterne sind nicht endlich axiomatisierbar}\\
+\begin{align*}
+    \varphi_{\geq n} &:= \exists x_1 \cdots \exists x_n (\bigwedge_{i \neq j} x_i \neq x_j) \\
+    \Phi_\infty &:= \{ \varphi_{\geq n} | n \in \mathbb{N} \} \\
+    \varphi_\star &:= \exists x \forall y \forall z (Eyz \leftrightarrow (x = y \n z \neq x)) \\
+    \Phi_{\infty\star} &:= \Phi_\infty \cup \{ \varphi_\star \}
+\end{align*}
+
+Angenommen, $\psi_{\infty\star}$ axiomatisiert die Klasse der unendlichen Sterne.
+Dann gilt $\Phi_{\infty\star} \models \psi_{\infty\star}$.
+Nach dem Kompaktheitssatz existiert ein endliches $\Phi_0 \subseteq \Phi_{\infty\star}$ mit $\Phi_0 \models \psi_{\infty\star}$ .
+
+Sei $n$ maximal mit $\phi_{\geq n} \in \Phi_0$.
+Betrache den Stern mit $n$ Knoten, dann ist dieser ein Modell von $\Phi_0$, aber nicht von $\psi_{\infty\star}$.
+$\!_{\text{\Large\Lightning}}\;$
+Dies steht im Widerspruch zur Annahme, also ist die Klasse der unendlichen Sterne nicht enldich axiomatisierbar.
+
+Also können wir unendliche Sterne hier für die Entscheidbarkeit des Erfüllbarkeitsproblems ignorieren.
+
+\null
+\textbf{Erfüllung zeigen ist endlich}\\
+Die Elemente der Klasse der endlichen Sterne sind, über die Anzahl der Knoten, aufzählbar, da es für jede Anzahl $n$ von Knoten nur einen passenden Stern gibt.
+
+Da (siehe oben) die Klasse der unendlichen Sterne nicht endlich axiomatisierbar ist, kann eine einzelne FO-Formel nicht ausschließlich einen unendlichen Stern als Modell haben, sondern muss, wenn sie von einem unendlichen Stern erfüllt wird, auch noch von einem endlichen erfüllt werden.
+Somit ist die Überprüfung, ob ein Stern Modell einer FO-Formel ist in endlicher Zeit durchführbar, indem die endlichen Sterne aufgezählt werden und im Fall, dass ein Stern die Formel erfüllt der Algorithmus beendet und "JA" als Ergebnis zurückgegeben wird.
+Hierfür kann das Model-Checking-Verfahren verwendet werden.
+
+\null
+\textbf{Nicht-Erfüllung zu zeigen ist endlich}\\
+Wir wollen überprüfen, ob für die gegebene Formel $\varphi$, $\neg\varphi$ eine Tautologie ist, also $\varphi \Rightarrow \O$ gültig ist.
+Dies ist, nach dem Vollständigkeitssatz, beweisbar.
+
+Hierfür generieren wir nacheinander alle, sich aus $\tau(\varphi)$ ergebenen, Sequenzfolgen und überprüfen, ob eine davon ein Beweis von $\varphi \Rightarrow \O$ ist.
+Sollte dies der Fall sein, können wir abbrechen und "NEIN" zurückgeben.
+
+Die Menge, der aus $\tau$ erzeugbaren Sequenzen ist endlich.
+Somit sind Ableitung und Überprüfung auf Unerfüllbarkeit in endlicher Zeit durchführbar.
+
+\null
+\textbf{Parallele Anwendung beider Algotihmen}\\
+Wendet man nun die Algorithmen zum Nachweis von Erfüllung und Nicht-Erfüllung parallel auf die gegebene Formel an, entscheidet jeder der Teilalgorithmen im Fall, dass die jeweilige Annahme zutrifft, in endlicher Zeit, dass dem so ist. Nach dem einer der Teil-Algorithmen beendet wurde kann auch der Gesamtalgorithmus beenden und die Rückgabe übernhemen.
+
+Somit die das Erfüllbarkeitkeitsproblem von $FO(\tau) \; modulo \; \mathcal{K}$ in endlicher Zeit entscheidbar.
+
+
+\section*{Aufgabe 2}
+
+\subsection*{a)}
+$\varphi_1: v$ hat einen Nachfolger, für dessen Nachfolger gilt, wenn sie einen P Nachfolger haben, dann haben sie auch einen Q-Nachfolger.
+
+$\llbracket \varphi_1 \rrbracket^{\mathcal{K}} = \{2, 3, 5, 6\}\quad$ Die Knoten 3,5 und 6 erfüllen die Formel, da diese Knoten einen Nachfolger haben, der ein Terminalknoten ist.
+Knoten 2 hat Knoten 5 als Nachfolger.
+Deren Nachfolger haben entweder P-und Q-Nachfolger (3) oder gar keinen Nachfolger (7).\\
+
+$\llbracket \neg\varphi_1 \rrbracket^{\mathcal{K}} = \{1,4,7\}\quad$ 1: Für 1 kommt nur Knoten 2 als Nachfolger infrage, der wiederum Knoten 5 als Nachfolger hat, welcher zwar ein P- aber keinen Q-Nachfolger hat.\\
+4,7: 4 und 7 haben gar keine Nachfolger
+
+\subsection*{b)}
+$\varphi_2: $ ``Jeder P-Nachfolger jedes Nachfolgers von $v$ hat einen P-Nachfolger.''\\
+$\llbracket \varphi_2 \rrbracket^{\mathcal{K}} = \{1, 4, 6, 7\}\quad$: 1: Der Knoten 1 erfüllt $\varphi_2$, da alle P-Nachfolger von 2 auch einen P-Nachfolger haben.\\
+4,7: 4 und 7 erfüllen die Formel, weil es Terminalknoten sind.\\
+6: 6 erfüllt die Formel, weil dessen einziger Nachfolger, 7, ein Terminalknoten ist.\\
+
+
+$\neg\llbracket \varphi_2 \rrbracket^{\mathcal{K}} = \{2, 3, 5\}\quad$: 2 und 5 erfüllen die Formel nicht, da 3 4 als P-Nachfolger hat, 4 aber ein Terminalknoten ist.\\
+3: 3 erfüllt die Formel nicht, da 6 7 als P-Nachfolger hat, 7 aber ein Terminalknoten ist.
+
+\section*{Aufgabe 3}
+
+\subsection*{a)}
+\subsubsection*{(i)}
+$\varphi := \square \square (P \rightarrow \lozenge P)$
+
+\subsubsection*{(ii)}
+$\varphi := \lozenge Q \rightarrow \lozenge P$
+
+\subsubsection*{(iii)}
+$\varphi := \square (\lozenge 1 \rightarrow \square ( \lozenge 1 \n \square \square 0))$
+
+\subsection*{b)}
+$\varphi := \lozenge (P \n Q) \n \lozenge(P \n \neg Q) \n \lozenge(\neg P \n Q) \n \lozenge(\neg P \n \neg Q)$
+
+\end{document}

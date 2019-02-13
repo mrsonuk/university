@@ -1,0 +1,221 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 09 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+		381852, & Richard Zameitat \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{a)}
+Wenn es eine unendlich axiomatisierbare Strukturklasse $\mathcal{K}$ und ein unendliches Axiomensystem $\Phi$ für $\mathcal{K}$ gibt, dann existiert auch eine endliche Teilmenge $\Phi_0 \subseteq \Phi$, so dass $\mathcal{K} = Mod(\Phi_0)$.
+Da $\mathcal{K}$ endlich axiomatisierbar ist, existiert ein Satz $\Psi$ mit welchem $\mathcal{K}$ axiomatisiert werden kann.
+Da sowohl $\Phi$, als auch $\Psi \mathcal{K}$ axiomatisieren gilt $\Phi \models \Psi$.
+Laut Kompaktheitssatz existiert somit ein endliches $\Phi_0 \subseteq \Phi$, für welches $\Phi_0 \models \Psi$ gilt, so dass dieses $\mathcal{K}$ axiomatisiert.
+
+\subsection*{b)}
+Wenn $\mathcal{K}$ und $\overline{\mathcal{K}}$ axiomatisierbar sind, bedeutet dies, dass es ein $\Phi$ und $\Psi$ gibt, wobei $\Phi \; \mathcal{K}$ axiomatisiert und $\Psi \; \overline{\mathcal{K}}$ axiomatisiert.
+Da $\overline{\mathcal{K}}$ das Komplement von $\mathcal{K}$ ist, muss somit $\Phi \cup \Psi$ unerfüllbar sein.
+Laut Kompaktheitssatz existiert somit eine endliche Teilmenge $\Phi_0 \subseteq \Phi \cup \Psi$, welche unerfüllbar ist.
+Des Weiteren ist allerdings jede endliche Teilmenge von $\Phi$ und jede endliche Teilmenge von $\Psi$ laut Kompaktheitssatz erfüllbar.
+Da $\Phi_0 \subseteq \Phi \cup \Psi$ ist, besteht $\Phi_0$ zudem aus Formeln für welche entweder $\mathcal{K}$ oder $\overline{\mathcal{K}}$ ein Modell ist.
+Somit müssen sich die Formeln von $\Phi_0$ in jene aufteilen lassen, für welche $\mathcal{K}$ ein Modell ist, jene für welche $\overline{\mathcal{K}}$, und Tautologien, also für welche sowohl $\mathcal{K}$ als auch $\overline{\mathcal{K}}$ Modelle sind.\\
+Damit $\Phi_0$ tatsächlich unerfüllbar ist, müssen die Modelle der resultierenden neuen Formelmengen $\Phi'_0$ und $\Psi_0$ disjunkt sein, da ihr Schnitt ja ansonsten die Modelle von $\Phi_0$ sein müssten.
+Somit axiomatisiert $\Phi'_0 \;\mathcal{K}$ und $\Psi_0 \; \overline{\mathcal{K}}$, sodass sowohl $\mathcal{K}$ als auch $\overline{\mathcal{K}}$ endlich axiomatisierbar sein müssen.
+
+
+\section*{Aufgabe 2}
+
+\subsection*{a)}
+$\varphi_{\geq n} := \exists x_1 \ldots \exists x_n (\bigwedge_{i \neq j} x_i \neq x_j)$\\
+$\varphi_{reflexiv} := \forall x \; x \sim x$\\
+$\varphi_{symmetrisch} := \forall x \forall y (x \sim y \rightarrow y \sim x)$\\
+$\varphi_{transitiv} := \forall x \forall y \forall z ((x \sim y \n y \sim z) \rightarrow x \sim z)$\\
+
+$\varphi_n := \exists x_1 \exists x_2 \ldots \exists x_n (\bigwedge_{i \neq j} (x_i \neq x_j) \n \bigwedge_{b = 2}^{n} x_1 \sim x_k \quad \; \forall y ((\bigvee_{l = 1}^{n} y \neq x_l) \rightarrow \neg (x_1 \sim y)))$\\
+
+$\Phi := \{ \varphi_{reflexiv}, \varphi_{symmetrisch}, \varphi_{transitiv}\} \cup \{ \varphi_n | n \in \mathbb{N}\}$\\
+$\Phi$ axiomatisiert die Klasse aller $\{\sim\}$-Strukturen, so dass es für jedes $n \in \mathbb{N}_{>0}$ ein $a \in A$ mit $|\{b \in A : b \sim^{\frak{A}} a\}| = n$ gibt.
+Angenommen $\Psi_b$ axiomatisiert ebenfalls die Klasse, dann gilt $\Phi \models \Psi_b$.
+Nach dem Kompaktheitssatz existiert dann ein endliches $\Phi_0 \subseteq \Phi$ mit $\Phi_0 \models \Psi_b$.
+Sei $n$ maximal mit $\varphi_n \in \Phi_0$.
+Betrachte eine Struktur $\frak{A}$, welche die Äquivalenzrelation $\sim^{\frak{A}}$ hat, so dass es für jedes $m \leq n+1$ ein $a \in A$ mit $|\{b \in A : b \sim^{\frak{A}} a \}| = m$ gibt.
+Dann gilt $\frak{A} \nmodels \Phi$, aber $\frak{A} \models \Phi \quad \lightning$. Somit ist $\mathcal{K}$ nur unendlich axiomatisierbar.
+
+\subsection*{b)}
+Da $\mathcal{K}$ aus 2a) nur unendlich axiomatisierbar ist und die beschriebene Strukturklasse $\overline{\mathcal{K}}$ das Komplement von $\mathcal{K}$ ist, kann laut der in 1b) bewiesenen Aussage $\overline{\mathcal{K}}$ nicht axiomatisierbar sein, da $\mathcal{K}$ ansonsten endlich axiomatisierbar ist.
+
+
+\section*{Aufgabe 3}
+
+\subsection*{a)}
+\subsubsection*{(i)}
+Nicht axiomatisierbar.
+
+Angenommen, $\Phi$ axiomatisiert $(\mathbb{N},+,\cdot)$.
+Dann hat $\Phi$ mit $(\mathbb{N},+,\cdot)$ ein unendliches Modell.
+Nach dem Satz von Löwenheim-Skolem gibt es dann auch ein Modell, welches größer oder gleich $|Pot(\mathbb{N})|$ ist.
+Da $|Pot(\mathbb{N})| > \mathbb{N}$ gibt es keine Bijektion zwischen den beiden Modellen.
+Also gibt es auch keinen Isomorphismus.
+
+\subsubsection*{(ii)}
+% Keine Ahnung ... evtl. axiomatisierbar. (Sind unendliche Pfade jetzt erlaubt?)
+% TODO ... evtl. Fallunterscheidung zur Interpretation der Aufgabenstellung?
+
+%\begin{align*}
+%    \varphi_{root}(w) &:= \forall x (\neg Exw) \\ % wurzel = hat kein parent
+%    \varphi_{tree} &:= \exists w ( \varphi_{root}(w) % gibt wurzel
+%        \n \forall x ( x \neq w  \rightarrow ( \exists y ( Eyx % andere Knoten haben 1 Parent
+%        \n \neg \exists z ( z \neq y \n Ezy ) % und zwar genau eins
+%        )))) \\
+%\end{align*}
+Nicht axiomatisierbar.
+
+Angenommen, $\Phi$ axiomatisiert die Klasse. \\
+Betrachte $\Phi' = \Phi \cup \{ \exists x_1 \cdots \exists x_n (\bigwedge_{i < j} (Ex_ix_j) \n \bigwedge_{k=1}^{n} (x_k=c_k)) | n \in \mathbb{N}\}$, wobei $c_k$ Konstantensymbole sind.
+Dann ist $\Phi'$ unerfüllbar, da die hinzugefügte Menge eine unendlichen Pfad erfordert. \\
+Seo $\Phi'_0 \subset \Phi'$ endlich und $n$ maximal mit $\exists x_1 \cdots \exists x_n (\bigwedge_{i < j} (Ex_ix_j) \n \bigwedge_{k=1}^{n} (x_k=c_k)) \in \Phi'_0$.
+Betrachte die Strukturi $G$, die für jedes $m \in \mathbb{N}$ einen Teilbaum hat, der aus einem Pfad der Länge $m$ besteht.
+Interpretiere jede Knoten des Pfades der Länge $n$ in $G$ durch ein Konstantensymbol $c_k$, wobei $1 \leq k \leq n$.
+Damit gilt $G \models \Phi'_0$, also von jeder endlichen Teilmenge von $\Phi'$.
+Nach dem Kompaktheitssatz ist $G$ dann auch Modell von $\Phi'$ selbst. $\null_\text{\Large\Lightning}$
+
+Somit kann die Annahme nicht zutreffen und die Klasse ist nicht axiomatisierbar.
+
+\subsubsection*{(iii)}
+Axiomatisierbar.
+
+%\[ \varphi_{lin} = \forall x \forall y ( x \neq y \rightarrow x < y \n y < x ) \]
+%\[ \varphi_{dicht} = \forall x \forall y ( x < y \exists z ( z < y \n x < z )) \]
+%\begin{align*}
+%    \Phi &= \{ \varphi_{lin}, \varphi_{dicht} \} \cup
+%        &\quad \{
+%            \exists x_1 \exists x_2 \cdots \exists x_n ( \bigwedge )
+%        \}
+%\end{align*}
+
+Eine Ordnung, die sowohl dicht, als auch endlich ist, kann nur exakt ein Element enthalten, da es bei zwei oder mehr Elementen, bedingt durch die Eigenschaft "dicht", immer ein Element zwischen den beiden gibt, und damit (induktiv) unendlich viele.
+
+Somit ist diese Klasse axiomatisierbar durch $\exists x \forall y ( x = y )$.
+
+\subsubsection*{(iv)}
+Nicht axiomatisierbar.
+% TODO ... evtl. siehe TUT 1f
+
+%\begin{align*}
+%    \Phi =& \{ \forall x \forall z ( x \neq z \n \exists a_1 \cdots \exists a_n ( \\
+%        & \bigwedge_{i=1}^{n} (a_i \neq x \n a_i \neq z) \;\n
+%            \bigwedge_{i=1}^{n-1} \bigwedge_{j=i+1}^{n}(a_i \neq a_j) \;\n \\
+%        & Exa_1 \n Ea_nz \n
+%            \bigwedge_{i=1}^{n-1}(E a_i a_{i+1}) \;\n \\
+%        & \bigwedge_{i=2}^{n-1}(\neg \exists u (Eua_i \n (u = a_{i+1} \v u = a_{i-1}))) \;\n \\
+%        & \neg \exists u ((Eua_1 \n (u = a_2 \v u = x)) \v (Ea_nu \n (u = a_{n-1} \v u = z))) \;\n \\
+%        & (Exz \v \exists b_1 \exists \cdots b_m ( \\
+%            & \qquad \bigwedge_{i=1}^{m} (b_i \neq x \n b_i \neq z) \;\n
+%                \bigwedge_{i=1}^{m-1} \bigwedge_{j=i+1}^{m}(b_i \neq b_j) \;\n
+%                \bigwedge_{i=1}^{n} \bigwedge_{j=1}^{m}(a_i \neq b_j) \;\n \\
+%            & \qquad Ezb_1 \n Eb_mx \n
+%                \bigwedge_{i=1}^{m-1}(E b_i b_{i+1}) \;\n \\
+%            & \qquad \bigwedge_{i=2}^{m-1}(\neg \exists u (Eub_i \n (u = b_{i+1} \v u = b_{i-1}))) \;\n \\
+%            & \qquad \neg \exists u ((Eub_1 \n (u = b_2 \v u = x)) \v (Ea_mu \n (u = a_{m-1} \v u = z))) \\
+%  && )))) : n \in \mathbb{N}, m \in \mathbb{N} \}
+%\end{align*}
+
+% $\Phi$ axiomatisiert die Klasse. % hoffentlich ...
+
+% ... könnte sein, dass es doch nicht funktioniert, da ich vermutlich eine unendliche Formel und nicht nur eine unendliche Formelmeng bräuchte (da "oder" statt "und" Verknüpfung). damn!
+% und unendliche Kreise machen es vermutlich auch wieder kaputt....
+% TODO nochmal drüber nachdenken!
+
+\subsection*{b)}
+% TODO
+
+\end{document}

@@ -1,0 +1,177 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 05 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{i)}
+Damit $\varphi_1$ erfüllt ist, muss $\mathfrak{G}_i$ einen Knoten besitzen, von dem aus eine Kante zu allen umrandeten Knoten geht.\newline
+Somit gilt $\mathfrak{G}_1 \vDash \varphi_1$, da Knoten $1$ in diesem Fall die Bedingung erfüllt.\newline
+$\mathfrak{G}_2 \vDash \varphi_1$ gilt ebenfalls, da Knoten $4$ eine Kante zu sich selbst besitzt und der einzige umrandete Knoten in dem Graphen ist. Somit erfüllt $4$ die Bedingung.\newline
+Zuletzt gilt $\mathfrak{G}_3 \nvDash \varphi_1$, da die umrandeten Knoten von $1$ (bzw. $5$ auch von $2$) erreichbar sind, der umrandete Knoten $4$ allerdings nur von $3$ erreichbar ist.
+
+\subsection*{ii)}
+$\varphi_2$ ist dann erfüllt, wenn für alle Knotenpaare gilt, dass sie entweder der gleiche Knoten sind, einer von ihnen umrandet ist, oder beide Knoten einander durch eine Kante erreichen können. Somit müssen wir also nur auf Knotenpaare achten, wo beide Knoten nicht umrandet sind und überprüfen, ob eine Kante in beide Richtungen zwischen ihnen existiert.\newline
+Somit gilt $\mathfrak{G}_1 \nvDash \varphi_2$, da das Knotenpaar $1$ und $4$ die Bedingung nicht erfüllen.\newline
+Auch $\mathfrak{G}_2 \nvDash \varphi_2$ gilt, unter anderem wegen des Knotenpaares 5 und 3, die die Bedingung verletzen.\newline
+Allerdings gilt $\mathfrak{G}_3 \vDash \varphi_3$, da es hier nur ein Paar von nicht umrandeten Knoten existiert, und diese eine Kante in beide Richtungen haben.
+
+\subsection*{iii)}
+$\varphi_3$ ist erfüllt, wenn es keinen umrandeten Knoten gibt, der mit einer Kante sich selbst erreicht oder drei unterschiedliche existieren, die durch ihre Kanten einen Kreis bilden, man also über den Knoten x den Knoten y, über den Knoten y den Knoten z und über den Knoten z und den Knoten x über jeweils eine einzelne Kante erreichen kann.\newline
+Damit gilt $\mathfrak{G}_1 \nvDash \varphi_3$, da Knoten 3 umrandet ist und auf sich selbst zeigt, allerdings keine drei Knoten einen Kreis bilden.\newline
+$\mathfrak{G}_2 \vDash \varphi_3$, da zwar der Knoten $4$ umrandet ist und auf sich selbst zeigt, Knoten $1$, $2$ und $3$ aber einen Kreis bilden.\newline
+Zuletzt gilt noch $\mathfrak{G}_3 \vDash \varphi_3$, da es hier keinen umrandeten Knoten gibt, der auf sich selbst zeigt.
+
+\section*{Aufgabe 2}
+\subsection*{a) $x = \emptyset$}
+\[
+    \varphi_a := \forall y ( x \cup y = y )
+\]
+Idee: $x$ ist die leere Menge genau dann wenn $x$ für jede andere Menge $y$ vereinigt mit dieser wieder $y$ ergibt und $x$ somit keine Elemente enthalten darf, die nicht in einer anderen Menge enthalten sind, also durch das Potenzmengenkonstrukt keine Elemente enthalten darf.
+
+\subsection*{b) $x \subseteq y$}
+\[
+    \varphi_b := x \cup y = y
+\]
+Idee: $x$ ist eine Teilmenge von (oder gleich) $y$, wenn jedes Element dass in $x$ enthalten ist auch in $y$ enthalten ist, also der Schnitt von $x$ und $y$ wieder gleich $y$ ist.
+
+\subsection*{c) $x \cap y = z$}
+\[
+    \varphi_c := z \subseteq x \n z \subseteq y \n \forall v ((v \subseteq x \n v \subseteq y) \rightarrow v \subseteq z)
+\]
+Idee:
+Zuerstmal muss $z$ "klein genug" sein, also darf nur maximal die Elemente enhalten, die sowohl in $x$ als auch in $y$ enthalten sind.
+Da so allerdings auch $\emptyset$ die Bedingung erfüllen würde muss $z$ auch "groß genug" sein, muss also mindestens alle Elemente enthalten die sowohl in $x$ als auch in $y$ enthalten sind.
+Die "klein genug" Bedingung ist nötig, da "groß genug" alleine auch von $\mathcal{P}(A)$ erfüllt werden würde.
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+$istNull(x) := \forall y\; x+y = y$\\
+$istEins(y) := \exists y \; istNull(y) \n exp(y) = x$
+
+Mit $istNull$ wird überprüft, ob $x$ die $0$ ist, indem überprüft wird, ob dies das neutrale Element der Addition ist.\\
+$istEins$ überprüft ob $x$ eine $1$ ist, indem auf Gleichheit mit dem Wert $exp(0)$ geprüft wird, da $e^0 = 1$ ist.
+
+\subsection*{b)}
+$\exists z \; exp(z) + x = y$\\
+$exp(z)$ ist immer ein positiver Wert, wesshalb, wenn ein $z$ existiert $exp(z) + x = y$ ist und $x < y$ sein muss.
+
+\subsection*{c)}
+$\exists z\; \exists n (istNull(n)) \n z+x = n \n z+n = y$\\
+$x = -y$ wenn der Wert, den man zu $x$ hinzuaddieren muss gleich dem Wert ist, den man zu $0$ addieren muss, um $y$ zu berechnen.
+
+
+\subsection*{d)}
+$\exists a\; \exists b \; \exists c (x = exp(a) \n y = exp(b) \n z = exp(c) \n a + b = c$\\
+Hierbei werden die Potenzregeln genutzt: Wenn man $x = e^a, y =e^b, z=e^c$ setzt, entspricht die Gleichung $x\cdot y = z \Leftrightarrow e^a \cdot e^b = e^{a+b} = e^c$. Dies lässt sich durch die oben stehende Formel überprüfen.
+
+
+\section*{Aufgabe 4}
+Nehmen wir zunächst an, dass aus $\mathfrak{B} \vDash \varphi$ nicht $\mathfrak{A} \vDash \varphi$ folgt. Damit müsste es ein $\varphi_F \in \forall FO(\tau)$ geben, für welches $\mathfrak{B} \vDash \varphi_F$ aber $\mathfrak{A} \vDash \varphi$ gilt. Da $\varphi_F$ universell ist, muss im Universum von $\mathfrak{A}$ mindestens ein Element $e$ existieren, welches dazu führt, dass $\varphi_F$ nicht erfüllt ist. Da $\mathfrak{A} \subseteq \mathfrak{B}$ gilt, existiert dieses Element allerdings auch in $\mathfrak{B}$, sodass $\mathfrak{B} \nvDash \varphi_F$ gilt und somit unsere Annahme falsch ist.\newline\newline
+Die Folgerung funktioniert allerdings nicht, wenn $\phi$ nicht universell ist:\newline
+Gegenbeispiel: $\varphi := \exists x(x=1)$, $\mathfrak{B}=(\{1,2\}, 1)$, $\mathfrak{A}=(\{2\}, 1)$\newline
+Es gilt $\mathfrak{A} \subseteq \mathfrak{B}$, aber $\mathfrak{B} \vDash \varphi$ und $\mathfrak{A} \nvDash \varphi$.
+
+\section*{Aufgabe 5}
+\subsection*{a)}
+$\neg \forall x \exists x (Qx \v fc = y) \n (\neg \exists z (Rzz \to (\exists y (Qy \v Qz))))$ \newline
+$\equiv \exists x \forall x (\neg Qx \n \neg(fc = y)) \n ( \forall z (\neg\neg Rzz \n (\forall y (\neg Qy \n \neg Qz))))$\newline
+$\equiv \exists x \forall x (\neg Qx \n fc \neq y) \n ( \forall z ( Rzz \n (\forall y (\neg Qy \n \neg Qz))))$
+
+\subsection*{b)}
+$\forall x (\exists y (\neg(Rxy \n \forall z Rzz) \v \exists x (Qx \n \exists z Rxz)) \v \exists y Ryy)$\newline
+Durch Umbenennung der Variablen können wir dafür sorgen, dass sich die Quantoren zusammenführen lassen:\newline
+$\equiv \forall x (\exists y (\neg(Rxy \n \forall z Rzz) \v \exists x (Qx \n \exists b Rxb)) \v \exists c Rcc)$\newline
+$\equiv \forall x (\exists y ((\neg Rxy \v \exists z \neg Rzz) \v \exists x (Qx \n \exists b Rxb)) \v \exists c Rcc)$\newline
+$\equiv \forall x \exists y \exists z \exists x \exists b \exists c (((\neg Rxy \v \neg Rzz) \v (Qx \n Rxb)) \v Rcc)$
+
+
+\end{document}

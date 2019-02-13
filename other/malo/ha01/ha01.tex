@@ -1,0 +1,223 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 01 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+
+\section*{Aufgabe 2}
+\subsection*{(a)}
+\begin{itemize}
+	\item $A := $ Antonia kommt zum Essen
+	\item $B := $ Benjamin kommt zum Essen
+	\item $C := $ Claudius kommt zum Essen
+	\item $D := $ Desirée kommt zum Essen
+	\item $E := $ Emil kommt zum Essen
+\end{itemize}
+
+\subsection*{(b)}
+\begin{enumerate}
+	\item $\neg C \rightarrow \neg D$
+	\item $B \v E$
+	\item $C \oplus A$
+	\item $(A \n E) \xor (\neg A \n \neg E)$
+	\item $B \rightarrow E \n D$
+\end{enumerate}
+
+\subsection*{(c)}
+Die Formel besteht aus den in (b) genannten Terme, welche konjunktiv verknüpft wurden.
+Geht man davon aus, dass der 3. Term wahr sein muss heißt dass, dass entweder $\interp(A) = 1$ und $\interp(C) = 0$ oder $\interp(A) = 0$ und $\interp(C) = 1$.
+
+Ist $\interp(C) = 0$ muss durch Term 1 auch $\interp(D) = 0$ sein.
+Aus Term 5 folgt, dass $\interp(B) = 0$ und aus Term 4, dass $\interp(E) = 1$ ist.
+
+Wird jetzt noch der 2. Fall betrachtet, bei welchem $\interp(C) = 1$ und $\interp(A) = 0$, so ist $\interp(E) = 0$ aufgrund von Term 4 und aufgrund von Term 5 $\interp(B) = 0$.
+
+Dies wiederspricht Term 2, da nun $\interp(B) = \interp(E) = 0$ wesshalb der 2. Term nicht wahr werden würde.
+
+Somit kommen Antonia und Emil zum Essen.
+
+
+\section*{Aufgabe 3}
+\subsection*{(a)}
+\subsubsection*{(i)}
+$(X \rightarrow Y ) \n (Z \leftrightarrow \neg X) \n (\neg Y \v \neg Z) \n (X \v Y )$
+
+erfüllbar: Es existiert eine Interpretation $\interp(X) = 1, \interp(Y) = 1, \interp(Z) = 0$, die ein Modell ist und es existiert eine Interpretation $\interp(X) = 1, \interp(Y) = 0, \interp(Z) = 0$, die kein Modell ist.
+
+\subsubsection*{(ii)}
+$((V \leftrightarrow W ) \leftrightarrow (X \leftrightarrow Y )) \rightarrow ((X \rightarrow V ) \n (Y \rightarrow W ))$
+
+erfüllbar: Es existiert eine Interpretation $\interp(V) = 1, \interp(W) = 1, \interp(X) = 0, \interp(Y) = 0$, die ein Modell ist ein es existiert eine Interpretation $\interp(V) = 0, \interp(W) = 0, \interp(X) = 1, \interp(Y) = 1$, die kein Modell ist.
+
+\subsubsection*{(iii)}
+$((X \v Z) \n Y \n (\neg X \v \neg Y ) \n \neg Z) \rightarrow (X \n \neg X)$
+
+Tautologie: Sei $\varphi := ((X \v Z) \n Y \n (\neg X \v \neg Y ) \n \neg Z)$ und $\psi := (X \n \neg X)$ und somit die Formel $\varphi \rightarrow \psi$, dann handelt es sich bei dieser um eine Tautologie, falls $\varphi$ unerfüllbar ist.
+Dies ist der Fall, da damit der Term wahr wird $\interp(Y) = 1, \interp(Z) = 0$ sein muss. Daraus folgt, dass $\interp(X) = 1$, damit $(X \v Z)$ wahr wird.
+Damit wird allerdings der Term $(\neg X \v \neg Y)$ nie wahr, wesshalb $\varphi$ unerfüllbar ist.
+
+\subsection*{(b)}
+\subsubsection*{(i)}
+$X \v (Y \n Z) \Leftrightarrow (\neg X \rightarrow Y)  \n (X \v Z)$
+
+$(X \v Y) \n (X \v Z) \Leftrightarrow (\neg X \rightarrow Y) \n (X \v Z)$
+
+$(X \v Y) \n (X \v Z) \Leftrightarrow (X \v Y) \n (X \v Z)$
+
+
+\subsubsection*{(ii)}
+$X \n Y \Leftrightarrow Y \n (((v \rightarrow Z) \n X) \v (X \n Y))$
+
+$X \n Y \Leftrightarrow Y \n (((\neg v \v Z) \n X) \v (X \n Y))$
+
+$X \n Y \Leftrightarrow Y \n (((\neg v \n X) \v (\neg V \n X)) \v (X \n Y))$
+
+$X \n Y \Leftrightarrow Y \n ((\neg v \n X) \v (\neg V \n X) \v (X \n Y))$
+
+$X \n Y \Leftrightarrow Y \n ((\neg v \n X) \v (X \n Y))$
+
+$X \n Y \Leftrightarrow Y \n (X \n (\neg V \v Y))$
+
+$X \n Y \Leftrightarrow Y \n X \n (\neg V \v Y)$
+
+$X \n Y \Leftrightarrow X \n (Y \n (\neg V \v Y))$
+
+$X \n Y \Leftrightarrow X \n Y$
+
+
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+$\varphi = X_{01} \n X_{02} \n X_{12} \n X_{23}$
+
+\subsection*{(b)}
+\begin{align*}
+    \varphi_n = \{&\exists \{i_1, i_2, ..., i_n\}, i_a \in \{1,...,n\}, a \in \mathbb{N}\setminus:\{0\}\\
+    &(\forall j \in \{1,...,n\} \exists i_a = j) \\
+    &\wedge (\forall a \in \{1,...,n-1\}\\
+    & \quad (i_a < i_{a+1} \wedge X_{i_a i_{a+1}}) \\
+    & \quad \vee(i_a > i_{a+1} \wedge X_{i_{a+1} i_a})) \}
+\end{align*}
+
+
+\subsection*{(c)}
+Für ein beliebiges $n \in \mathbb{N}$ existiert der ungerichtete Graph $G$ mit Knotenmenge $V=\{0,...,n-1\}$ und Kantenmenge $E$. Dann lautet die entsprechende Formel $\varphi$:\newline
+$\bigwedge\limits_{j\in V}(x_{jr}\vee x_{jg}\vee x_{jb}) \wedge \bigwedge\limits_{(u,v)\in E} \bigwedge\limits_{i\in \{r,g,b\}} \neg (x_{ui}\wedge x_{vi})$\newline
+Dabei bezeichnet die aussagenlogische Variable $x_{0r}$, dass der Knoten 0 mit der Farbe r gefärbt wird. Der erste Teil der Formel stellt dabei sicher, dass jeder Knoten mindestens eine Farbe zugewiesen bekommt und der zweite Teil, dass keine Knoten, die durch eine Kante verbunden sind, die gleiche Farbe haben. Die Tatsache, dass ein Knoten mit mehreren Farben gefärbt werden kann, kann ignoriert werden, da man sich in dem Fall für eine der Farben entscheiden kann.
+
+
+
+\section*{Aufgabe 5}
+
+\subsection*{a) $\{1,\iff\}$}
+
+Es kann keine Negation von $1$ mittels $1$ und $\iff$ abgebildet werden:
+\begin{itemize}
+    \item $1 \iff 1 \equiv 1$, also nichts neues
+    \item $x \iff x \equiv 1$, also Konstante 1 bzw. Negation falls $x = 0$
+    \item $x \iff 1 \equiv 1 \iff x \equiv x$, also nichts neues
+\end{itemize}
+
+Somit kann $\neg x$ für $x = 1$ nicht abgebildet werden, womit $\{1,\iff\}$ nicht funktional vollständig ist.
+
+\subsection*{b) $\{\ominus,1\}$}
+\begin{itemize}
+    \item $\neg x \equiv 1 \ominus x$
+    \item $x \wedge y \equiv x \ominus \neg y$
+\end{itemize}
+
+Somit können wir auch $\neg x$ und $x \ominus y$ abbilden.
+$\{\wedge,\neg\}$ ist funktional vollständig und damit auch $\{\ominus,1\}$
+
+
+\subsection*{c)}
+$\{f, 0\}$, wobei $f(x_1,x_2,x_3)=1$ genau dann gilt, wenn $|\{i\in \{1,2,3\}: x_i=0\}|\geq 2$, ist funktional vollständig. Als Beweis werden der Negations-Junktor $\neg$ und der Konjunktions-Junktor $\wedge$ hergeleitet:\newline
+$\neg x$: $f(x,x,x)$\newline
+$x\wedge y$: $\neg f(0,x,y)$\newline
+Da $\{\neg ,\wedge\}$ funktional vollständig ist und aus $\{f,0\}$ hergeleitet werden kann, ist auch $\{f,0\}$ funktional vollständig.
+
+
+\end{document}

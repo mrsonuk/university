@@ -1,0 +1,168 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 12 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+		381852, & Richard Zameitat \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+Zwecks Widerspruch nehmen wir an, es gibt eine maximale Bisimulation $Z$ bzgl. $\subseteq$, sodass $Z' \subseteq Z$ nicht für alle Bisimulationen $Z'$.
+Das heißt, dass mindestens eine Bisimulation $Y$ existiert, für welche gilt $Y \nsubseteq Z$.
+Das würde bedeuten, dass $Y$ Elemente enthält, welche nicht in $Z$ enthalten sind.
+Dies steht allerdings im Wiederspruch zu der Annahme, dass $Z$ maximal ist.
+
+
+
+\section*{Aufgabe 2}
+\[
+    Z = \{ (1,a), (2,b), (3,c), (4,c), (5,b), (6,d) \}
+\]
+
+$a$:\\
+    Für den Knoten $a$ existiert keine weitere mögliche Zuordnung als $1$, da dieser Knoten einen $Q$- und einen $P$-Nachfolger haben müsste und selbst keine Beschriftung haben dürfte.
+    Dies trifft aber nur auf $1$ zu.
+\\
+
+$b,c$:\\
+    Für $b$ und $c$ existieren ebenfalls keine weiteren Zuordnungen, da alle $P$-, bzw. $Q$-Knoten bereits zugeordnet wurden.
+\\
+
+$d$:\\
+    Für $d$ gibt es keine weitere Zuordnung, da der Knoten selbst nicht beschriftet sein dürfte und seine Nachfolger auch nicht.
+
+\section*{Aufgabe 3}
+
+\subsection*{a)}
+Sei $\mathcal{K}_1 = (\{1,2,3\}, \{(1,2), (2,3), (3,1)\}, \O)$ die Kripkestruktur eines Kreises der Länger 3.
+Dann die Kripkestruktur $\mathcal{K}_2 = (\{a_1, a_2, a_3, \cdots\}, \{(a_1,a_2), (a_2,a_3), \cdots\}, \O)$
+eines Pfades unendlicher Länge mit der Modallogik nicht von $\mathcal{K}_1$ unterscheidbar,
+da die Modallogik keine Aussagen zur Identität oder eines Vorgängers des aktuellen Knotens treffen kann und der unendlich lange Pfad somit die Anforderungen an einen Kreis der Länge 3 (mindestens ein Nachfolger mit Nachfolger und eine unendlich Lange Kette von Nachfolgern) erfüllt.
+
+Somit ist die Aussage \textit{"Der Aktuele Knoten liegt auf einem Kreis der Länge 3"} nicht in der Modallogik formulierbar.
+
+\subsection*{b)}
+Es kann in der Modallogik nicht spezifiziert werden, dass ein Knoten den aktuellen Knoten als Nachfolger hat, da die Identität von Knoten nicht verwendbar ist und weithin auch nur die Nachfolge-Relation zur Verfügung steht, auf Vorgänger also kein Bezug genommen werden kann.
+
+Sei $\mathcal{K}_3$ eine Kripkrestruktur, die einen Knoten enthät, der mit P beschriftet ist und einen weiteren Knoten als Nachfolger hat.
+Jener Nachfolger sei der aktuelle Knoten und wiederrum mit dem mit P bechrifteten Knoten verbunden.
+Diese Struktur erfüllt die Bedingung, welche mit der Modallogik geprüft werden soll.
+Eine Formel der Modallogik, welche diese Struktur akzeptiert kann lauten $\diamond P \diamond 1$.
+
+Allerdings wird die Kripkestruktur von dieser Formel akzeptiert, welche ähnlich aufgebaut ist, hierbei aber auf die Verbindung vom aktuellen zum mit P markierten Knoten verzichtet, nicht mehr erkannt, obwohl auch diese die Bedingung erfüllt.
+Dies zeit der Problem bei der Verwendung der Modallogik zur spezifikation eines Vorgängers.
+
+Somit ist auch die Aussage \textit{"Es gibt einen Knoten, der mit  beschriftet ist, von dem aus eine Kante zu dem aktuellen Knoten besteht"} nicht in der Modallogik formulierbar.
+
+\subsection*{c)}
+\[
+    \varphi_c := \diamond ( \diamond P \n \square \overline{Q} ) \n \square ( \square \overline{P} \n \exists Q) \n 0 \n \square \square \neg 1
+\]
+
+\section*{Aufgabe 4}
+
+\subsection*{a)}
+$X \v (Y \n (Z \rightarrow V)) \equiv\\$
+$(V \v X \v \neg Z) \n (X \v Y)\\$
+
+Da die Formel nun in KNF ist aber nicht jede Disjunktion höchstens ein positives Literal hat, ist diese Formel nicht äquivalent zu einer Horn-Formel.
+
+
+
+\subsection*{b)}
+
+\subsection*{c)}
+
+\subsection*{d)}
+
+\subsection*{e)}
+
+\end{document}

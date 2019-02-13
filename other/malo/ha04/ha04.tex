@@ -1,0 +1,218 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 04 - Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{(a)}
+$Q \Rightarrow Q, X, Z \v Y$\newline
+----------------------------$(\v \Rightarrow)$\\
+$\neg (Z \v Y), Q \Rightarrow Q, X \quad X, Q \Rightarrow Q,X \quad \neg (Z \v Y), Q \Rightarrow \neg Z, \neg Y \quad X, Q \Rightarrow \neg Z, \neg Y$\\
+$(\v \Rightarrow)$----------------------------------------$\quad$------------------------------------------------------$(\v \Rightarrow )$\newline
+$\neg (Z \v Y) \v X, Q \Rightarrow Q, X \qquad \neg (Z \v Y) \v X, Q \Rightarrow \neg Z, \neg Y$\\
+$(\Rightarrow \v)$--------------------------$\qquad$---------------------------------------$(\Rightarrow \v)$\\
+$\neg(Z \v Y) \v X, Q \Rightarrow Q \v X \quad \neg (Z \v Y) \v X, Q \Rightarrow \neg Z \v \neg Y$\\
+------------------------------------------------------------------------$(\Rightarrow \n)$\\
+$\neg (Z \v Y) \v X, Q \Rightarrow (Q \v X) \n (\neg Z \v \neg Y)$\\
+------------------------------------------------------------------------$(\n \Rightarrow)$\\
+$(\neg (X \v Y) \v X) \n Q \Rightarrow (Q \v X) \n (\neg Z \v \neg Y)$\\
+
+Das Blatt $X,Q \Rightarrow \neg Z, \neg Y$ ist falsifizierend:\\
+Falsifizierende Interpretation $\mathfrak{I}: Q \mapsto 1, X \mapsto 1, Y \mapsto 1, Z \mapsto 1$
+
+
+\subsection*{(b)}
+$A \Rightarrow C, B, A \quad A, B \rightarrow C, B$\\
+$(\rightarrow \Rightarrow)$-----------------------------------------------\\
+$A \rightarrow B, A \Rightarrow C, B, C$ \\
+$(\Rightarrow \rightarrow)$------------------------------------------------------------------------\\
+$A \rightarrow B \Rightarrow C,B,A \rightarrow C$\\
+$(\neg \Rightarrow)$------------------------------------------------------------------------\\
+$(A \rightarrow B), \neg(A \rightarrow C) \Rightarrow C,B$\\
+$(\n \Rightarrow)$------------------------------------------------------------------------\\
+$(A \rightarrow) \n \neg (A \rightarrow C) \Rightarrow C,B \quad\qquad C \Rightarrow C,B$ (Axiom) \\
+------------------------------------------------------------------------$(\v \Rightarrow)$\\
+$((A \rightarrow) \n \neg (A \rightarrow)) \v C \Rightarrow C, B$\\
+------------------------------------------------------------------------$(\Rightarrow \v)$\\
+$((A \rightarrow B) \n \neg (A \rightarrow C)) \v C \Rightarrow C \v B$\\
+
+\section*{Aufgabe 2}
+\subsection*{(a)}
+Die Schlussregel $\frac{\Gamma, \varphi, \psi \Rightarrow \Delta \qquad \Gamma \Rightarrow \Delta, \varphi, \psi}{\Gamma \Rightarrow \varphi \oplus \psi}$, wobei $\oplus$ das exklusive Oder bezeichnet, ist korrekt.
+Aus der rechten oberen Sequenz kann zunächst entnommen werdne, dass jedes Modell von $\Gamma$ entweder ein Modell von $\Delta, \varphi$ oder $\psi$ ist.
+Wenn das Modell von $\Gamma$ auch ein Modell von $\Delta$ ist, sind wir fertig.
+Sollte das Modell allerdings $\Delta$ nicht erfüllen, muss es einerseits entweder $\varphi$ oder $\psi$ erfüllen, wie wir (wie bereits erwähnt) der rechten oberen Sequenz entnehmen können, kann das Modell, wie wir der liken oberen Sequenz entnehmen können aber nicht beide erfüllen, da es sonst auch $\Delta$ erfüllt.
+Somit ist die Schlussregel korrekt.
+
+
+Korrektheit durch Ableitung:\\
+Sei $\vartheta = (\neg \varphi \v \neg\psi) \n (\varphi \v \psi)$. Dann kann die Schlussregel $\frac{\Gamma, \varphi,\psi \Rightarrow \Delta \qquad \Gamma \Rightarrow \Delta, \varphi, \psi}{\Gamma \Rightarrow \Delta, \vartheta}$ folgendermaßen durch Ableitungen im Sequenzkalkül beweisen:\\
+
+
+$\Gamma \Rightarrow \Delta, \vartheta$\\
+------------------------------------------------------------------------(Def von $\vartheta$)\\
+$\Gamma \Rightarrow \Delta, (\neg \varphi \v \neg \psi) \n (\varphi \v \psi)$ \\
+------------------------------------------------------------------------$(\Rightarrow \n)$\\
+$\Gamma \Rightarrow \Delta, \neg \varphi \v \neg \psi \qquad \Gamma \Rightarrow \Delta, \varphi \v \psi$\\
+------------------------------------------------------------------------$(\Rightarrow \v)$\\
+$\Gamma \Rightarrow \Delta, \neg \varphi, \neg \psi \qquad \Gamma \Rightarrow \Delta, \varphi, \psi$\\
+------------------------------------------------------------------------$(\Rightarrow \neg)$\\
+$\Gamma, \varphi, \psi \Rightarrow \Delta$\\
+
+
+\subsection*{(b)}
+Die Schlussregel $(\v \Rightarrow) \frac{\Gamma, \psi \Rightarrow \Delta \qquad \Gamma, \vartheta \Rightarrow \Delta}{\Gamma, \psi \v \vartheta \Rightarrow \Delta}$ ist korrekt, denn ein Modell von $\Gamma, \psi \v \vartheta$ erfüllt entweder $\Gamma$ und $\psi$, sodass wir aus der linken oberen Sequenz $\Gamma, \psi \Rightarrow \Delta$ entnehmen können,
+dass es auch $\Delta$ erfüllt oder es erfüllt $\Gamma$ und $\vartheta$, so dass wir aus der rechten oberen Sequenz $\Gamma, \vartheta \Rightarrow \Delta$ entnehmen können, dass es auch $\Delta$ erfüllt.
+Im Fall, dass das Modell $\Gamma, \psi$ und $\vartheta$ erfüllt, kann man aus beiden oberen Sequenzen erkennen, dass auch $\Delta$ erfüllt wird.
+
+\subsection*{(c)}
+Die Schlussregel $\frac{\Gamma \Rightarrow \Delta, \varphi \qquad \Gamma \Rightarrow \Delta, \psi}{\Gamma, \varphi \rightarrow \psi \Rightarrow \Delta}$ ist nicht korrekt.
+
+Gegenbeispiel: $\Gamma = \{X \v Y \}, \Delta = \{X\}, \varphi = \psi = \{Y\}$\\
+$X \v Y \Rightarrow X, Y$ ist korrekt, daher stimmen $\Gamma \Rightarrow \Delta, \varphi$ und $\Gamma \Rightarrow \Delta, \psi$\\
+$X \v Y, Y \rightarrow Y \Rightarrow X$ ist allerdings nicht korrekt, da die Interpretation $\mathfrak{I}: X \mapsto 0, Y \mapsto 1$ zwar ein Modell von $X \v Y$ und $Y \rightarrow$ ist, aber nicht von $X$.
+
+
+\section*{Aufgabe 3}
+
+\underline{$(\Rightarrow |)$:}\\
+\[ (\Rightarrow |) \, \frac{ \; \Gamma, \varphi, \psi \Rightarrow \Delta \; }{\Gamma \Rightarrow \varphi | \psi, \Delta}\]
+
+Beweis der Korrektheit der Schlussregel durch Ableitung:
+\renewcommand{\arraystretch}{.5}
+\[\begin{array}{r c}
+        & \Gamma, \varphi, \psi \Rightarrow \Delta \\
+        (\n \Rightarrow) & \text{--------------------------} \\
+        & \Gamma \varphi \n \psi \Rightarrow \Delta \\
+        (\Rightarrow \neg) & \text{--------------------------} \\
+        & \Gamma \Rightarrow \Delta, \neg (\varphi \n \psi) \\
+        (\text{Definition von }|) & \text{--------------------------} \\
+        & \Gamma \Rightarrow \Delta, \varphi | \psi
+\end{array}\]
+\\
+
+
+$(| \Rightarrow ):$\\
+
+$(| \Rightarrow) \frac{\Gamma \Rightarrow, \varphi \qquad \Gamma \Rightarrow \Delta, \psi}{\Gamma, \varphi | \psi  \Rightarrow \Delta}$\\
+
+Beweis der Korrektheit der Schlussregel durch Ableitung per Sequenzkalkül:\\
+$\Gamma \Rightarrow \Delta, \varphi \qquad \Gamma \Rightarrow \Delta, \psi$\\
+--------------------------------$(\Rightarrow \n)$\\
+$\Gamma \Rightarrow \Delta, \varphi \n \psi$\\
+--------------------------------$(\neg \Rightarrow)$\\
+$\Gamma, \neg (\varphi \n \psi) \Rightarrow \Delta$\\
+--------------------------------Definition von $|$\\
+$\Gamma, \varphi | \psi \Rightarrow \Delta$
+
+\section*{Aufgabe 4}
+\subsection*{(a)}
+$(\mathbb{C}, +, \cdot) \quad (\mathbb{C}, +, <) \quad (\mathbb{C}, \cdot, <) \quad (\mathbb{C}, +) \quad (\mathbb{C}, \cdot) \quad (\mathbb{C}, <) \quad (\mathbb{C}, +, \cdot, <)$\\
+$\{+, \cdot\}$-Redukt $\{+, <\}$-Redukt $\{\cdot, <\}$-Redukt $\{+\}$-Redukt $\{\cdot\}$-Redukt $\{+, \cdot, <\}$-Redukt
+
+\subsection*{(b)}
+\subsection*{i)}
+
+\subsection*{ii)}
+$\mathfrak{B} = $($\mathbb{Z}/5\mathbb{Z},+$ mod $5$) besitzt die folgenden Substrukturen:\newline
+$\mathfrak{B_1} = $($\mathbb{Z}/5\mathbb{Z},+$ mod $5$) und\newline
+$\mathfrak{B_2} = $($\{0\},+$ mod $5$).\newline
+Die genannten Strukturen sind Substrukturen von $\mathfrak{B}$, da $\mathbb{Z}/5\mathbb{Z}, \{0\}\subseteq mathbb{Z}/5\mathbb{Z}$ gilt und die Universen $\mathbb{Z}/5\mathbb{Z}$ sowie $\{0\}$ abgeschlossen mit der Funktion $+$ mod $5$ abgeschlossen sind.
+
+\subsection*{iii)}
+$\mathfrak{C} = $($\mathbb{Z}/6\mathbb{Z},+$ mod $6$) besitzt die folgenden Substrukturen:\newline
+$\mathfrak{C_1} = $($\mathbb{Z}/6\mathbb{Z},+$ mod $6$),\newline
+$\mathfrak{C_2} = $($\{0\},+$ mod $6$),\newline
+$\mathfrak{C_3} = $($\{0,3\},+$ mod $6$) und\newline
+$\mathfrak{C_4} = $($\{0,2,4\},+$ mod $6$).\newline
+Die genannten Strukturen sind Substrukturen von $\mathfrak{C}$, da die Universen Teilmengen des Universums von $\mathfrak{C}$ sind und die Universen außerdem abgeschlossen mit der Funktion $+$ mod $6$ abgeschlossen sind.
+
+
+\end{document}

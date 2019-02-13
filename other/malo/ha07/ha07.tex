@@ -1,0 +1,234 @@
+\documentclass[11pt, a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{pgffor}  %foreach
+\usepackage{xstring} %string methods
+\usepackage{fancyhdr}
+\usepackage{ amssymb, amsmath, amsthm, dsfont }
+\usepackage{ marvosym }
+\usepackage{ stmaryrd }
+%\usepackage[right = 1cm, top = 2cm]{geometry}
+\usepackage[width = 18cm, top = 2cm, bottom = 3cm]{geometry}
+\usepackage[pdf]{graphviz}
+\usepackage{dot2texi}
+\usepackage{tikz}
+\usepackage{float}
+\usetikzlibrary{shapes.geometric,shapes.misc}
+\usetikzlibrary{arrows.meta,arrows}
+\usepackage{tikz-qtree,tikz-qtree-compat}
+\usepackage{forest}
+\usepackage{pdflscape}
+%--- Own commands
+
+\newcommand{\anf}[1]{``#1''}
+\newcommand{\punkt}[2]{\hfill\begin{small} $[#1$ \textnormal{Punkt#2}$]$\end{small}}
+\newcommand{\punkttabelle}[1]{$\hspace{0.5cm} /$ #1}
+\newcommand{\abstractTabular}[3]
+{
+	\begin{center}
+		\begin{normalsize}
+			\begin{tabular}{#1}
+				Aufgabe & #2 & $\Sigma$ \\
+				\hline
+				Punkte &  #3 \\
+			\end{tabular}
+		\end{normalsize}
+	\end{center}
+}
+
+% -------------
+
+\newcommand{\myTitleString}		{}
+\newcommand{\myAuthorString}	{}
+\newcommand{\mySubTitleString}	{}
+\newcommand{\myDateString}		{}
+
+\newcommand{\myTitle}		[1]{\renewcommand{\myTitleString}		{#1}}
+\newcommand{\mySubTitle}	[1]{\renewcommand{\mySubTitleString}	{#1}}
+\newcommand{\myAuthor}		[1]{\renewcommand{\myAuthorString}		{#1}}
+\newcommand{\myDate}		[1]{\renewcommand{\myDateString}		{#1}}
+
+\newcommand{\makeMyTitle}
+{
+	\thispagestyle{fancy} 					%eigener Seitenstil
+	\fancyhf{} 								%alle Kopf- und Fußzeilenfelder bereinigen
+	\fancyhead[L]							%Kopfzeile links
+	{
+		\begin{tabular}{l}
+			\myTitleString
+			\\ \mySubTitleString
+			\\ \myDateString
+		\end{tabular}
+	}
+	\fancyhead[C]
+	{}	%zentrierte Kopfzeile
+	\fancyhead[R]{\myAuthorString}	   		%Kopfzeile rechts
+	\fancyfoot[C]{\thepage} 				%Seitennummer
+	\text{}
+}
+
+% -------------
+
+\renewcommand{\v}{\vee}
+\newcommand{\n}{\wedge}
+\newcommand{\xor}{\oplus}
+\newcommand{\nmodels}{\nvDash}
+\newcommand{\interp}{\mathfrak{I}}
+\newlength\tindent
+\setlength{\tindent}{\parindent}
+\setlength{\parindent}{0pt}
+\renewcommand{\indent}{\hspace*{\tindent}}
+
+
+\begin{document}
+\myTitle{MaLo}
+\mySubTitle{Übung 07- Gruppe A}
+\myDate{SS 18}
+\myAuthor
+{
+	\begin{tabular}{l l}
+		381852, & Richard Zameitat \\
+		378625, & Felix Dittmann \\
+		380678, & Clemens Rüttermann \\
+	\end{tabular}
+}
+\makeMyTitle
+
+\section*{Aufgabe 1}
+\subsection*{a)}
+Angenommen $\mathfrak{A}$ wäre nicht starr. Dann existiert ein $\pi: A \to A$, für welches ein $a\in A$ existiert, sodass $\pi(a) \neq a$ gilt und $\mathfrak{A} \vDash \varphi(a_1,...,a_n)$ genau dann, wenn $\mathfrak{A} \vDash \varphi (\pi (a_1),..., \pi(a_n))$. Da jedes Element von $A$ allerdings elementar definierbar ist, gibt es eine Definition von $a$, sodass $\mathfrak{A} \vDash \varphi_a (a)$ und $\mathfrak{A} \nVDash \varphi_a (\pi(a))$. Dies widerspricht unserer Annahme, sodass $\mathfrak{A}$ starr sein muss.
+
+\subsection*{b)}
+\subsection*{i)}
+$\mathfrak{Q} = (\mathbb{Q}, + , \cdot)$ ist starr. Dies liegt daran, dass $\mathbb{Q}$ in der Struktur elementar definierbar ist. Eine beliebige Zahl $q\in \mathbb{Q}$ lässt sich darstellen durch $q = a/b, a,b\in \mathfrak{Z}$. Da wir in der Struktur allerdings nur die Multiplikation haben, müssen wir hier auf die Darstellung $q * b =  a$ zurückgreifen. Nun müssen wir also nur noch zeigen, dass auch $\mathbb{Z}$ elementar definierbar ist. Dazu definieren wir zunächst die $1$. Diese können wir mit der Formel $\varphi_1(x) = \forall y (x \cdot y = y)$ machen, da $1$ das neutrale Element der Multiplikation ist. Die $0$ können wir auch direkt als neutrales Element der Addition mit der Formel $\varphi_0 (x) := \forall y (y+x = y)$ definieren.\newline
+Mit der $1$ und der Addition können wir nun jedes $n\in \mathbb{N}$ mit einer entsprechenden Formel $\varphi_n(x) = (x = \varphi_{n-1} + 1)$ definieren. Um die negativen Zahlen definieren zu können, benötigen wir die $-1$. Diese definieren wir mit der Formel $\varphi_{-1} = \exists y (x \cdot x = y \land \varphi_1(y))\land (\neg \varphi_1(x))$. Die negativen Zahlen können wir somit mit der Formel $\varphi_{-n}(x) = \exists y \exists z (\varphi_{-1}(y) \land \varphi_n(z) \land (z \cdot y) = x)$ definieren.\newline
+Somit haben wir gezeigt, dass $\mathbb{Z}$ definierbar ist, sodass wir nun auch jedes beliebige $q \in \mathbb{Q}$ durch die Formel $\varphi_\mathbb{q}(x) := \exists a \exists b (b \cdot x = a \land \varphi_n(b) \land \varphi_z(a))$ definieren, wobei $\varphi_z$ die Formel von $\varphi_n$ oder $\varphi_{-n}$ bezeichnet, die hier benötigt wird. Da jedes Element aus dem Universum von $\mathfrak{Q}$ definierbar ist, ist $\mathfrak{Q}$ starr.
+
+\subsection*{ii)}
+$\mathfrak{R}$ ist nicht starr. Gegenbeispiel: Für $\mathfrak{R}$ existiert ein Automorphismus $\pi: \mathbb{R} \to \mathbb{R}$ mit $\pi_-(a) = -a$. Für $\pi_-$ gilt $\pi_-(a+b) = \pi_-(a) + \pi_- (b)$:\newline
+$\pi_-(a) + \pi_-(a) = (-a) + (-b) = (-1)*a + (-1)*b = (-1)*(a + b) = \pi_-(a + b)$. Da $\tau = \{+\}$ ist, gilt somit, dass wenn $\mathfrak{R} \vDash \varphi(a_1, ..., a_k)$ gilt, auch $\mathfrak{R} \vDash \varphi(\pi_-(a_1), ..., \pi_-(a_k))$ gilt.
+
+\subsection*{iii)}
+Die Knoten des Graphen sind elementar definierbar:\newline
+$\varphi_1(x): \forall y (\neg Eyx)$\newline
+$\varphi_4(x): \forall y (\neg Exy)$\newline
+$\varphi_3(x): \exists y \exists x (\varphi_1(y) \land \varphi_4(z) \land Eyx \land Exz)$\newline
+$\varphi_2(x): \exists y \exists z (\varphi_1(y) \land \varphi_3(z) \land Eyx \land Exz)$\newline
+Wie in a) gezeigt, ist $\mathfrak{G}$ somit starr.
+
+\subsection*{iv)}
+$\mathfrak{A}$ ist nicht starr. Gegenbeispiel: Es existiert ein Automorphismus $\pi_+: \mathbb{Z} \to \mathbb{Z}$ mit $\pi_+(a) = a+30$. Zunächst gilt, wenn $a<b$ gilt, gilt auch $a+30<b+30$. Des Weiteren gilt, dass wenn $a \in 5\mathbb{Z}$ gilt, auch $a+30 \in 5\mathbb{Z}$ gilt, da $30 mod 5 = 0$, und schließlich, wenn $a\in 6\mathbb{Z}$, dann auch $a+30 \in 6\mathbb{Z}$. Somit wurde für jede Relation $R$ aus $\mathfrak{A}$ gezeigt, dass wenn $a\in R$ gilt, auch $\pi_+(a) \in R$ gilt.
+
+
+\section*{Aufgabe 2}
+\subsection*{a)}
+\[
+    \pi: x=\left(\frac{a}{b}\right) \mapsto \left\{
+        \begin{array}{lr}
+            x & \quad \text{ für } x = 0 \\
+            \frac{b}{a} & \quad \text{sonst}
+        \end{array}
+    \right.
+\]
+
+$\pi$ ist ein Automorphismus auf $(\mathbb{Q}, \cdot)$.
+Dieser bildet, beispielsweise $\frac{2}{1} \in \mathbb{Q}_{\geq 1}$ auf $\frac{1}{2} \notin \mathbb{Q}_{\geq 1}$ ab.
+Somit ist ein Gegenbeispiel gefunden und daher $\mathbb{Q}_{\geq 1}$ nicht elementar auf $(\mathbb{Q}, \cdot)$.
+
+\subsection*{b)}
+$\varphi(x) := \exists y (y + y + y = x)$
+
+\subsection*{c)}
+$\varphi_1(x) := \forall y (x \cdot y = y)$\\
+Sei $\varphi_{<}(x)$ die in der Vorlesung definierte kleiner Relation.\\
+$\varphi_{ggt}(a,b) := \exists g (\exists x \; (x \cdot g = a \rightarrow x < g \n \neg \exists z \; \exists y (g < z \n g \cdot z = a))
+\n (\exists x \; (x \cdot g = b \rightarrow x < g \n \neg \exists z \; \exists z \; \exists y (g < z \n g \cdot z = b) )) )$
+
+
+\subsection*{d)}
+$\varphi_0(x) := \forall y \; x \neq y \rightarrow x < y$\\
+$\varphi_1(x) := \exists n \; \varphi_0(n) \n n \neq x \n \forall y \; (x \neq y \n n \neq y \rightarrow x < y)$\\
+$\varphi_2(x) := \exists n \; \exists e \; \varphi_0(n) \n \varphi_1(e) \n n \neq x \n e \neq x \forall y \; (x \neq y \n n \neq y \n e \neq y \rightarrow x < y)$\\
+
+$\varphi_{\{0,1,2\}}(x) := \exists n \;(\varphi_0(n) \n x = n) \v \exists e \;(\varphi_1(e) \n x = e) \v \exists z \;(\varphi_2(z) \n x = z)$
+
+\subsection*{e)}
+%$\varphi_{diff_1}(a,b) := ((a < b) \rightarrow \neg \exists x (a < x \n x < b)) \v ((b < a) \rightarrow \neg \exists x (b < x \ x < a))$\\
+%$\varphi_{diff_2}(a,b) := ((a < b) \rightarrow \exists x (\varphi_{diff_1}(a,x) \n \varphi_{diff_1}(x, b))) \v ((b < a) \rightarrow \exists x (\varphi_{diff_1}(b,x) \n \varphi_{diff_1}(x,a)))$\\
+
+
+Vorschlag 2:
+
+
+\[ \pi: q \mapsto 2*q \]
+
+$\pi$ ist ein Automorphismus auf $(\mathbb{Q}, <)$.
+Für $a := 4, b := 1$ gilt $|a - b| = |4 - 1| = |3| = 3$.
+Jedoch ist $|\pi(a) - \pi(b)| = |8 - 2| = |6| = 6 \neq 3$.
+Somit ist ein Gegenbeispiel gefunden und deshalb $\{(a,b) : |a-b| = 3\}$ nicht elementar definierbar in $(\mathbb{Q},<)$.
+
+------------------------------
+
+$\varphi_{diff_1}(a,b) := ((a < b) \rightarrow \neg \exists x (a < x \n x < b)) \v ((b < a) \rightarrow \neg \exists x (b < x \ x < a))$\\
+$\varphi_{diff_2}(a,b) := ((a < b) \rightarrow \exists x (\varphi_{diff_1}(a,x) \n \varphi_{diff_1}(x, b))) \v ((b < a) \rightarrow \exists x (\varphi_{diff_1}(b,x) \n \varphi_{diff_1}(x,a)))$\\
+
+%$\varphi(a,b) := ((a < b) \rightarrow \exists x (\varphi_{diff_1}(a,x) \n \varphi_{diff_2}(x, b))) \v ((b < a) \rightarrow \exists x (\varphi_{diff_1}(b,x) \n \varphi_{diff_2}(x, a)))$
+
+\section*{Aufgabe 3}
+\subsection*{a)}
+\subsubsection*{i)}
+Die Aussage, wenn $\mathfrak{A} \subseteq \mathfrak{B} \preceq \mathfrak{C}$ und $\mathfrak{A} \preceq \mathfrak{C}$ gilt, dann auch $\mathfrak{A} \preceq \mathfrak{B}$, ist korrekt. Da sowohl $\mathfrak{A} \preceq \mathfrak{C}$ als auch $\mathfrak{B} \preceq \mathfrak{C}$ gilt, bedeutet dies, dass sowohl $\mathfrak{B} \vDash \varphi(x_1,...,x_k)$ als auch $\mathfrak{A} \vDash \varphi(x_1,...,x_k)$ genau dann gelten, wenn $\mathfrak{C} \vDash \varphi(x_1,...,x_k)$ gilt. Dadurch gilt auch, dass $\mathfrak{A} \vDash \varphi(x_1,...,x_k)$ genau dann gilt, wenn $\mathfrak{C} \vDash \varphi(x_1,...,x_k)$ gilt, und da $\mathfrak{A} \subseteq \mathfrak{B}$ ist, gilt schließlich auch $\mathfrak{A} \preceq \mathfrak{B}$.
+
+\subsubsection*{ii)}
+
+\subsection*{b)}
+
+\subsection*{c)}
+"$\Rightarrow$": Wenn $\mathfrak{A} \preceq \mathfrak{B}$ gilt, gilt auch, dass wenn $\mathfrak{B} \vDash \exists y \varphi (a_1,...,a_k,y)$ mit $a_1,...,a_k \in A$ gilt, auch direkt $\mathfrak{B} \vDash \varphi(a_1,...,a_k,a)$ für ein $a\in A$ gilt.\newline
+Nehmen wir zunächst an, dass die Behauptung nicht stimmt. Dann existiert kein $y$ in $\varphi$, sodass $\mathfrak{B} \vDash \varphi(a_1,...,a_k,y)$ mit $y\in A$ gilt. Dies würde allerdings dazu führen, dass $\mathfrak{A} \nvDash \varphi(a_1,...,a_k)$ gilt, da A das Universum von $\mathfrak{A}$ ist. Dies ist ein Widerspruch der Definition elementarer Substrukturen, da dann $\mathfrak{B} \vDash \varphi(a_1,...,a_k)$ und $\mathfrak{A} \nvDash \varphi(a_1,...,a_k)$ gilt.\newline\newline
+"$\Leftarrow$": Wenn die Implikation, wenn $\mathfrak{B} \vDash \exists y \varphi(a_1,...,a_k,y)$ mit $a_1,...,a_k \in A$ gilt, gilt auch direkt $\mathfrak{B} \vDash \varphi(a_1,...,a_k,a)$ für ein $a\in A$, gilt, gilt auch $\mathfrak{A} \preceq \mathfrak{B}$.\newline
+Hierbei unterscheiden wir zwei Fälle: $y\notin frei(\varphi)$ und $y \in frei(\varphi)$.\newline
+$y \notin frei(\varphi)$: Die zusätzliche Variable hat keinen Einfluss auf $\phi$. Somit gilt $\mathfrak{B} \vDash \varphi(a_1,...,a_k)$. Da $a_1,...,a_k \in A$ gilt, gilt auch $\mathfrak{A} \vDash \varphi (a_1,...,a_k)$, da $\mathfrak{B}$ nur Elemente aus $A$ verwendet hat.\newline
+$y \in frei(\varphi)$: Dieser Fall gilt analog zu $y \notin frei(\varphi)$, da es aufgrund unserer Voraussetzung ein $a \in A$ gibt, welches für $y$ verwendet werden kann. Somit gilt für alle FO($\tau$)-Formeln, wobei $\tau$ die Signatur von $\mathfrak{B}$ ist, $\mathfrak{B} \vDash \varphi(x_1,...,x_k,y)$ genau dann, wenn $\mathfrak{A} \vDash \varphi(x_1,...,x_k,y)$, sodass $\mathfrak{A} \preceq \mathfrak{B}$ gilt.
+
+\section*{Aufgabe 4}
+\subsection*{a)}
+$\simeq$ ist dann eine Äquivalenzrelation, wenn sie reflexiv, symmetrisch und transitiv ist.
+
+\subsubsection*{Reflexivität:}
+Reflexivität gilt genau dann wenn $a \simeq a \forall a \in A$ gilt.
+Dafür muss einen Automorphismus $\pi$ existieren mit $\pi(a) = a$.
+Da die Identität ein solcher Automorphismus ist ist $\simeq$ reflexiv.
+
+\subsubsection*{Symmetrie:}
+Sei $a \simeq b$ also existiert ein Automorphismus $\pi$ für $a$ und $b$ mit $\pi(a) = b$.
+Da Automorphismen bijektiv sein müssen, existiert eine Umkehrfunktion $\pi^{-1}$.
+Somit ist $\pi^{-1}(b) = a$ und somit ist $\simeq$ symmetrisch.
+
+
+\subsubsection*{Transitivität:}
+Sei $a \simeq b$ und $b \simeq c$, d.h. es existieren die Automorphismen $\pi_1(a) = b$ und $\pi_2(b) = c$.
+Dann muss es aber auch den Automorphismus $\pi_1(\pi_2(a)) = c$ wesshalb auch $a \simeq c$ gilt.
+
+
+\subsection*{b)}
+
+Für jedes Paar von Elementen einer Äquivalenzklasse gilt, dass es einen Automorphismus gibt, der das eine Element auf das andere Abbildet (siehe Teil a)).
+Da es einen Automorphismus gibt, der die Elemente vertauscht, sind diese selbst nicht mehr elementar definierbar.
+Somit sind höchstens noch die Mengen, welche zu den Äquivalenzklassen gehören, selbst elementar definierbar.
+Also gibt es (maximal) $2^k$ elementar definierbare Teilmengen von $A$, da für jede Menge einer Äquivalenzklasse entschieden werden kann, ob sie in die Teilmenge aufgenommen wird, oder nicht.
+
+
+
+\section*{Aufgabe 5}
+
+\subsection*{a)}
+
+
+\subsection*{b)}
+
+\subsection*{c)}
+
+\subsection*{d)}
+
+\end{document}

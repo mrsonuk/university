@@ -1,0 +1,355 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage[ngerman]{babel}
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2cm,includeheadfoot]{geometry}
+\usepackage{scrextend}
+
+\newtheorem{defi}{Definition}[section]
+\newtheorem{satz}[defi]{Satz}
+\newtheorem{bsp}[defi]{Beispiel}
+\newtheorem{lem}[defi]{Lemma}
+
+
+\author{Christian van Sloun (christian.van.sloun@rwth-aachen.de) \and Kristian Lebold (kristian.lebold@rwth-aachen.de)}
+\title{Definitionszettel Mathematische Logik}
+\begin{document}
+	\newcommand{\AL}{\textsc{AL}}
+	\newcommand{\A}{\mathfrak{A}}
+	\newcommand{\B}{\mathfrak{B}}
+	\newcommand{\FO}{\textsc{FO}(\tau)}
+	\newcommand{\Th}[1]{\textsl{Th}(#1)}
+	
+	\maketitle
+	\tableofcontents
+
+\section*{Einleitung}
+Eine kleine Übersicht von Definitionen, Sätzen und Lemmata, die nach Meinung des Autors die wichtigsten Punkte des Skriptes zusammenfassen. Diese Definitionen und Sätze sind häufiger in Altklausuren relevant gewesen, oder nützlich um Aufgaben zu lösen, die auch in Altklausuren vorkamen.\\
+
+Diese Liste ist bei weitem nicht vollständig, da gerade am Anfang einiges weggelassen wurde, was aus vorigen Veranstaltungen bekannt ist. Ebenfalls fehlt noch das letzte Kapitel (Modallogik, temporale Logiken und monadische Logik). Diese werden möglicherweise noch von mir hinzugefügt, können aber auch gerne vom Leser beigetragen werden.
+
+\newpage
+\section{Aussagenlogik}
+	\begin{defi}
+		Eine Menge $\Omega\subseteq B$ von Booleschen Funktionen ist \textbf{funktional vollständig}, wenn sich daraus jede Boolesche Funktion $f\in B^n$ $(n\ge 1)$ definieren lässt.
+	\end{defi}
+	\begin{bsp}
+		Funktional vollständig sind:
+		\begin{itemize}
+			\item $\lbrace\wedge, \vee, \neg\rbrace$ ebenfalls $\lbrace\wedge, \neg\rbrace$ und $\lbrace\wedge, \neg\rbrace$
+			\item $\lbrace\rightarrow, \neg\rbrace$ ist f.v., da $\lbrace\vee, \neg\rbrace$ f.v. ist und $\psi\vee\phi\equiv\neg\psi\rightarrow\phi$
+			\item $\lbrace\wedge,\vee,\rightarrow\rbrace$ nicht f.v., da für jede nur mit diesen Junktoren gebildete Formel $\psi\left(X_1,\dots,X_n\right)$ gilt, dass $\psi\left[1,\dots,1\right]=1$. Insbesondere kann mit $\wedge,\vee,\rightarrow$ keine zu $\neg X$ äquivalente Formel gebildet werden.
+		\end{itemize}
+	\end{bsp}
+\subsection{Kompaktheitssatz der Aussagenlogik}
+	\begin{satz}
+		(Kompaktheits- oder Endlichkeitssatz) Sei $\Phi\subseteq \AL.\psi\in \AL$
+		\begin{enumerate}[\text{(i)}]
+			\item $\Phi$ ist erfüllbar genau dann, wenn jede endliche Teilmenge von $\Phi$ erfüllbar ist.
+			\item $\Phi\models\psi$ genau dann, wenn eine endliche Teilmenge $\Phi_0\subseteq\Phi$ existiert, so dass $\Phi_0\models\psi$.
+		\end{enumerate}
+	\end{satz}
+\subsection{Der aussagenlogische Sequenzenkalkül}
+	\begin{defi}
+		Die Sequenz $\Gamma\Rightarrow\Delta$ ist \textbf{gültig}, wenn jedes Modell von $\Gamma$ auch ein Modell mindestens einer Formel aus $\Delta$ ist, d.h. wenn $\bigwedge\Gamma\models\bigvee\Delta$.
+	\end{defi}
+	\begin{defi}
+		Die \textbf{Axiome} von \textsc{SK} sind alle Sequenzen der Form\\ $\Gamma,\psi\Rightarrow\Delta,\psi$.
+	\end{defi}
+	\begin{satz}
+		(Korrektheit des Sequenzenkalküls). Jede in \textsc{SK} ableitbare Sequenz $\Gamma\Rightarrow\Delta$ ist gültig.
+	\end{satz}
+	\begin{defi}
+		Sei $\Phi\subseteq\AL$ eine Formelmenge. Eine aussagenlogische Formel $\psi$ ist ableitbar aus der Hypothesenmenge $\Phi$ (kurz $\Phi\vdash\psi$), wenn eine endliche Teilmenge $\Gamma$ von $\Phi$ existiert, so dass die Sequenz $\Gamma\Rightarrow\psi$ im Sequenzenkalkül ableitbar ist.
+	\end{defi}
+	\begin{defi}
+		Für  jede Regel des Sequenzenkalküls und jede aussagenlogische Interpretation $\mathfrak{I}$ (deren Definitionsbereich alle vorkommenden
+Aussagenvariablen umfasst) gilt: $\mathfrak{I}$ falsifiziert die Konklusion der Regel
+genau dann wenn $\mathfrak{I}$	 eine Prämisse der Regel falsifiziert. Es folgt, dass
+die Konklusion genau dann gültig ist, wenn die Prämissen gültig sind.
+	\end{defi}
+	\begin{defi}
+	Ein mit einem Axiom beschriftetes Blatt eines Ableitungsbaums
+nennen wir positiv. Ein Blatt ist negativ, wenn es mit einer Sequenz
+$\Gamma \Rightarrow \Delta$ beschriftet ist, wobei $\Gamma$ und $\Delta$ disjunkte Mengen von Aussagenvariablen sind. Ein Ableitungsbaum ist vollständig, wenn alle seine
+Blätter positiv oder negativ sind.\\
+		Ein Beweis ist ein Ableitungsbaum, dessen Blätter alle
+positiv sind (und welcher daher insbesondere vollständig ist). Ein
+Ableitungsbaum, der ein negatives Blatt enthält, nennen wir eine Widerlegung.
+	\end{defi}
+	
+\section{Syntax und Semantik der Prädikatenlogik}
+	\begin{defi}
+		Seien $\mathfrak{A}$ und $\mathfrak{B}$ $\tau$-Strukturen. $\mathfrak{A}$ ist \textbf{Substruktur} von $\mathfrak{B}$ (kurz: $\mathfrak{A}\subseteq\mathfrak{B}$), wenn
+		\begin{itemize}
+			\item $A\subseteq B$
+			\item für alle Relationssymbole $\textsc{R}\in\tau$ gilt: $\textsc{R}^\mathfrak{A}=\textsc{R}^\mathfrak{B}\cap\textsc{A}^n$ (wobei $n$ die Stelligkeit von \textsc{R} ist),
+			\item für alle Funktionssymbole $f\in\tau$ gilt $f^\mathfrak{A}=f^\mathfrak{B}|_A$, d.h. $f^\mathfrak{A}$ ist die Restriktion von $f^\mathfrak{B}$ auf $A$.
+		\end{itemize}
+	\end{defi}
+	\begin{satz}
+		Ein $\tau$-Satz ist eine $\tau$-Formel ohne freie Variablen.
+	\end{satz}
+	\begin{defi}
+		(Semantische Folgerungsbeziehung). Sei $\Phi\subseteq\textsc{FO}(\tau)$ eine Formelmenge, $\psi\in\textsc{FO}(\tau)$ eine Formel. Wir sagen, dass $\psi$ aus $\Phi$ folgt (kurz: $\Phi\models\psi$), wenn jede zu $\Phi\cup\lbrace\psi\rbrace$ passende Interpretation, welche ein Modell von $\Phi$ ist, auch Modell von $\psi$ ist. Wenn $\Phi=\lbrace\phi\rbrace$ schreiben wir auch $\phi\models\psi$ anstelle von $\lbrace\phi\rbrace\models\psi$.
+	\end{defi}
+	\begin{lem}
+		Für alle Formeln $\psi,\phi\in\textsc{FO}(\tau)$ gelten die folgenden logischen Äquivalenzen.
+		\begin{enumerate}[(i)]
+			\item $\exists x(\psi\vee\phi)\equiv\exists x\psi\vee\exists x\phi$
+			\item Falls $x$ nicht in $\psi$ vorkommt, gilt:\\
+			\begin{tabular}{c c}
+				$\psi\vee\exists x\psi\equiv\exists x(\psi\vee\phi)$ & 
+				$\psi\wedge\exists x\psi\equiv\exists x(\psi\wedge\phi)$\\
+				$\psi\vee\forall x\psi\equiv\forall x(\psi\vee\phi)$ & 
+				$\psi\wedge\forall x\psi\equiv\forall x(\psi\wedge\phi)$
+			\end{tabular}
+		\item $\neg\exists x\psi\equiv\forall x\neg\psi$ und $\neg\forall x\psi\equiv\exists x\neg\psi$
+		\item $\exists x\exists y\psi\equiv\exists y\exists x\psi$ und 
+		$\forall x\forall y\psi\equiv\forall y\forall x\psi$
+		\end{enumerate}
+	\end{lem}
+	\subsection{Normalformen}
+		\begin{labeling}{Einrück}
+			\item [\textbf{Negationsnormalform:}] Eine Formel ist in Negationsnormalform, wenn sie aus
+Literalen (d.h. atomaren Formeln und Negationen atomarer Formeln)
+nur mit Hilfe der Junktoren $\lor$, $\land$ und der Quantoren $\exists$ und $\forall$ aufgebaut
+ist. 
+
+\item[\textbf{Termreduzierte Formeln:}] Eine Formel heißt termreduziert,
+wenn sie nur Atome der Form $R\overline{x}$, $f(\overline{x}) = y$ und $x = y$ enthält (also
+insbesondere keine Terme der Tiefe $\geq$ 2).
+
+\item[\textbf{Pränex-Normalform:}] Eine Formel ist in Pränex-Normalform (PNF), wenn sie
+bereinigt ist und die Form $Q_1x_1 ... Q_rx_r\varphi$ hat, wobei $\varphi$ quantorenfrei
+und $Q_i \in \{\exists, \forall \}$ ist. Das Anfangsstück $Q_1x_1 ... Q_rx_r$ nennt man das
+(Quantoren-)Präfix der Formel.
+
+\item[\textbf{Skolem-Normalform:}] 
+Zu jedem Satz $\psi \in FO(\sigma)$ lässt sich ein Satz $\varphi \in FO(\tau)$ mit $\sigma \subseteq \tau$ konstruieren, so dass gilt:
+	\begin{enumerate}
+	 \item $\varphi = \forall y_1 ... \forall y_s \varphi'$
+	 \item $\varphi \models \psi$
+	 \item Zu jedem Modell von $\psi$ existiert eine Expansion, welche Modell von $\varphi$ ist.
+	\end{enumerate}
+	Zu jeder Formel existiert eine logisch äquivalente Form in der Negationsnormalform, der termreduzierten Form und in der Pränex-Normalform. Die Skolemnormalform ist im Allgemeinen jedoch nur erfüllbarkeitsäquivalent.
+		\end{labeling}
+\subsection{Model-Checking-Game}
+	\begin{itemize}
+		\item Wenn $\phi$ ein Literal ist, dann ist das Spiel beendet. Die Verifiziererin hat gewonnen, falls $\mathfrak{A}\models\psi(\overline{a})$, andernfalls hat der Falsifizierer gewonnen.
+		\item An einer Position $(\vartheta\vee\eta)$ ist die Verifiziererin am Zug und kann entweder zu $\vartheta$ oder zu $\eta$ ziehen.
+		\item Analog zieht von einer Position $(\vartheta\wedge\eta)$ der Falsifizierer entweder zu $\vartheta$ oder zu $\eta$.
+		\item An einer Position der Form $\exists x\vartheta(x,\overline{b})$ wählt die Verifiziererin ein Element $a\in A$ und zieht zu $\vartheta(a,\overline{b})$.
+		\item Entsprechend darf an einer Position der Form $\forall x\vartheta(x,\overline{b})$ der Falsifizierer ein Element $a\in A$ auswählen und zur Position $\vartheta(a,\overline{b})$ ziehen.
+	\end{itemize}
+\newpage
+\section{Definierbarkeit in der Prädikatenlogik}
+\subsection{Definierbarkeit}
+	\begin{defi}
+		Sei $(\tau)$ die Klasse aller $\tau$-Strukturen. Eine Strukturklasse $\mathcal{K}\subseteq(\tau)$ ist \textsc{FO}-axiomatisierbar (oder einfach axiomatisierbar), wenn eine Satzmenge $\Phi\subseteq\textsc{FO}(\tau)$ existiert, so dass $\mathcal{K}=\textsc{Mod}(\Phi)$. Wenn das Axiomensystem $\Phi$ für $\mathcal{K}$ endlich ist, dann können wir die Konjunktion $\psi=\bigwedge\lbrace\phi :\phi\in\Phi\rbrace$ bilden und damit $\mathcal{K}$ durch einen einzigen Satz axiomatisieren. Wir sagen in diesem Fall, $\mathcal{K}$ ist \textbf{elementar} oder \textbf{endlich} axiomatisierbar.
+	\end{defi}
+	\begin{defi}
+		Eine Relation $\textsc{R}\subseteq A^r$ auf dem Universum einer $\tau$-Struktur $\A$ ist \textbf{(elementar) definierbar} in $\A$, wenn $\textsc{R}=\psi^\A$ für eine Formel $\psi\in\FO$.\\
+		Eine Funktion $f: A^r\rightarrow A$ heißt \textbf{elementar definierbar} wenn ihr Graph $\textsc{R}_f$ elementar definierbar ist.
+	\end{defi}
+	\begin{defi}
+		Zwei $\tau$-Strukturen $\mathfrak{A}$ und $\mathfrak{B}$ sind \textbf{isomorph} (kurz: $\mathfrak{A}\cong\mathfrak{B}$) wenn ein Isomorphismus von $\mathfrak{A}$ nach $\mathfrak{B}$ existiert. Ein Isomorphismus\\ $\pi : \mathfrak{A}\stackrel{\sim}{\rightarrow}\mathfrak{A}$ heißt Automorphismus von $\mathfrak{A}$.
+	\end{defi}
+
+	\begin{defi}
+		$\mathfrak{A}$ und $\mathfrak{B}$ seien $\tau$-Strukturen. Ein Isomorphismus von
+$\mathfrak{A}$ nach $\mathfrak{B}$ ist eine bijektive Abbildung $\pi:\mathfrak{A} \rightarrow \mathfrak{B}$, so dass folgende Bedingungen erfüllt sind:
+		\begin{enumerate}
+			\item Für jedes (n-stellige) Relationssymbol $R \in \tau$ und alle $a_1,...,a_n \in A$ gilt:
+$$
+(a_1,...,a_n)\in R^\mathfrak{A} \text{ gdw. } (\pi a_1,..., \pi a_n) \in R^\mathfrak{B}
+$$
+
+\item Für jedes (n-stellige) Funktionssymbol $f \in \tau$ und alle $a_1,...,a_n \in A$ gilt:
+$$
+\pi f^\mathfrak{A}(a_1,...,a_n) = f^\mathfrak{B}(\pi a_1, ..., \pi a_n)
+$$
+		\end{enumerate}
+	\end{defi}	
+	
+	\begin{defi}
+		Eine \textbf{Theorie} ist eine erfüllbare Menge $T\subseteq\FO$ von Sätzen, die unter $\models$ abgeschlossen ist, d.h. es gilt für alle $\tau$-Sätze $\psi$ mit $T\models\psi$, dass $\psi\in T$ gilt.
+		
+		Eine Theorie $T$ ist \textbf{vollständig}, wenn für jeden Satz $\psi\in\FO$ entweder $\psi\in T$ oder $\neg\psi\in T$ gilt.
+	\end{defi}
+	\begin{defi}
+		Zwei $\tau$-Strukturen $\mathfrak{A},\mathfrak{B}$ sind \textbf{elementar äquivalent} (kurz: $\mathfrak{A}\equiv\mathfrak{B}$), wenn $\Th{\A}=\Th{\B}$, d.h. wenn für alle $\tau$-Sätze $\psi$ gilt:
+		\[\A\models\psi\text{ gdw. }\B\models\psi.\]
+	\end{defi}
+	\begin{defi}
+		Zwei $\tau$-Strukturen $\A,\B$ sind $m$-äquivalent ($\A\equiv_m\B$) wenn für alle $\tau$-Sätze $\psi$ mit $\textsl{qr}(\psi)\le m$ gilt:
+		\[\A\models\psi\text{ gdw. }\B\models\psi.\]
+	\end{defi}
+	\begin{satz}
+		(Ehrenfeucht, Fraïssé). Sei $\tau$ endlich und relational, $\A$, $\B$ $\tau$-Strukturen.
+		\begin{enumerate}[(1)]
+			\item Folgende Aussagen sind äquivalent:
+			\begin{enumerate}[(i)]
+				\item $\A\equiv\B$
+				\item Die Duplikatorin gewinnt das Ehrenfeucht-Fraïssé-Spiel $G(\A,\B)$.
+			\end{enumerate}
+			\item Für alle $m\in\mathbb{N}$ sind folgende Aussagen äquivalent:
+			\begin{enumerate}[(i)]
+				\item $\A\equiv_m\B$
+				\item Die Duplikatorin gewinnt $G_m(\A,\B)$.
+			\end{enumerate}
+		\end{enumerate}
+	\end{satz}
+\section{Vollständigkeitssatz, Kompaktheitssatz und Unentscheidbarkeit der Prädikatenlogik}
+\subsection{Der Sequenzenkalkül}
+	\begin{defi}
+		Eine \textbf{Sequenz} ist ein Ausdruck $\Gamma\Rightarrow\Delta$, wobei $\Gamma,\Delta$ endliche Mengen von Sätzen in $\FO$ sind. Eine Sequenz $\Gamma\Rightarrow\Delta$ ist \textbf{gültig}, wenn jedes Modell von $\Gamma$ auch Modell mindestens einer Formel aus $\Delta$ ist. Die \textbf{Axiome} des Sequenzenkalküls sind alle Sequenzen der Form $\Gamma,\psi\Rightarrow\Delta,\psi$.
+	\end{defi}
+	\begin{satz}
+		(Korrektheitssatz für den Sequenzenkalkül). \textbf{Jede im Sequenzenkalkül ableitbare Sequenz ist gültig.}
+	\end{satz}
+	\begin{defi}
+		Sei $\Phi\subseteq\textsc{FO}(\sigma)$ eine Menge von Sätzen. Ein Satz $\psi$ ist \textbf{ableitbar} aus dem Axiomensystem $\Phi$ (kurz: $\Phi\vdash\psi$), wenn eine endliche Teilmenge $\Gamma$ von $\Phi$ existiert, so dass die Sequenz $\Gamma\Rightarrow\psi$ im Sequenzenkalkül ableitbar ist. Eine Sequenz $\Gamma\Rightarrow\Delta$ ist ableitbar aus $\Phi$, wenn es eine ableitbare Sequenz $\Gamma,\Gamma'\Rightarrow\Delta$ gibt mit $\Gamma'\subseteq\Phi$.
+	\end{defi}
+	\begin{satz}
+		(Vollständigkeitssatz für den Sequenzenkalkül). Für jede Satzmenge $\Phi\subseteq\textsc{FO}(\sigma)$ und jeden Satz $\psi\in\textsc{FO}(\sigma)$ gilt:
+		\begin{enumerate}[(i)]
+			\item $\Phi\models\psi$ gdw. $\Phi\vdash\psi$;
+			\item $\Phi$ ist genau dann konsistent, wenn $\Phi$ erfüllbar ist.
+		\end{enumerate}
+	\end{satz}
+	\begin{satz}
+		(Modell-Existenz-Satz). Jede Hintikka-Menge besitzt ein Modell.
+	\end{satz}
+	\begin{satz}
+		(Kompaktheitssatz der Prädikatenlogik). Für jede Menge $\Phi\subseteq\FO$ und jedes $\psi\in\FO$
+		\begin{enumerate}[(i)]
+			\item $\Phi\models\psi$ genau dann, wenn eine endliche Teilmenge $\Phi_0\subseteq\Phi$ existiert, so dass $\Phi_0\models\psi$.
+			\item $\Phi$ ist genau dann erfüllbar, wenn jede endliche Teilmenge von $\Phi$ erfüllbar ist.
+		\end{enumerate}
+	\end{satz}
+	\begin{satz}
+		(Absteigender Satz von Löwenheim-Skolem). Jede erfüllbare, abzählbare Satzmenge hat ein abzählbares Modell.
+	\end{satz}
+	\begin{satz}
+		(Aufsteigender Satz von Löwenheim-Skolem). Sei $\Phi\subseteq\FO$ eine Satzmenge.
+		\begin{enumerate}[(i)]
+			\item $\Phi$ besitze beliebig große endliche Modelle (d.h. für jedes $n\in\mathbb{N}$ gibt es ein Modell $\mathfrak{A}\models\Phi$ mit endlichem $\mathfrak{A}$ und $|\mathfrak{A}|>n$). Dann hat $\Phi$ auch ein unendliches Modell.
+			\item $\Phi$ besitze ein unendliches Modell. Dann gibt es zu jeder Menge $M$ ein Modell $\mathfrak{D}\models\Phi$ über einem Universum $D$, welches mindestens so mächtig wie $M$ ist.
+		\end{enumerate}
+	\end{satz}
+\section{Modallogik, temporale Logiken und monadische Logiken}
+	\begin{defi}
+		$\square, \Diamond$
+	\end{defi}
+	
+	\begin{defi}
+		Ein Transitionssystem oder eine Kripkestruktur mit Aktionen aus A und atomaren Eigenschaften $\{P_i:i \in I \}$ ist eine Struktur
+		$$K = (V,(E_a)_{a\in A}, (P_i)_{i \in I}$$
+		mit Universum $V$ und zweistelligen Relationen $E_a \subseteq V \times V (a\in A)$ (äquivalent zu Graphen) und einstelligen Relationen (Eigenschaften der Zustände) $P_i \subseteq V (i \in I)$. Statt $(u,v) \in E_a$ wird häufig $u \xrightarrow[]{a} v$ geschrieben.\\
+		\\
+		Man kann sich ein Transitionssystem als einen Graphen mit beschrifteten
+Knoten und Kanten vorstellen. Die Elemente des Universums
+sind Knoten, die einstelligen Relationen entsprechen den Beschriftungen
+der Knoten und die zweistelligen Relationen den beschrifteten
+Kanten.
+	\end{defi}
+	
+	\begin{defi}
+	Sei $K = (V,(E_a)_{a\in A}, (P_i)_{i \in I}$ ein Transitionssystem,
+$\psi \in ML$ eine Formel und $v$ ein Zustand von $K$. Die Modellbeziehung
+$K, v \models \psi$ (d.h. $\psi$ gilt im Zustand $v$ von $K$) ist induktiv wie folgt definiert:
+\begin{enumerate}
+	\item $K,v \models P_i \text{ gdw. } v \in P_i$
+	\item Die Bedeutungen von $\neg \varphi, (\varphi \lor \psi), (\varphi \land \psi)$ und $\varphi \rightarrow \psi $ sind wie üblich.
+	\item $K,v \models \left\langle a \right\rangle \psi$, wenn ein $w$ existiert mit $(v,w) \in E_a$ und $K,w \models \psi$.
+	\item $K,v \models \left[ a \right] \psi$, wenn für alle $w$ mit $(v,w) \in E_a$ gilt, dass $K,w \models \psi$.
+
+\end{enumerate}
+	\end{defi}
+	
+	\begin{defi}
+	 \textbf{Das Bisimulationsspiel.} Die Bisimililarität kann auf spieltheoretische Weise durch ein Bisimulationsspiel beschrieben werden. Das Spiel wird auf zwei Kripkestrukturen
+$K$ und $K'$, auf denen sich jeweils ein Spielstein befindet, gespielt. In der Anfangsposition liegen die Steine auf $u$ bzw. $u'$. Die Spieler ziehen nun abwechselnd nach folgenden Regeln:
+
+Spieler I bewegt den Stein in $K$ oder $K'$ 
+entlang einer Transition
+zu einem neuem Zustand: von $v$ entlang $v \xrightarrow[]{a} w$ zu $w$ oder 
+von $v'$ entlang $v' \xrightarrow[]{a} w'$ zu $w'$. 
+Spielerin II antwortet mit einer entsprechenden
+Bewegung in der anderen Struktur: $v' \xrightarrow[]{a} w'$ oder 
+$v \xrightarrow[]{a} w$.
+
+\textbf{Wenn ein Spieler nicht ziehen kann, verliert er.} D.h. Spieler I verliert, wenn er zu
+einem Knoten kommt, von dem keine Transitionen mehr wegführen und
+Spielerin II verliert, wenn sie nicht mehr mit der entsprechenden Aktion
+antworten kann. Am Anfang und nach jedem Zug wird überprüft, ob
+für die aktuelle Position $v, v'$ gilt: $v \in P_i$ gdw. $v' \in P'_i$
+für alle $i \in $ I.
+Wenn nicht, dann hat I gewonnen, ansonsten geht das Spiel weiter. II
+gewinnt, wenn sie nie verliert.
+
+Uns interessieren nicht primär einzelne Partien, sondern ob einer
+der Spieler eine Gewinnstrategie hat. Wir sagen, \textbf{II gewinnt} das Bisimulationsspiel
+auf $(K, K')$ von $(u, u')$ aus, \textbf{wenn es eine Strategie für
+II gibt, mit der sie nie verliert}, was auch immer I zieht.
+	\end{defi}
+
+\begin{defi}
+Ein Transitionssystem ist endlich verzweigt, wenn für
+alle Zustände $v$ und alle Aktionen $a$ die Menge $vE_a := {w : (v, w) \in E_a}$
+der $a$-Nachfolger von $v$ endlich ist. Insbesondere ist natürlich \textbf{jedes
+endliche Transitionssystem endlich verzweigt.}
+
+\textbf{Seien $K$, $K'$ endlich verzweigte Transitionssysteme. \\Dann gilt
+$K, u \sim K', u'$ genau dann, wenn $K, u \equiv_{ML} K', u'$ gilt.}
+
+\end{defi}
+
+\begin{defi}
+Eine Menge von Formeln (irgendeiner Logik, etwa der Modallogik oder
+der Prädikatenlogik), welche auf Transitionssystemen interpretiert wird,
+hat die \textbf{Baummodell-Eigenschaft} (BME), wenn jede erfüllbare Formel in $\Phi$
+ein Modell hat, welches ein Baum ist.
+
+Ein Transitionssystem $K = (V,(E_a)_{a\in A},(P_i)_{i\in I})$ 
+mit einem ausgezeichneten Knoten $w$ ist ein \textbf{Baum}, wenn
+\begin{enumerate}
+ \item $E_a \cap E_b = \emptyset $ für alle Aktionen $a \neq b$
+ \item für $E = \cup_{a\in A} E_a$ ist der Graph $(V, E)$ ein (gerichteter) Baum mit
+Wurzel $w$ im Sinn der Graphentheorie ist (siehe auch Kapitel 1.4)
+\end{enumerate}
+
+\end{defi}
+\newpage
+\begin{defi}
+Dazu betrachten wir Abwicklungen von Transitionssystemen. Die
+Abwicklung von $K$ vom Zustand $v$ aus besteht aus allen Pfaden in
+$K$, die bei $v$ beginnen. Dabei wird \textbf{jeder Pfad} als ein \textbf{separates Objekt}
+angesehen, d.h. selbst wenn sich zwei Pfade \textbf{überschneiden}, wird jeder
+\textbf{zu einem neuen Zustand in der abgewickelten Struktur $T$} , und jeder
+Zustand aus $K$, der auf einem Pfad von $v$ aus erreicht wird, wird neu
+zu der Abwicklung hinzugefügt, unabhängig davon, ob er schon einmal
+erreicht wurde. \textbf{Schleifen in $K$ entsprechen also unendlichen Wegen} in
+der Abwicklung. Formal werden Abwicklungen wie folgt definiert.
+
+Sei $K = (V^K, (E^K_a)_{a \in A}, (P^K_i)_{i\in I})$ eine Kripkestruktur
+und $v \in V^K$. Die Abwicklung von $K$ von $v$ aus ist die Kripkestruktur
+$T_{K,v} = (V^T, (E^T_a)_{a \in A}, (P^T_i)_{i\in I})$ mit
+\begin{itemize}
+	\item $V^T = \{ \overline{v} = v_0a_0v_1a_1...v_{m-1}a_{m-1}v_m : m \in \mathbb{N},$\\
+	$v_0 = v, v_i \in V^K, a_i \in A, (v_i, v_{i+1} \in E^K_{a_i} \forall i < m \}$
+	
+	\item $E^T_a = \{ (\overline{v},\overline{w}) \in V^T \times V^T: \overline{w} = \overline{v}aw \text{ für ein } w \in V^K \}$
+	
+	\item $P^T_i = \{ \overline{v} = v_0a_0...v_m \in V^T: v_m \in P^K_i\} $
+\end{itemize}
+Mit $End(\overline{v})$ bezeichnen wir den letzten Knoten auf dem Pfad $\overline{v}$.
+Damit ist $\overline{v} \in P^T_i$ gdw. $End(\overline{v}) \in P^K_i$.
+
+\end{defi}
+\end{document}
